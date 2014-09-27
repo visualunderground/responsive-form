@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie ie6 no-js" dir="ltr" lang="en-GB"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 no-js" dir="ltr" lang="en-GB"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 no-js" dir="ltr" lang="en-GB"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 no-js" dir="ltr" lang="en-GB"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-ie no-js" dir="ltr" lang="en-GB"><!--<![endif]--><head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link media="all" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway:500,300" id="dm_shop_square_fonts-css" rel="stylesheet">
+	<link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" >
+	<link rel='stylesheet' href='assets/css/app.css'>
+	<link rel='stylesheet' href='assets/css/buttons.css'>
+	<script src='assets/js/modernizr-dev.js' ></script>
+	<title>Responsive form</title>
+	<script>
+	function styleRadio(oScope){
+		var aEl = oScope.getElementsByTagName('input');
+		for (var i = 0; i < aEl.length; i++) {
+			if ((aEl[i].type == 'radio' || aEl[i].type == 'checkbox') && aEl[i].parentNode.tagName == 'DIV') {
+				aEl[i].parentNode.className = (aEl[i].checked) ? 'button is-selected' : 'button not-selected';
+			}
+		}
+	}
+	function attachInputEvents(){
+		var aEl = document.getElementsByTagName('input');
+		for (var i = 0; i < aEl.length; i++) {
+			if (aEl[i].type == 'radio' || aEl[i].type == 'checkbox') {
+				addEvent(aEl[i], 'click', function(){styleRadio(this.parentNode.parentNode);});
+			}
+		}
+	}
+	//	http://www.dustindiaz.com/rock-solid-addevent
+	function addEvent( obj, type, fn ) {
+		if (obj.addEventListener) {
+			obj.addEventListener( type, fn, false );
+			EventCache.add(obj, type, fn);
+		}
+		else if (obj.attachEvent) {
+			obj["e"+type+fn] = fn;
+			obj[type+fn] = function() { obj["e"+type+fn]( window.event ); }
+			obj.attachEvent( "on"+type, obj[type+fn] );
+			EventCache.add(obj, type, fn);
+		}
+		else {
+			obj["on"+type] = obj["e"+type+fn];
+		}
+	}
+	
+	var EventCache = function(){
+		var listEvents = [];
+		return {
+			listEvents : listEvents,
+			add : function(node, sEventName, fHandler){
+				listEvents.push(arguments);
+			},
+			flush : function(){
+				var i, item;
+				for(i = listEvents.length - 1; i >= 0; i = i - 1){
+					item = listEvents[i];
+					if(item[0].removeEventListener){
+						item[0].removeEventListener(item[1], item[2], item[3]);
+					};
+					if(item[1].substring(0, 2) != "on"){
+						item[1] = "on" + item[1];
+					};
+					if(item[0].detachEvent){
+						item[0].detachEvent(item[1], item[2]);
+					};
+					item[0][item[1]] = null;
+				};
+			}
+		};
+	}();
+	addEvent(window,'unload',EventCache.flush);
+	//	END http://www.dustindiaz.com/rock-solid-addevent
+
+/*=====================================================================================================	
+	HELP FUNCTION
+  =====================================================================================================	*/
+	function $() {
+		var elements = new Array();
+		for (var i = 0; i < arguments.length; i++) {
+			var element = arguments[i];
+			if (typeof element == 'string')
+				element = document.getElementById(element);
+			if (arguments.length == 1)
+				return element;
+			elements.push(element);
+		}
+		return elements;
+	}
+	var helpID = "";
+	function showHelp(sTerm, sType){
+		if ($(sTerm + '-content')){	//	IF HELP HAS ALREADY BEEN CALLED - SHOW IT
+			if ($(sTerm + '-content').className == "help-content"){
+				clearhelp();	//	CLEAR OLD HELP ITEM
+				return false;
+			}else{
+				clearhelp();	//	CLEAR OLD HELP ITEM
+				helpID = sTerm;
+				//	HELP POSITIONING
+				if(Modernizr.mq('only screen and (max-width: 789px)')) { // NO COLS
+					$(sTerm + '-content').style.top = $(helpID).parentNode.offsetHeight + 5 + "px";
+					$(sTerm + '-content').style.left = "0";
+				}else{
+					$(sTerm + '-content').style.top = "48px";
+					$(sTerm + '-content').style.left = "0";
+				}  // true
+				$(helpID + '-content').className = "help-content";
+			}
+		}else{	//	ELSE - CALL HELP
+			clearhelp();	//	CLEAR OLD HELP ITEM
+			helpID = sTerm;
+			//	CREATE NODE
+			var oDiv = document.createElement("div");
+			oDiv.className = 'help-content';
+			oDiv.id = helpID + "-content";
+			//	HELP POSITIONING		//if (helpPosition=='relative'){oDiv.style.left = $(helpID).offsetLeft + 40 + "px";}	//	REMOVE TO USE CSS ONLY (STATIC) POSITIONING
+			if(Modernizr.mq('only screen and (max-width: 789px)')) { // NO COLS
+				oDiv.style.top = $(helpID).parentNode.offsetHeight + 5 + "px";
+				oDiv.style.left = "0";
+			}else{
+				oDiv.style.top = "48px";
+				oDiv.style.left = "0";
+			}  
+			oDiv.innerHTML = "<div><h5>Test</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. link Quisque sed fringilla ipsum.</p><ul><li>One</li><li>Two</li></ul><p>Suspendisse ut sem augue. Suspendisse sed magna a neque pretium aliquet. Sed justo dolor, bibendum vehicula imperdiet nec. </p><p class='help-close'><a href='javascript:clearhelp();' class='help-close-button' title='Close'>x</a></p></div>";
+			$(helpID).parentNode.insertBefore(oDiv, $(helpID).nextSibling);
+		}
+		return false;
+	}
+	
+	function clearhelp(){
+		sID = helpID + "-content";
+		if (!helpID){return;}
+		$(sID).className = "help-clear";
+	}
+	</script>
+</head>
+<body onload="styleRadio(document);attachInputEvents();">
+	<form action="#" novalidate="true">
+	<header class="cf">
+		<h1>Product type</h1>
+	</header>
+	<!--
+	<style type="text/css">
+		.wayfinding	{
+			width:960px;
+			margin:25px auto 37px;
+		}
+		.wayfinding li	{
+    		float: left;
+   			text-align: center;
+    		width: 16.6667%;	
+			color:#a5abc5;
+			border:1px solid #c9d0e1;
+			border-left-width:0;
+			padding:10px 0;
+		}
+		.wayfinding li:first-child{
+			border-left-width:1px;
+		}
+		.wayfinding li.current {
+			background-color:#c9d0e1;
+			color:#ECEEF4; font-weight:bold;
+		}
+	</style>
+	<ol class="wayfinding cf">
+		<li>About you</li>
+		<li>Additional drivers</li>
+		<li class="current">Your car</li>
+		<li>Claims &amp; Convictions</li>
+		<li>Your premium</li>
+		<li>Checkout</li>
+	</ol>
+	-->
+	<div id="Quote" class="cf">
+		<h2>Page name</h2>
+		<div class="message master">
+			<h3>{.message.master}</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">link</a> Quisque sed fringilla ipsum. Suspendisse ut sem augue. Suspendisse sed magna a neque pretium aliquet. Sed justo dolor, bibendum vehicula imperdiet nec. </p>
+			<!--
+			<ul>
+				<li>One</li>
+				<li>Two</li>
+			</ul>
+			-->
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pharetra pellentesque Justo quis sodales. Suspendisse dolor magna a fringilla augue. Ut feugiat turpis a faselli.</p>
+		</div>
+		<div class="message error point-up">
+			<p>{.message.error.point-up}<br />There are errors on this page please take a moment to check your answers.</p>
+		</div>
+		<div class="message info point-down">
+			<p>{.message.info.point-down}<br />Don't forget to do X <strong>before</strong> Y.</p>
+		</div>
+		<div class="quote-panel cf">
+			<h3>Text entry</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pharetra pellentesque Justo quis sodales. Suspendisse dolor magna a fringilla augue. Ut feugiat turpis a faselli.</p>
+			<div class="quote-panel-content cf">
+				<ul>
+					
+					<li>
+						<label>Input</label>
+						<span>
+							<input type="text" placeholder="[type='text']" >
+						</span>
+					</li>
+					<li class="error">
+						<label>Input</label>
+						<span>
+							<input type="tel" placeholder="[type='tel']" >
+							<div class="error">Oops. there was an error</div>
+						</span>
+					</li>
+					<li>
+						<label>Input <strong>strong</strong></label>
+						<span>
+							<input type="number" placeholder="[type='number']" >
+						</span>
+					</li>
+					<li>
+						<label>Input</label>
+						<span>
+							<input type="email" placeholder="[type='email']" >
+						</span>
+					</li>
+					<li>
+						<label>Input</label>
+						<span>
+							<input type="text" placeholder="[type='text']" >
+						</span>
+					</li>
+					<li>
+						<label>Input &amp; search</label>
+						<span>
+							<!--	!!!! NO WHITESPACE !!!!	-->
+							<input type="text" class="postcode"><button class="button secondary" title="Search" value="Search">Search</button><a href='#' class='help' id='help-6' onclick='return showHelp(this.id);'>?</a><i id="search-help">Additional information</i>
+						</span>
+					</li>
+					<li>
+						<label>Delimited input</label>
+						<span>
+							<!--	!!!! NO WHITESPACE !!!!	-->
+							<input type="tel" class="sort-code pre"><b>/</b><input type="tel" class="sort-code pre"><b>/</b><input type="tel" class="sort-code">
+							<a href='#' class='help' id='help-8' onclick='return showHelp(this.id);'>?</a>
+						</span>
+					</li>
+					<!--	NB apply a class of "search" to add affordance	-->
+					<li>				
+						<label for="Proposer.id.1_FullTimeOccupation.occDesc">Search:Suggest input</label>				
+						<span>
+							<input type="text" value="" class="search" onBlur="hideFloat();" onKeyDown="preventScroll(event)" onKeyUp="sOccupationG(event,'fullOcc');" autocomplete="off" id="Proposer.id.1_FullTimeOccupation.occDesc" name="Proposer.id.1_FullTimeOccupation.occDesc" ><a href='#' class='help' id='help-9' onclick='return showHelp(this.id);'>?</a>
+							<i>Additional information</i>
+							<div id="Proposer.id.1_FullTimeOccupation.occCodeFLOAT" class="ajax-float"></div>
+							<input type="hidden" value="" name="Proposer.id.1_FullTimeOccupation.occCode" id="Proposer.id.1_FullTimeOccupation.occCode">
+							<!-- PURELY  FOR PROTOTYPE PURPOSES	-->
+							<input type="hidden"  id="Proposer.id.1_FullTimeOccupation.empDesc" name="Proposer.id.1_FullTimeOccupation.empDesc" >
+							<div id="Proposer.id.1_FullTimeOccupation.empCodeFLOAT" style="display:none;"></div>
+							<div id="Proposer.id.1_PartTimeOccupation.empCodeFLOAT" style="display:none;"></div>
+							<div id="Proposer.id.1_PartTimeOccupation.occCodeFLOAT" style="display:none;"></div>
+							<input type="hidden" value="" name="Proposer.id.1_FullTimeOccupation.empCode" id="Proposer.id.1_FullTimeOccupation.empCode">
+							<!-- END	-->
+						</span>
+					</li>
+					<li>
+						<label>Textual value</label>
+						<span>
+							<p>Mr A N Proposer</p>
+							<a href='#' class='help' id='help-2' onclick='return showHelp(this.id);'>?</a>
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="quote-panel cf">
+			<h3>Select menus</h3>
+			<div class="quote-panel-content cf">
+				<ul>
+					<li>
+						<label>Selection (std. width)<i>Matches text input width</i></label>
+						<span>
+							<select><option selected="" value="">Mobile</option></select><a href='#' class='help' id='help-0' onclick='return showHelp(this.id);'>?</a>
+						</span>
+					</li>
+					<li>
+						<label>Selection (matches. width)<i>A <code>select</code> element with a class of <code>min</code> = data width.</i></label>
+						<span>
+							<select class="min"><option selected="" value="">Mobile</option></select><a href='#' class='help' id='help-1' onclick='return showHelp(this.id);'>?</a>
+						</span>
+					</li>
+					<li>
+						<label>Scoped input<i>A <code>select</code> element with a class of <code>min</code> + <code>pre</code> = data width with a smaller right margin.</i></label>
+						<span>
+							<!--	!!!! NO WHITESPACE !!!!	-->
+							<select class="min pre"><option selected="" value="">Mobile</option></select><input type="tel" id="phone" class="phone"><a href='#' class='help' id='help-7' onclick='return showHelp(this.id);'>?</a>
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="quote-panel cf">
+			<h3>Integral units</h3>
+			<div class="quote-panel-content cf">
+				<ul>
+					<li class="message info">
+						<p>
+							Use <code>prefix</code> and <code>suffix</code> classes on the <code>input</code> and the <code>b</code> element containing the unit.
+						</p>
+						<p>
+							NB. no whitespace between the <code>b</code> element and the <code>input</code>
+						</p>
+					</li>
+					<li>
+						<label>Prefixed input <i>Additional information with <a href="#">link</a></i></label>
+						<span>
+							<!--	!!!! NO WHITESPACE !!!!	-->
+							<b class="prefix">&pound;</b><input type="text" class="prefix">
+							<a href='#' class='help' id='help-3' onclick='return showHelp(this.id);'>?</a>
+						</span>
+					</li>
+					<li>
+						<label>Suffixed input</label>
+						<span>
+							<!--	!!!! NO WHITESPACE !!!!	-->
+							<input type="text" class="suffix"><b class="suffix">mg</b>
+							<a href='#' class='help' id='help-4' onclick='return showHelp(this.id);'>?</a>
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="quote-panel cf">
+			<h3>Dates</h3>
+			<div class="quote-panel-content cf">
+				<ul>
+					<li>
+						<label>Date input</label>
+						<span>
+							<!--	!!!! NO WHITESPACE !!!!	-->
+							<select class="min pre"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="min pre"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><select class="min"><option value="">Year</option><option value="1984">...</option><option value="1976">1976</option></select>
+							<a href='#' class='help' id='help-5' onclick='return showHelp(this.id);'>?</a>
+						</span>
+					</li>
+					<li>
+						<label>Date input - long year</label>
+						<span>
+							<!--	!!!! NO WHITESPACE !!!!	-->
+							<select class="min pre"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="min pre"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><input type='tel' size='4' maxlength='4' placeholder='yyyy' class='numericinput'/>
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="quote-panel cf">
+			<h3>Required fields</h3>
+			<!--<p>You must fill in the questions marked *</p>-->
+			<div class="quote-panel-content cf">
+				<ul>
+					<li class="message info">
+						<p>
+							To identify required fields add <code>&nbsp;&lt;em title="Required"&gt;*&lt;/em&gt;</code> after the <strong>primary</strong> content of the <code>label</code>.
+						</p>
+						<p>
+							NB. Please add a space between the content and the <code>em</code>.<br />
+						</p>
+						<p>
+							To further support assistive technology add <code>required</code> and <code>aria-required="true"</code> attributes to the <code>input</code>.
+						</p>
+					</li>
+					<li>
+						<label>Input <em title="Required">*</em></label>
+						<span>
+							<input type="text" placeholder="[type='text']" required aria-required="true" >
+						</span>
+					</li>
+					<li>
+						<label>Selection <em title="Required">*</em></label>
+						<span>
+							<select required aria-required="true"><option selected="" value="">Mobile</option></select><a href='#' class='help' id='help-0' onclick='return showHelp(this.id);'>?</a>
+						</span>
+					</li>
+					<li>
+						<label>Scoped input <em title="Required">*</em></label>
+						<span>
+							<!--	!!!! NO WHITESPACE !!!!	-->
+							<select class="min pre" required aria-required="true"><option selected="" value="">Mobile</option></select><input type="tel" id="phone" class="phone" required aria-required="true"><a href='#' class='help' id='help-7' onclick='return showHelp(this.id);'>?</a>
+						</span>
+					</li>
+					<li>
+						<label>Boolean <em title="Required">*</em><i>You only <strong>need</strong> to set the <code>required</code> attribute for one input of the radiogroup, but you can set it on all.</i></label>
+						<span class="radio-group">
+							<div class="button">
+								<input type="radio" value="Y" id="radio-Required-y" name="radio-Required"  required aria-required="true">
+								<label for="radio-Required-y">Yes</label>
+						</div>
+							<div class="button">
+								<input type="radio" value="N" id="radio-Required-n" name="radio-Required"  required aria-required="true">
+								<label for="radio-Required-n">No</label>
+						</div>
+							<a href='#' class='help' id='help-10' onclick='return showHelp(this.id);'>?</a>
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="quote-panel cf">
+			<h3>Calls to action</h3>
+			<div class="quote-panel-content cf">
+				<ul>
+					<!--	NB you don't need a label in order to right align inputs	-->
+					<li>
+						<span>
+							<button class="button primary" title="Primary" value="Primary">{.primary}</button>
+							<button class="button secondary" title="Search trigger" value="Search trigger">{.secondary}</button>
+							<button class="button not-selected" title="Search trigger" value="Search trigger">{.not-selected}</button>
+							<button class="button is-selected" title="Search trigger" value="Search trigger">{.is-selected}</button>
+							<button class="button grey" title="Search trigger" value="Search trigger">{</button>
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="quote-panel cf">
+			<h3>Radio groups</h3>
+			<div class="quote-panel-content cf">
+				<ul>
+					<li>
+						<label>Boolean</label>
+						<span class="radio-group">
+							<div class="button">
+								<input type="radio" value="Y" id="radio-homeowner-y" name="radio-homeowner">
+								<label for="radio-homeowner-y">Affirmative</label>
+						</div>
+							<div class="button">
+								<input type="radio" value="N" id="radio-homeowner-n" name="radio-homeowner">
+								<label for="radio-homeowner-n">No</label>
+						</div>
+							<a href='#' class='help' id='help-10' onclick='return showHelp(this.id);'>?</a>
+						</span>
+						
+					</li>
+					<li>
+						<label>Multiple<i>if a radio group has &gt; 2 options it needs a class of <code>not-bool</code></i></label>
+						<span class="radio-group not-bool">
+							<div class="button">
+								<input type="radio" value="Y" id="radio-drivers0" name="radio-drivers">
+								<label for="radio-drivers0">None</label>
+						</div>
+							<div class="button">
+								<input type="radio" value="N" id="radio-drivers1" name="radio-drivers" >
+								<label for="radio-drivers1">1</label>
+						</div>
+							<div class="button">
+								<input type="radio" value="N" id="radio-drivers2" name="radio-drivers" >
+								<label for="radio-drivers2">2</label>
+						</div>
+							<div class="button">
+								<input type="radio" value="N" id="radio-drivers3" name="radio-drivers" >
+								<label for="radio-drivers3">3</label>
+						</div>
+							<div class="button">
+								<input type="radio" value="N" id="radio-drivers4" name="radio-drivers" >
+								<label for="radio-drivers4">4</label>
+						</div>
+							<a href='#' class='help' id='help-11' onclick='return showHelp(this.id);'>?</a>
+						</span>
+					</li>
+					<li>
+						<label>Additional text</label>
+						<span class="radio-group">
+							<div class="button">
+								<input type="radio" value="Y" id="radio-small-y" name="radio-small">
+								<label for="radio-small-y">Option A<i>Lots more info</i></label>
+						</div>
+							<div class="button">
+								<input type="radio" value="N" id="radio-small-n" name="radio-small" >
+								<label for="radio-small-n">Option B<i>Lots more info</i></label>
+						</div>
+							<a href='#' class='help' id='help-13' onclick='return showHelp(this.id);'>?</a>
+						</span>
+					</li>
+					<li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">link</a> Quisque sed fringilla ipsum. Suspendisse ut sem augue. Suspendisse sed magna a neque pretium aliquet. Sed justo dolor, bibendum vehicula imperdiet nec. </p></li>
+				</ul>
+			</div>
+		</div>
+		<div class="quote-panel cf">
+			<h3>Checkbox groups</h3>
+			<div class="quote-panel-content cf">
+				<ul>
+					<li>
+						<label>Checkboxes with internal values</label>
+						<span class="radio-group not-bool">
+							<div class="button">
+								<input type="checkbox" value="Y" id="checkbox-drivers0" name="checkbox-drivers">
+								<label for="checkbox-drivers0">Phone</label>
+						</div>
+							<div class="button">
+								<input type="checkbox" value="N" id="checkbox-drivers1" name="checkbox-drivers" >
+								<label for="checkbox-drivers1">SMS</label>
+						</div>
+							<div class="button">
+								<input type="checkbox" value="N" id="checkbox-drivers2" name="checkbox-drivers" >
+								<label for="checkbox-drivers2">Email</label>
+						</div>
+							<div class="button">
+								<input type="checkbox" value="N" id="checkbox-drivers3" name="checkbox-drivers" >
+								<label for="checkbox-drivers3">Post</label>
+						</div>
+							<a href='#' class='help' id='help-16' onclick='return showHelp(this.id);'>?</a>
+						</span>
+					</li>
+					<li>
+						<label>Checkboxes with external values</label>
+						<div>
+							<span class="radio-group not-bool">
+								<div class="button not-selected">
+									<input type="checkbox" name="x_Userfields_Userfield.line.MRKPOST.type.C" id="x_Userfields_Userfield.line.MRKPOST.type.C" /><label for="x_Userfields_Userfield.line.MRKPOST.type.C">Tick</label>
+							</div>
+							</span><label for="x_Userfields_Userfield.line.MRKPOST.type.C">If marketing A</label>
+						</div>
+						<div>
+							<span class="radio-group not-bool">
+								<div class="button not-selected">
+									<input type="checkbox" name="x_Userfields_Userfield.line.MRKEMAIL.type.C" id="x_Userfields_Userfield.line.MRKEMAIL.type.C" /><label for="x_Userfields_Userfield.line.MRKEMAIL.type.C">Tick</label>
+							</div>
+							</span><label for="x_Userfields_Userfield.line.MRKEMAIL.type.C">If marketing B If marketing B If marketing B If marketing B</label>
+						</div>
+						<div>
+							<span class="radio-group not-bool">
+								<div class="button not-selected">
+									<input type="checkbox" name="x_Userfields_Userfield.line.MRKTELE.type.C" id="x_Userfields_Userfield.line.MRKTELE.type.C" /><label for="x_Userfields_Userfield.line.MRKTELE.type.C">Tick</label>
+							</div>
+							</span><label for="x_Userfields_Userfield.line.MRKTELE.type.C">If marketing C</label>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<nav>
+			<button class="button grey" type="submit" value="Back">Back</button>
+			<button class="button large primary" type="submit" value="Continue">Continue</button>
+		</nav>
+	</div>
+	<footer class="cf">
+		<h1>To Do:</h1>
+		<ol>
+			<li>Native vs Custom form controls (icon font)</li>
+			<li>Help icon (styling, position and transition)</li>
+			<li>Button feed-<i>back</i></li>
+			<li>Button feed-<i>forward</i></li>
+			<li>Wayfaring</li>
+			<li>Combine "Input &amp; search" elements</li>
+			<li>Combine radio-group elements (bool = horizontal !bool = vertical)</li>
+			<li>Duplicate radio-group to checkbox-group</li>
+			<li>Ajax results</li>
+		</ol>
+	</footer>
+	</form>
+</body>
+
+<style type="text/css">
+/*	TEMP FOOTER STYLING	*/
+footer ol	{
+	width:960px;
+	margin:0 auto 37px;
+	list-style-position: inside;
+    list-style-type: decimal;
+}
+footer li	{
+	color:#ffffff;
+}
+	/*.quote-panel p:after{
+		content:" - <p/>";			
+	}*/
+	h1:after{
+		content:" - <h1/>";	
+	}
+	h2:after{
+		content:" - <h2/>";	
+	}
+	h3:after{
+		content:" - <h3/>";	
+	}
+	/*.quote-panel p:after,*/
+	h1:after,
+	h2:after,
+	h3:after	{ opacity:0.3;}
+	code	{  
+		background-color:#EEEEEE; 
+		background-color:rgba(0,0,0,0.3); 
+		color:#333333; 
+		color:rgba(255,255,255,0.9);
+		padding:1px 5px; 
+		font-weight:normal;
+		font-family:Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;}
+</style>
+</html>
