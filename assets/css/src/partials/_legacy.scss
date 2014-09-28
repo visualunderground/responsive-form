@@ -1,13 +1,12 @@
-/*
-Golden Scale for 16px Font (http://www.pearsonified.com/typography/)
+// Golden Scale for 16px Font (http://www.pearsonified.com/typography/)
 
-H1		Title: 				42px (68px line height)
-H2		Headlines: 			26px (42px line height)
-H3		Sub-headlines: 		20px (32px line height)
-H4		Sub-Sub-headlines: 	16px (26px line height)
-BODY	Primary text: 		16px (26px line height)
-i em	Secondary Text: 	13px (21px line height)
-*/
+// H1		Title: 				42px (68px line height)
+// H2		Headlines: 			26px (42px line height)
+// H3		Sub-headlines: 		20px (32px line height)
+// H4		Sub-Sub-headlines: 	16px (26px line height)
+// BODY	Primary text: 		16px (26px line height)
+// i em	Secondary Text: 	13px (21px line height)
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
     border: 0;
     outline: 0;
@@ -26,11 +25,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 body {
     line-height: 1;
-    color: #000;
-    background: #FFF;
+    color: #000000;
+    background: #ffffff;
 }
 
-ol, ul {
+ol,
+ul {
     list-style: none;
 }
 
@@ -65,7 +65,7 @@ body {
     height: auto;
     max-height: none;
     font: normal normal normal 16px/26px Arial, Helvetica, sans-serif;
-    color: #444A62;
+    color: #444a62;
     margin: 0;
     background-color: #eceef4;
 }
@@ -87,7 +87,7 @@ nav {
 }
 
 footer {
-    background-color: #444A62;
+    background-color: #444a62;
     margin-top: 37px;
 }
 
@@ -162,7 +162,7 @@ p {
     clear: both;
     padding: 10px;
     max-width: 685px;
-    /*	Golden Ratio Typography	*/
+    //	Golden Ratio Typography
 }
 
 .quote-panel-content > ul {
@@ -177,7 +177,7 @@ p {
     width: 100%;
     clear: both;
     padding: 5px;
-    border-top: 1px solid #EFF1F8;
+    border-top: 1px solid #eff1f8;
 }
 
 .quote-panel-content > ul > li.message + li,
@@ -228,7 +228,7 @@ p {
 
 .quote-panel-content label > em {
     /*	REQUIRED FIELD	*/
-    color: #CB6160;
+    color: #cb6160;
     font-size: 20px;
     line-height: 1;
     font-weight: bold;
@@ -273,23 +273,23 @@ p {
 /*	PLACEHOLDERS	*/
 *::-webkit-input-placeholder {
     /* WebKit browsers */
-    color: #B7B7B7 !important;
+    color: #b7b7b7 !important;
 }
 
 :-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
-    color: #B7B7B7 !important;
+    color: #b7b7b7 !important;
 }
 
 ::-moz-placeholder {
     /* Mozilla Firefox 19+ */
-    color: #B7B7B7 !important;
+    color: #b7b7b7 !important;
     opacity: 1;
 }
 
 :-ms-input-placeholder {
     /* Internet Explorer 10+ */
-    color: #B7B7B7 !important;
+    color: #b7b7b7 !important;
 }
 
 /*	RADIO GROUP	*/
@@ -318,7 +318,7 @@ p {
 }
 
 .radio-group .is-selected label, .radio-group .is-selected label i {
-    color: #fff;
+    color: #ffffff;
 }
 
 .radio-group input {
@@ -351,7 +351,7 @@ input[type='text'], input[type='email'], input[type='number'], input[type='tel']
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
-    border: 1px solid #C3C5CC;
+    border: 1px solid #c3c5cc;
     background: #ffffff;
     padding: 5px;
     margin-right: 15px;
@@ -371,7 +371,7 @@ input[type='text'], input[type='email'], input[type='number'], input[type='tel']
 }
 
 input[type='text']:focus, input[type='email']:focus, input[type='number']:focus, input[type='tel']:focus, select:focus {
-    background-color: #F0F3F3;
+    background-color: #f0f3f3;
 }
 
 input[type='text'], input[type='email'], input[type='number'], input[type='tel'] {
@@ -406,7 +406,7 @@ input[type='radio'], input[type='checkbox'] {
     margin: 0;
     margin-top: 8px;
     background-color: #f0f3f3;
-    border: 1px solid #C3C5CC;
+    border: 1px solid #c3c5cc;
     width: 40px;
     display: inline-block;
     padding: 4px 5px 5px 5px;
@@ -472,8 +472,8 @@ input[type='tel'].numericinput {
     position: absolute;
     width: 253px;
     max-height: 300px;
-    border: 1px solid #AAAAAA;
-    background-color: #fff;
+    border: 1px solid #aaaaaa;
+    background-color: #ffffff;
     overflow: auto;
     display: none;
     Z-index: 999;
@@ -524,14 +524,14 @@ a.help {
     -moz-border-radius: 18px;
     border-radius: 18px;
     text-decoration: none;
-    border: 1px solid #C9D0E1;
+    border: 1px solid #c9d0e1;
     background-color: transparent;
 }
 
 a.help:focus,
 a.help:hover {
-    background-color: #438BCA;
-    border-color: #438BCA;
+    background-color: #438bca;
+    border-color: #438bca;
     color: #ffffff;
 }
 
@@ -551,7 +551,7 @@ a.help:focus {
 }
 
 .quote-panel-content div.help-content > div {
-    background-color: #444A62;
+    background-color: #444a62;
     background-color: rgba(68, 74, 98, 0.95);
     width: 100%;
     -webkit-border-radius: 4px;
@@ -564,14 +564,14 @@ a.help:focus {
     font-size: 14px;
     line-height: 23px;
     padding: 12px 40px 0 15px;
-    color: #fff;
+    color: #ffffff;
     font-weight: bold;
 }
 
 .quote-panel-content div.help-content p {
     font-size: 14px;
     line-height: 23px;
-    padding: 10px 15px 0 15px;
+    padding: 10px 15px 0;
     max-width: 350px;
 }
 
@@ -587,11 +587,11 @@ a.help:focus {
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    color: #fff;
+    color: #ffffff;
 }
 
 .quote-panel-content div.help-content p.help-close a:hover {
-    color: #fff;
+    color: #ffffff;
 }
 
 .quote-panel-content div.help-content ul {
@@ -706,19 +706,23 @@ a.help {
         width: auto;
         padding: 0;
     }
+
     .quote-panel-content li > span {
         /*float:none;*/
         width: 100%;
         padding-left: 0;
     }
+
     .quote-panel-content div.help-content {
         max-width: 450px;
         padding: 0;
         margin-left: -5px;
     }
+
     .quote-panel-content .ajax-float {
         left: 0;
     }
+
     .quote-panel-content li > div {
         padding-left: 0;
         width: 100%;
@@ -729,31 +733,37 @@ a.help {
     body {
         min-width: 320px;
     }
+
     .quote-panel {
         padding: 0;
     }
+
     .quote-panel h3,
     .quote-panel p,
     .quote-panel-content > ul > li {
         padding-left: 10px;
         padding-right: 10px;
     }
+
     .quote-panel-content li > div,
     .quote-panel-content li > span {
         padding-right: 0;
     }
+
     header h1, #Quote {
         margin-left: 10px;
         margin-right: 10px;
     }
+
     .button {
         width: 100%;
         /*		text-align:center;*/
     }
+
     .quote-panel h3 {
-        background-color: #444A62;
-        color: #F7F7FA;
-        margin-bottom: 0.5em;
+        background-color: #444a62;
+        color: #f7f7fa;
+        margin-bottom: .5em;
         padding: 0.5em 10px;
     }
     /*=====================================================================================================	*/
@@ -763,14 +773,17 @@ a.help {
         padding-left: 0;
         padding-right: 0;
     }
+
     .quote-panel-content .radio-group div.button {
         /*	BOOL - 50/50 SPLIT	*/
         margin-right: 0;
         width: 48%;
     }
+
     .quote-panel-content .radio-group div:first-child {
         margin-right: 4%;
     }
+
     .quote-panel-content .radio-group.not-bool div {
         /*	NOT BOOL 100% WIDTH	*/
         margin-right: 0;
@@ -780,29 +793,38 @@ a.help {
     /*=====================================================================================================	*/
     /*	INPUTS	*/
     /*=====================================================================================================	*/
-    .quote-panel-content select, input[type='text'], input[type='email'], input[type='number'] {
+    
+    .quote-panel-content select, 
+    input[type='text'], 
+    input[type='email'], 
+    input[type='number'] {
         width: 100% !important;
         max-width: 100%;
     }
+    
     .quote-panel-content select.min {
         width: auto !important;
     }
+    
     input.sort-code {
         width: 35px !important;
     }
-    /*.quote-panel-content span > b.add-on {*/
+    
     .quote-panel-content span > b.prefix,
     .quote-panel-content span > b.suffix {
         width: 15%;
     }
+
     .quote-panel-content span > b.suffix {
         margin-right: 0 !important;
     }
-    /*	 input.suffix-input,  input.prefix-input {*/
-    input.suffix, input.prefix {
+    
+    input.suffix,
+    input.prefix {
         width: 85% !important;
         margin-right: 0;
     }
+
     .quote-panel-content .ajax-float {
         width: 100%;
     }
@@ -810,11 +832,12 @@ a.help {
     /*	HELP	*/
     /*=====================================================================================================	*/
     .radio-group .help {
-        /*	FIXES RADIO GROUP TOP MARGIN BUG */
+        //	FIXES RADIO GROUP TOP MARGIN BUG 
         display: inline-block;
     }
+    
     a.help {
-        /*	FIXES DISPLAY BLOCK 100% */
+        //	FIXES DISPLAY BLOCK 100%
         width: 120px;
         display: block;
         position: static;
@@ -827,16 +850,19 @@ a.help {
         text-align: left;
         margin: 25px 0 30px;
     }
+    
     nav .button.primary {
         float: none;
         width: 100%;
         display: block;
     }
+    
     nav .button.grey {
         position: absolute;
         margin-top: 0;
         top: 81px;
     }
+
     nav .button.grey + .button.primary {
         margin-bottom: 82px;
     }
@@ -851,7 +877,8 @@ a.help {
 }
 
 
-[class^='icon-']:before, [class*=' icon-']:before {
+[class^='icon-']:before, 
+[class*=' icon-']:before {
     font-family: 'icomoon';
     speak: none;
     font-style: normal;
