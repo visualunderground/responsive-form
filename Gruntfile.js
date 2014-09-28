@@ -8,7 +8,7 @@ module.exports = function(grunt) {
             },
             single_file: {
                 src: 'assets/css/app.css',
-                dest: 'assets/css/app_new.css'
+                dest: 'assets/css/app.css'
             },
             diff: {
                 options: {
