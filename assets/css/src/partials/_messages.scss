@@ -1,0 +1,104 @@
+%pointer {
+    content: '';
+    height: 0;
+    width: 0;
+    left: 50%;
+    position: absolute;
+    margin-left: -8px;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+}
+
+@mixin message-pointer($direction) {
+    @extend %pointer;
+    @if $direction == 'up' {
+        border-bottom-color: inherit;
+        border-bottom-style: solid;
+        border-bottom-width: 16px;
+        top: -10px;
+    } @else if $direction == 'down' {
+        border-top-color: inherit;
+        border-top-style: solid;
+        border-top-width: 16px;
+        bottom: -10px;
+    }
+}
+
+.message {
+    position: relative;
+    border-radius: 2px;
+
+    p {
+        padding: 10px 20px;
+        margin: 0;
+    }
+
+    h3 {
+        margin: 10px 25px 15px;
+        font-size: 29px;
+    }
+
+    @media all and (max-width: 479px) {
+        border-left: 0 none !important;
+        border-radius: 0 !important;
+        border-right: 0 none !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+div.message {
+    margin: 0 25px;
+}
+
+.message-master {
+    border: 1px solid #e6e8ee;
+    border-radius: 6px;
+    padding: 10px 0;
+}
+
+.message-error {
+    background-color: #e17776;
+    border-color: #e17776;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.message-info {
+    background-color: #3399ff;
+    border-color: #3399ff;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.message-error-up {
+    @extend .message-error;
+    
+    &:before {
+        @include message-pointer('up');
+    }
+}
+
+.message-error-down {
+    @extend .message-error;
+    
+    &:after {
+        @include message-pointer('down');
+    }
+}
+
+.message-info-up {
+    @extend .message-info;
+     
+    &:before {
+        @include message-pointer('up');
+    }
+}
+
+.message-info-down {
+    @extend .message-info;
+    
+    &:after {
+        @include message-pointer('down');
+    }
+}
