@@ -1,0 +1,60 @@
+.help-bubble {
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 23px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 10px;
+    z-index: 20;
+
+    &.is-hidden {
+        display: none;
+    }
+
+    @media all and (max-width: 789px){
+        max-width: 450px;
+        padding: 0;
+        margin-left: -5px;
+    }
+}
+
+.help-bubble-content {
+    background-color: #444a62;
+    background-color: rgba(68, 74, 98, .95);
+    border-radius: 4px;
+    padding-bottom: 30px;
+
+    p {
+        padding: 10px 15px 0;
+        max-width: 350px;
+    }
+
+    ul {
+        margin: 10px 15px 0 40px;
+        list-style: disc outside;
+    }
+
+    li {
+        padding: 3px 0;
+    }
+}
+
+.help-bubble-header {
+    padding: 15px 15px 0;
+    font-weight: bold;
+}
+
+.help-bubble-close-button {
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+    position: absolute;
+    right: 20px;
+
+    &:hover {
+        color: #ffffff;
+    }
+}

@@ -95,7 +95,7 @@
 	var helpID = "";
 	function showHelp(sTerm, sType){
 		if ($(sTerm + '-content')){	//	IF HELP HAS ALREADY BEEN CALLED - SHOW IT
-			if ($(sTerm + '-content').className == "help-content"){
+			if ($(sTerm + '-content').className == "help-bubble"){
 				clearhelp();	//	CLEAR OLD HELP ITEM
 				return false;
 			}else{
@@ -109,14 +109,14 @@
 					$(sTerm + '-content').style.top = "48px";
 					$(sTerm + '-content').style.left = "0";
 				}  // true
-				$(helpID + '-content').className = "help-content";
+				$(helpID + '-content').className = "help-bubble";
 			}
 		}else{	//	ELSE - CALL HELP
 			clearhelp();	//	CLEAR OLD HELP ITEM
 			helpID = sTerm;
 			//	CREATE NODE
 			var oDiv = document.createElement("div");
-			oDiv.className = 'help-content';
+			oDiv.className = 'help-bubble';
 			oDiv.id = helpID + "-content";
 			//	HELP POSITIONING		//if (helpPosition=='relative'){oDiv.style.left = $(helpID).offsetLeft + 40 + "px";}	//	REMOVE TO USE CSS ONLY (STATIC) POSITIONING
 			if(Modernizr.mq('only screen and (max-width: 789px)')) { // NO COLS
@@ -126,7 +126,7 @@
 				oDiv.style.top = "48px";
 				oDiv.style.left = "0";
 			}  
-			oDiv.innerHTML = "<div><h5>Test</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. link Quisque sed fringilla ipsum.</p><ul><li>One</li><li>Two</li></ul><p>Suspendisse ut sem augue. Suspendisse sed magna a neque pretium aliquet. Sed justo dolor, bibendum vehicula imperdiet nec. </p><p class='help-close'><a href='javascript:clearhelp();' class='help-close-button' title='Close'>x</a></p></div>";
+			oDiv.innerHTML = "<div class='help-bubble-content'><h5 class='help-bubble-header'>Test</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. link Quisque sed fringilla ipsum.</p><ul><li>One</li><li>Two</li></ul><p>Suspendisse ut sem augue. Suspendisse sed magna a neque pretium aliquet. Sed justo dolor, bibendum vehicula imperdiet nec. </p><a href='javascript:clearhelp();' class='help-bubble-close-button' title='Close'>x</a></div>";
 			$(helpID).parentNode.insertBefore(oDiv, $(helpID).nextSibling);
 		}
 		return false;
@@ -135,48 +135,16 @@
 	function clearhelp(){
 		sID = helpID + "-content";
 		if (!helpID){return;}
-		$(sID).className = "help-clear";
+		$(sID).className = "help-bubble is-hidden";
 	}
 	</script>
 </head>
 <body onload="styleRadio(document);attachInputEvents();">
 	<form action="#" novalidate="true">
-	<header class="cf">
+	<header>
 		<h1>Product type</h1>
 	</header>
-	<!--
-	<style type="text/css">
-		.wayfinding	{
-			width:960px;
-			margin:25px auto 37px;
-		}
-		.wayfinding li	{
-    		float: left;
-   			text-align: center;
-    		width: 16.6667%;	
-			color:#a5abc5;
-			border:1px solid #c9d0e1;
-			border-left-width:0;
-			padding:10px 0;
-		}
-		.wayfinding li:first-child{
-			border-left-width:1px;
-		}
-		.wayfinding li.current {
-			background-color:#c9d0e1;
-			color:#ECEEF4; font-weight:bold;
-		}
-	</style>
-	<ol class="wayfinding cf">
-		<li>About you</li>
-		<li>Additional drivers</li>
-		<li class="current">Your car</li>
-		<li>Claims &amp; Convictions</li>
-		<li>Your premium</li>
-		<li>Checkout</li>
-	</ol>
-	-->
-	<div id="Quote" class="cf">
+	<div id="quote">
 		<h2>Page name</h2>
 		<div class="message message-master">
 			<h3>{.message .message-master}</h3>
@@ -195,10 +163,10 @@
 		<div class="message message-info-down">
 			<p>{.message .message-info-down}<br />Don't forget to do X <strong>before</strong> Y.</p>
 		</div>
-		<div class="quote-panel cf">
+		<div class="quote-panel">
 			<h3>Text entry</h3>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pharetra pellentesque Justo quis sodales. Suspendisse dolor magna a fringilla augue. Ut feugiat turpis a faselli.</p>
-			<div class="quote-panel-content cf">
+			<div class="quote-panel-content">
 				<ul>
 					
 					<li>
@@ -274,9 +242,9 @@
 				</ul>
 			</div>
 		</div>
-		<div class="quote-panel cf">
+		<div class="quote-panel">
 			<h3>Select menus</h3>
-			<div class="quote-panel-content cf">
+			<div class="quote-panel-content">
 				<ul>
 					<li>
 						<label>Selection (std. width)<i>Matches text input width</i></label>
@@ -300,9 +268,9 @@
 				</ul>
 			</div>
 		</div>
-		<div class="quote-panel cf">
+		<div class="quote-panel">
 			<h3>Integral units</h3>
-			<div class="quote-panel-content cf">
+			<div class="quote-panel-content">
 				<ul>
 					<li class="message message-info">
 						<p>
@@ -331,9 +299,9 @@
 				</ul>
 			</div>
 		</div>
-		<div class="quote-panel cf">
+		<div class="quote-panel">
 			<h3>Dates</h3>
-			<div class="quote-panel-content cf">
+			<div class="quote-panel-content">
 				<ul>
 					<li>
 						<label>Date input</label>
@@ -353,10 +321,10 @@
 				</ul>
 			</div>
 		</div>
-		<div class="quote-panel cf">
+		<div class="quote-panel">
 			<h3>Required fields</h3>
 			<!--<p>You must fill in the questions marked *</p>-->
-			<div class="quote-panel-content cf">
+			<div class="quote-panel-content">
 				<ul>
 					<li class="message message-info">
 						<p>
@@ -405,9 +373,9 @@
 				</ul>
 			</div>
 		</div>
-		<div class="quote-panel cf">
+		<div class="quote-panel">
 			<h3>Calls to action</h3>
-			<div class="quote-panel-content cf">
+			<div class="quote-panel-content">
 				<ul>
 					<!--	NB you don't need a label in order to right align inputs	-->
 					<li>
@@ -422,9 +390,9 @@
 				</ul>
 			</div>
 		</div>
-		<div class="quote-panel cf">
+		<div class="quote-panel">
 			<h3>Radio groups</h3>
-			<div class="quote-panel-content cf">
+			<div class="quote-panel-content">
 				<ul>
 					<li>
 						<label>Boolean</label>
@@ -485,9 +453,9 @@
 				</ul>
 			</div>
 		</div>
-		<div class="quote-panel cf">
+		<div class="quote-panel">
 			<h3>Checkbox groups</h3>
-			<div class="quote-panel-content cf">
+			<div class="quote-panel-content">
 				<ul>
 					<li>
 						<label>Checkboxes with internal values</label>
@@ -543,7 +511,7 @@
 			<button class="button large primary" type="submit" value="Continue">Continue</button>
 		</nav>
 	</div>
-	<footer class="cf">
+	<footer>
 		<h1>To Do:</h1>
 		<ol>
 			<li>Native vs Custom form controls (icon font)</li>

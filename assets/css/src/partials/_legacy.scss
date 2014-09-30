@@ -6,53 +6,11 @@
 // H4		Sub-Sub-headlines: 	16px (26px line height)
 // BODY	Primary text: 		16px (26px line height)
 // i em	Secondary Text: 	13px (21px line height)
-
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    border: 0;
-    outline: 0;
-    font-weight: inherit;
-    font-style: inherit;
-    font-size: 100%;
-    font-family: inherit;
-    vertical-align: baseline;
-    margin: 0;
-    padding: 0;
-}
-
-:focus {
-    outline: 0;
-}
-
-body {
-    line-height: 1;
-    color: #000000;
-    background: #ffffff;
-}
-
-ol,
-ul {
-    list-style: none;
-}
-
-table {
-    border-collapse: separate;
-    border-spacing: 0;
-}
-
-caption, th, td {
-    text-align: left;
-    font-weight: normal;
-}
-
-blockquote:before, blockquote:after, q:before, q:after {
-    content: '';
-}
-
 * {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    *behavior: url(/assets/js/boxsizing.htc);
+    *behavior: url('/assets/js/boxsizing.htc');
     -webkit-text-size-adjust: 100%;
 }
 
@@ -70,12 +28,13 @@ body {
     background-color: $body-background-colour;
 }
 
-#Quote {
+#quote {
     width: 960px;
     margin: 0 auto;
 }
 
 header {
+    @extend %clearfix;
     background-color: #444a62;
     margin-bottom: 37px;
 }
@@ -87,6 +46,7 @@ nav {
 }
 
 footer {
+    @extend %clearfix;
     background-color: $footer-colour;
     margin-top: 37px;
 }
@@ -115,7 +75,7 @@ h2 {
     font-size: 42px;
     line-height: 1.4;
     font-weight: 300;
-    margin: 0.5em 25px;
+    margin: .5em 25px;
 }
 
 h3 {
@@ -138,14 +98,20 @@ a {
 // =====================================================================================================	*/
 //	quote-panel	*/
 // =====================================================================================================	*/
-#Quote {
+#quote {
+    @extend %clearfix;
     background-color: #ffffff;
     border: 1px solid #c9d0e1;
     border-radius: 6px;
 }
 
 .quote-panel {
+    @extend %clearfix;
     padding: 0 25px;
+}
+
+.quote-panel-content {
+    @extend %clearfix;
 }
 
 .message + .quote-panel,
@@ -225,7 +191,7 @@ p {
 }
 
 .quote-panel-content span > b {
-    /*	PREFIX	*/
+    //	PREFIX	
     display: inline-block;
     padding-top: 13px;
     margin-right: 5px;
@@ -233,17 +199,17 @@ p {
 }
 
 .quote-panel-content span > p {
-    /*	INLINE VALUE	*/
+    //	INLINE VALUE	*/
     padding: 5px 0;
     margin: 8px 10px 0 0;
     display: inline-block;
 }
 
-/*=====================================================================================================	*/
-/*	ERRORS	*/
-/*=====================================================================================================	*/
+//=====================================================================================================	*/
+//	ERRORS	*/
+//=====================================================================================================	*/
 .quote-panel-content li.error {
-    /*	ROW ERROR	*/
+    //	ROW ERROR	*/
     background-color: $error-background-colour;
     border-top: 1px solid transparent;
     color: #ffffff;
@@ -257,32 +223,11 @@ p {
 .quote-panel-content .error > label {
     font-weight: bold;
 }
-/*=====================================================================================================	*/
-/*	INPUTS	*/
-/*=====================================================================================================	*/
-/*	PLACEHOLDERS	*/
-*::-webkit-input-placeholder {
-    /* WebKit browsers */
-    color: $placeholder-colour !important;
-}
 
-:-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    color: $placeholder-colour !important;
-}
-
-::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
-    color: $placeholder-colour !important;
-    opacity: 1;
-}
-
-:-ms-input-placeholder {
-    /* Internet Explorer 10+ */
-    color: $placeholder-colour !important;
-}
-
-/*	RADIO GROUP	*/
+//=====================================================================================================	*/
+//	INPUTS	*/
+//*=====================================================================================================	*/
+//	RADIO GROUP	*/
 .radio-group div {
     float: left;
     min-width: 105px;
@@ -321,7 +266,7 @@ p {
     box-shadow: 0 0 3px green;
 }
 
-/*	END RADIO GROUP	*/
+//	END RADIO GROUP	*/
 button::-moz-focus-inner {
     border: 0 !important;
     padding: 0 !important;
@@ -330,12 +275,18 @@ button::-moz-focus-inner {
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-    /* REMOVE WEBKIT SPINNERS */
+    // REMOVE WEBKIT SPINNERS */
     -webkit-appearance: none;
     margin: 0;
 }
 
-input[type='text'], input[type='email'], input[type='number'], input[type='tel'], select, button, .button {
+input[type='text'], 
+input[type='email'], 
+input[type='number'], 
+input[type='tel'], 
+select, 
+button, 
+.button {
     border-radius: 2px;
     border: 1px solid #c3c5cc;
     background: #ffffff;
@@ -346,43 +297,52 @@ input[type='text'], input[type='email'], input[type='number'], input[type='tel']
     color: inherit;
     font-size: inherit;
     font-family: inherit;
-    /*line-height: inherit;	don't do as buttons and inputs react differently	*/
+    //line-height: inherit;	don't do as buttons and inputs react differently	*/
     line-height: 1;
     box-sizing: border-box;
-    /*	FF: LIN-HEIGHT BUG */
+    //	FF: LIN-HEIGHT BUG */
     min-height: 37px;
-    /* =  line-height + border + padding*/
-    /*	IE: LAYOUT BUG */
+    // =  line-height + border + padding*/
+    //	IE: LAYOUT BUG */
     vertical-align: top;
 }
 
-input[type='text']:focus, input[type='email']:focus, input[type='number']:focus, input[type='tel']:focus, select:focus {
+input[type='text']:focus, 
+input[type='email']:focus, 
+input[type='number']:focus, 
+input[type='tel']:focus, 
+select:focus {
     background-color: #f0f3f3;
 }
 
-input[type='text'], input[type='email'], input[type='number'], input[type='tel'] {
+input[type='text'], 
+input[type='email'], 
+input[type='number'], 
+input[type='tel'] {
     width: 225px;
-    /* REMOVE IOS INNER SHADOW */
+    // REMOVE IOS INNER SHADOW */
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsla(0, 0%, 100%, 0)), to(hsla(0, 0%, 100%, 0)));
     background-image: -webkit-linear-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0));
+    @include placeholder;
 }
 
-.quote-panel-content select {
+select {
     min-width: 225px;
     max-width: 225px;
     padding-top: 6px;
-    /* 1px more than input*/
+    // 1px more than input*/
+    &.min {
+        min-width: 0;
+    }
 }
 
-.quote-panel-content select.min {
-    min-width: 0;
-}
-
-input.pre, select.pre {
+input.pre,
+select.pre {
     margin-right: 5px;
 }
 
-input[type='radio'], input[type='checkbox'] {
+input[type='radio'],
+input[type='checkbox'] {
     cursor: pointer;
     padding: 0;
 }
@@ -402,14 +362,13 @@ input[type='radio'], input[type='checkbox'] {
 input.prefix {
     width: 185px;
     border-radius: 0 2px 2px 0;
-    border-left: none;
+    border-left: 0;
 }
 
-/*input.suffix-input {*/
 input.suffix {
     width: 185px;
     border-radius: 2px 0 0 2px;
-    border-right: none;
+    border-right: 0;
     margin-right: 0;
 }
 
@@ -443,45 +402,7 @@ input[type='tel'].numericinput {
     width: 48px !important;
 }
 
-/*=====================================================================================================	*/
-/*	AJAX SEARCH	*/
-/*=====================================================================================================	*/
-.quote-panel-content .ajax-float {
-    position: absolute;
-    width: 253px;
-    max-height: 300px;
-    border: 1px solid #aaaaaa;
-    background-color: #ffffff;
-    overflow: auto;
-    display: none;
-    Z-index: 999;
-    left: 9px;
-    top: 36px;
-}
 
-.quote-panel-content .ajax-float div {
-    width: auto;
-    border-bottom: 1px solid #cccccc;
-    padding: 0;
-}
-
-.quote-panel-content .ajax-float div:last-child {
-    border-bottom: none;
-}
-
-.quote-panel-content .ajax-float div a {
-    display: block;
-    color: #464646;
-    text-decoration: none;
-    padding: 4px 5px;
-    font-size: 14px;
-    font-weight: normal;
-}
-
-.quote-panel-content .ajax-float div a:hover,
-.quote-panel-content .ajax-float div a:focus {
-    background-color: #eff2eb;
-}
 
 /*=====================================================================================================	*/
 /*	HELP	*/
@@ -515,85 +436,6 @@ a.help:focus {
     outline: 1px dotted #668002;
 }
 
-.quote-panel-content div.help-content {
-    color: #ffffff;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0 10px 0 9px;
-    z-index: 20;
-    margin: 0;
-}
-
-.quote-panel-content div.help-content > div {
-    background-color: #444a62;
-    background-color: rgba(68, 74, 98, .95);
-    width: 100%;
-    border-radius: 4px;
-    margin: 0;
-}
-
-.quote-panel-content div.help-content h5 {
-    font-size: 14px;
-    line-height: 23px;
-    padding: 12px 40px 0 15px;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.quote-panel-content div.help-content p {
-    font-size: 14px;
-    line-height: 23px;
-    padding: 10px 15px 0;
-    max-width: 350px;
-}
-
-.quote-panel-content div.help-content p.help-close {
-    padding: 0 10px 10px 10px;
-    margin-top: (-5px) !important;
-    text-align: right;
-    max-width: none;
-}
-
-.quote-panel-content div.help-content p.help-close a {
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    color: #ffffff;
-}
-
-.quote-panel-content div.help-content p.help-close a:hover {
-    color: #ffffff;
-}
-
-.quote-panel-content div.help-content ul {
-    margin: 10px 15px 0 40px;
-    list-style: disc outside;
-}
-
-.quote-panel-content div.help-content li {
-    font-size: 14px;
-    line-height: 23px;
-    padding: 3px 0;
-}
-
-.quote-panel-content div.help-content a {
-    display: inline;
-    color: #ffffff;
-}
-
-.quote-panel-content div.help-content a:hover {
-    text-decoration: none;
-    background: none;
-    color: #ffffff;
-}
-
-.quote-panel-content div.help-clear {
-    display: none !important;
-}
-
 /*=====================================================================================================	*/
 /*	PAGING	*/
 /*=====================================================================================================	*/
@@ -622,24 +464,6 @@ nav .button.grey {
 }
 
 /*=====================================================================================================	*/
-/*	CLEARFIX http://nicolasgallagher.com/micro-clearfix-hack/	*/
-/*=====================================================================================================	*/
-.cf:before, .cf:after {
-    /*	FOR MODERN BROWSERS	*/
-    content: '';
-    display: table;
-}
-
-.cf:after {
-    clear: both;
-}
-
-.cf {
-    /*	FOR IE 6/7 (TRIGGERS HASLAYOUT)	*/
-    zoom: 1;
-}
-
-/*=====================================================================================================	*/
 /*	TRANSITIONS	*/
 /*=====================================================================================================	*/
 a.help,
@@ -658,7 +482,7 @@ a.help {
 
 @media all and (max-width: 1000px) {
     header h1,
-    #Quote {
+    #quote {
         width: auto;
         margin-left: 20px;
         margin-right: 20px;
@@ -674,15 +498,8 @@ a.help {
     }
 
     .quote-panel-content li > span {
-        /*float:none;*/
         width: 100%;
         padding-left: 0;
-    }
-
-    .quote-panel-content div.help-content {
-        max-width: 450px;
-        padding: 0;
-        margin-left: -5px;
     }
 
     .quote-panel-content .ajax-float {
@@ -716,14 +533,14 @@ a.help {
         padding-right: 0;
     }
 
-    header h1, #Quote {
+    header h1, 
+    #quote {
         margin-left: 10px;
         margin-right: 10px;
     }
 
     .button {
         width: 100%;
-        /*		text-align:center;*/
     }
 
     .quote-panel h3 {
@@ -732,6 +549,7 @@ a.help {
         margin-bottom: .5em;
         padding: 0.5em 10px;
     }
+
     /*=====================================================================================================	*/
     /*	RADIO GROUPS	*/
     /*=====================================================================================================	*/
@@ -834,57 +652,3 @@ a.help {
     }
 }
 
-@font-face {
-    font-family: 'icomoon';
-    src: url('../fonts/icomoon.eot?xq3d2i');
-    src: url('../fonts/icomoon.eot?#iefixxq3d2i') format('embedded-opentype'), url('../fonts/icomoon.woff?xq3d2i') format('woff'), url('../fonts/icomoon.ttf?xq3d2i') format('truetype'), url('../fonts/icomoon.svg?xq3d2i#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-[class^='icon-']:before, 
-[class*=' icon-']:before {
-    font-family: 'icomoon';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    // Better Font Rendering
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-radio-checked:before {
-    content: '\e600';
-}
-
-.icon-radio-unchecked:before {
-    content: '\e601';
-}
-
-.icon-checkbox-checked:before {
-    content: '\e602';
-}
-
-.icon-checkbox-unchecked:before {
-    content: '\e603';
-}
-
-.icon-arrow-left:before {
-    content: '\e604';
-}
-
-.icon-arrow-down:before {
-    content: '\e605';
-}
-
-.icon-arrow-up:before {
-    content: '\e606';
-}
-
-.icon-arrow-right:before {
-    content: '\e607';
-}
