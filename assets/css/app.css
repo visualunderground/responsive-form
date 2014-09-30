@@ -208,14 +208,6 @@ p {
   color: #6e768f;
 }
 
-.quote-panel-content label > em {
-  /*	REQUIRED FIELD	*/
-  color: #cb6160;
-  font-size: 20px;
-  line-height: 1;
-  font-weight: bold;
-}
-
 .quote-panel-content span > b {
   /*	PREFIX	*/
   display: inline-block;
@@ -389,7 +381,7 @@ input[type='radio'], input[type='checkbox'] {
   border: 1px solid #c3c5cc;
   width: 40px;
   display: inline-block;
-  padding: 4px 5px 5px 5px;
+  padding: 4px 5px 5px;
   text-align: center !important;
 }
 
@@ -639,13 +631,13 @@ nav .button.grey {
 a.help,
 .quote-panel-content li,
 input[type='text'], input[type='email'], input[type='number'], input[type='tel'] {
-  -webkit-transition: background-color 0.2s linear;
-  transition: background-color 0.2s linear;
+  -webkit-transition: background-color .2s linear;
+          transition: background-color .2s linear;
 }
 
 a.help {
-  -webkit-transition: background-color 0.2s linear color 0.2s linear border-color 0.2s;
-  transition: background-color 0.2s linear color 0.2s linear border-color 0.2s;
+  -webkit-transition: background-color .2s linear color .2s linear border-color .2s;
+          transition: background-color .2s linear color .2s linear border-color .2s;
 }
 
 /*=====================================================================================================	*/
@@ -721,7 +713,7 @@ a.help {
 
   .quote-panel h3 {
     background-color: #444a62;
-    color: #f7f7fa;
+    color: #c6ccea;
     margin-bottom: .5em;
     padding: 0.5em 10px;
   }

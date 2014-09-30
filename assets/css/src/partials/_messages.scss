@@ -58,8 +58,8 @@ div.message {
 }
 
 .message-error {
-    background-color: #e17776;
-    border-color: #e17776;
+    background-color: $error-background-colour;
+    border-color: $error-background-colour;
     color: #ffffff;
     font-weight: bold;
 }
