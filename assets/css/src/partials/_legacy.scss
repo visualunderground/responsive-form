@@ -114,10 +114,10 @@ a {
     @extend %clearfix;
 }
 
-.message + .quote-panel,
+[class^='message'] + .quote-panel,
 p + .quote-panel-content,
-.message + .message,
-.quote-panel + .message {
+[class^='message'] + [class^='message'],
+.quote-panel + [class^='message'] {
     margin-top: 25px;
 }
 
@@ -144,7 +144,7 @@ p {
     border-top: 1px solid #eff1f8;
 }
 
-.quote-panel-content > ul > li.message + li,
+.quote-panel-content > ul > li[class^='message'] + li,
 .quote-panel-content > ul > li:first-child {
     border-top: none;
 }
@@ -402,8 +402,6 @@ input[type='tel'].numericinput {
     width: 48px !important;
 }
 
-
-
 /*=====================================================================================================	*/
 /*	HELP	*/
 /*=====================================================================================================	*/
@@ -480,7 +478,7 @@ a.help {
 /*	MEDIA QUERIES	*/
 /*=====================================================================================================	*/
 
-@media all and (max-width: 1000px) {
+@media all and (max-width: $rwd-pappa-bear) {
     header h1,
     #quote {
         width: auto;
@@ -489,7 +487,7 @@ a.help {
     }
 }
 
-@media all and (max-width: 789px) {
+@media all and (max-width: $rwd-momma-bear) {
     .quote-panel-content li > label {
         float: none;
         text-align: left;
@@ -512,7 +510,7 @@ a.help {
     }
 }
 
-@media all and (max-width: 479px) {
+@media all and (max-width: $rwd-baby-bear) {
     body {
         min-width: 320px;
     }

@@ -30,3 +30,8 @@
         color: $placeholder-colour !important; 
     }
 }
+
+@mixin background-rgba($colour, $opacity: .5) {
+    background: $colour;
+    background-color: rgba($colour, $opacity);
+}

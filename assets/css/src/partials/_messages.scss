@@ -24,9 +24,32 @@
     }
 }
 
-.message {
+// .message {
+//     position: relative;
+//     border-radius: 2px;
+
+//     p {
+//         padding: 10px 20px;
+//         margin: 0;
+//     }
+
+//     h3 {
+//         margin: 10px 25px 15px;
+//         font-size: 29px;
+//     }
+
+//     @media all and (max-width: $rwd-baby-bear) {
+//         border-left: 0 none !important;
+//         border-radius: 0 !important;
+//         border-right: 0 none !important;
+//         margin-left: 0 !important;
+//         margin-right: 0 !important;
+//     }
+// }
+
+@mixin messageinc($radius: 2px) {
     position: relative;
-    border-radius: 2px;
+    border-radius: $radius;
 
     p {
         padding: 10px 20px;
@@ -38,7 +61,7 @@
         font-size: 29px;
     }
 
-    @media all and (max-width: 479px) {
+    @media all and (max-width: $rwd-baby-bear) {
         border-left: 0 none !important;
         border-radius: 0 !important;
         border-right: 0 none !important;
@@ -47,17 +70,20 @@
     }
 }
 
-div.message {
+div[class^='message'] {
     margin: 0 25px;
 }
 
 .message-master {
+    @include messageinc(6px);
+
     border: 1px solid #e6e8ee;
-    border-radius: 6px;
     padding: 10px 0;
 }
 
 .message-error {
+    @include messageinc;
+
     background-color: $error-background-colour;
     border-color: $error-background-colour;
     color: #ffffff;
@@ -65,6 +91,8 @@ div.message {
 }
 
 .message-info {
+    @include messageinc;
+
     background-color: #3399ff;
     border-color: #3399ff;
     color: #ffffff;

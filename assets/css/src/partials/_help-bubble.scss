@@ -13,7 +13,7 @@
         display: none;
     }
 
-    @media all and (max-width: 789px){
+    @media all and (max-width: $rwd-momma-bear){
         max-width: 450px;
         padding: 0;
         margin-left: -5px;
@@ -21,10 +21,9 @@
 }
 
 .help-bubble-content {
-    background-color: #444a62;
-    background-color: rgba(68, 74, 98, .95);
     border-radius: 4px;
     padding-bottom: 30px;
+    @include background-rgba($header-colour, .95);
 
     p {
         padding: 10px 15px 0;

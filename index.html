@@ -146,7 +146,7 @@
 	</header>
 	<div id="quote">
 		<h2>Page name</h2>
-		<div class="message message-master">
+		<div class="message-master">
 			<h3>{.message .message-master}</h3>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">link</a> Quisque sed fringilla ipsum. Suspendisse ut sem augue. Suspendisse sed magna a neque pretium aliquet. Sed justo dolor, bibendum vehicula imperdiet nec. </p>
 			<!--
@@ -157,10 +157,10 @@
 			-->
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pharetra pellentesque Justo quis sodales. Suspendisse dolor magna a fringilla augue. Ut feugiat turpis a faselli.</p>
 		</div>
-		<div class="message message-error-up">
+		<div class="message-error-up">
 			<p>{.message .message-error-up}<br />There are errors on this page please take a moment to check your answers.</p>
 		</div>
-		<div class="message message-info-down">
+		<div class="message-info-down">
 			<p>{.message .message-info-down}<br />Don't forget to do X <strong>before</strong> Y.</p>
 		</div>
 		<div class="quote-panel">
@@ -204,7 +204,7 @@
 						<label>Input &amp; search</label>
 						<span>
 							<!--	!!!! NO WHITESPACE !!!!	-->
-							<input type="text" class="postcode"><button class="button secondary" title="Search" value="Search">Search</button><a href='#' class='help' id='help-6' onclick='return showHelp(this.id);'>?</a><i id="search-help">Additional information</i>
+							<input type="text" class="postcode"><button class="button-secondary" title="Search" value="Search">Search</button><a href='#' class='help' id='help-6' onclick='return showHelp(this.id);'>?</a><i id="search-help">Additional information</i>
 						</span>
 					</li>
 					<li>
@@ -272,7 +272,7 @@
 			<h3>Integral units</h3>
 			<div class="quote-panel-content">
 				<ul>
-					<li class="message message-info">
+					<li class="message-info">
 						<p>
 							Use <code>prefix</code> and <code>suffix</code> classes on the <code>input</code> and the <code>b</code> element containing the unit.
 						</p>
@@ -326,7 +326,7 @@
 			<!--<p>You must fill in the questions marked *</p>-->
 			<div class="quote-panel-content">
 				<ul>
-					<li class="message message-info">
+					<li class="message-info">
 						<p>
 							To identify required fields add <code>&nbsp;&lt;em title="Required"&gt;*&lt;/em&gt;</code> after the <strong>primary</strong> content of the <code>label</code>.
 						</p>
@@ -380,11 +380,10 @@
 					<!--	NB you don't need a label in order to right align inputs	-->
 					<li>
 						<span>
-							<button class="button primary" title="Primary" value="Primary">{.primary}</button>
-							<button class="button secondary" title="Search trigger" value="Search trigger">{.secondary}</button>
-							<button class="button not-selected" title="Search trigger" value="Search trigger">{.not-selected}</button>
-							<button class="button is-selected" title="Search trigger" value="Search trigger">{.is-selected}</button>
-							<button class="button grey" title="Search trigger" value="Search trigger">{</button>
+							<button class="button-primary" title="Primary" value="Primary">{.primary}</button>
+							<button class="button-secondary" title="Search trigger" value="Search trigger">{.secondary}</button>
+							<button class="button-not-selected" title="Search trigger" value="Search trigger">{.not-selected}</button>
+							<button class="button-is-selected" title="Search trigger" value="Search trigger">{.is-selected}</button>
 						</span>
 					</li>
 				</ul>
@@ -507,8 +506,8 @@
 			</div>
 		</div>
 		<nav>
-			<button class="button grey" type="submit" value="Back">Back</button>
-			<button class="button large primary" type="submit" value="Continue">Continue</button>
+			<button class="button-not-selected" type="submit" value="Back">Back</button>
+			<button class="button-primary" type="submit" value="Continue">Continue</button>
 		</nav>
 	</div>
 	<footer>

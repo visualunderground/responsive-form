@@ -49,6 +49,59 @@ header:after, footer:after, #quote:after, .quote-panel:after, .quote-panel-conte
   clear: both;
 }
 
+.button-secondary, .button-primary, .button-is-selected, .button-not-selected {
+  cursor: pointer;
+  text-decoration: none;
+  min-width: 125px;
+}
+.button-secondary:active, .button-primary:active, .button-is-selected:active, .button-not-selected:active {
+  position: relative;
+  top: 1px;
+}
+
+.button.large {
+  min-width: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 1em;
+}
+
+.button-secondary {
+  background-color: #3399ff;
+  border-color: #0073e6;
+  color: #ffffff;
+}
+.button-secondary:hover, .button-secondary:active, .button-secondary:focus {
+  background-color: #1a8cff;
+}
+
+.button-primary {
+  background-color: #5fcac6;
+  border-color: #37a6a1;
+  color: #ffffff;
+}
+.button-primary:hover, .button-primary:active, .button-primary:focus {
+  background-color: #4cc4bf;
+}
+
+.button-is-selected {
+  background-color: #74b533;
+  border-color: #4e7922;
+  color: #ffffff;
+}
+.button-is-selected:hover, .button-is-selected:active, .button-is-selected:focus {
+  background-color: #67a12d;
+}
+
+.button-not-selected {
+  background-color: #f7f7fa;
+  border-color: #c8c8dd;
+  color: #444a62;
+}
+.button-not-selected:hover, .button-not-selected:active, .button-not-selected:focus {
+  background-color: #e7e7f0;
+}
+
 * {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -145,10 +198,10 @@ a:hover {
   padding: 0 25px;
 }
 
-.message + .quote-panel,
+[class^='message'] + .quote-panel,
 p + .quote-panel-content,
-.message + .message,
-.quote-panel + .message {
+[class^='message'] + [class^='message'],
+.quote-panel + [class^='message'] {
   margin-top: 25px;
 }
 
@@ -174,7 +227,7 @@ p {
   border-top: 1px solid #eff1f8;
 }
 
-.quote-panel-content > ul > li.message + li,
+.quote-panel-content > ul > li[class^='message'] + li,
 .quote-panel-content > ul > li:first-child {
   border-top: none;
 }
@@ -694,20 +747,26 @@ a.help {
   border-right: 16px solid transparent;
 }
 
-.message {
-  position: relative;
-  border-radius: 2px;
+div[class^='message'] {
+  margin: 0 25px;
 }
-.message p {
+
+.message-master {
+  position: relative;
+  border-radius: 6px;
+  border: 1px solid #e6e8ee;
+  padding: 10px 0;
+}
+.message-master p {
   padding: 10px 20px;
   margin: 0;
 }
-.message h3 {
+.message-master h3 {
   margin: 10px 25px 15px;
   font-size: 29px;
 }
 @media all and (max-width: 479px) {
-  .message {
+  .message-master {
     border-left: 0 none !important;
     border-radius: 0 !important;
     border-right: 0 none !important;
@@ -716,28 +775,56 @@ a.help {
   }
 }
 
-div.message {
-  margin: 0 25px;
-}
-
-.message-master {
-  border: 1px solid #e6e8ee;
-  border-radius: 6px;
-  padding: 10px 0;
-}
-
 .message-error, .message-error-up, .message-error-down {
+  position: relative;
+  border-radius: 2px;
   background-color: #e17776;
   border-color: #e17776;
   color: #ffffff;
   font-weight: bold;
 }
+.message-error p, .message-error-up p, .message-error-down p {
+  padding: 10px 20px;
+  margin: 0;
+}
+.message-error h3, .message-error-up h3, .message-error-down h3 {
+  margin: 10px 25px 15px;
+  font-size: 29px;
+}
+@media all and (max-width: 479px) {
+  .message-error, .message-error-up, .message-error-down {
+    border-left: 0 none !important;
+    border-radius: 0 !important;
+    border-right: 0 none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
 
 .message-info, .message-info-up, .message-info-down {
+  position: relative;
+  border-radius: 2px;
   background-color: #3399ff;
   border-color: #3399ff;
   color: #ffffff;
   font-weight: bold;
+}
+.message-info p, .message-info-up p, .message-info-down p {
+  padding: 10px 20px;
+  margin: 0;
+}
+.message-info h3, .message-info-up h3, .message-info-down h3 {
+  margin: 10px 25px 15px;
+  font-size: 29px;
+}
+@media all and (max-width: 479px) {
+  .message-info, .message-info-up, .message-info-down {
+    border-left: 0 none !important;
+    border-radius: 0 !important;
+    border-right: 0 none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 }
 
 .message-error-up:before {
@@ -791,10 +878,10 @@ div.message {
 }
 
 .help-bubble-content {
-  background-color: #444a62;
-  background-color: rgba(68, 74, 98, 0.95);
   border-radius: 4px;
   padding-bottom: 30px;
+  background: #444a62;
+  background-color: rgba(68, 74, 98, 0.95);
 }
 .help-bubble-content p {
   padding: 10px 15px 0;
