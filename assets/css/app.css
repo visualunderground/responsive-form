@@ -343,15 +343,8 @@ button::-moz-focus-inner {
   margin: 0 !important;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 input[type='text'],
 input[type='email'],
-input[type='number'],
 input[type='tel'],
 select,
 button,
@@ -375,7 +368,6 @@ button,
 
 input[type='text']:focus,
 input[type='email']:focus,
-input[type='number']:focus,
 input[type='tel']:focus,
 select:focus {
   background-color: #f0f3f3;
@@ -383,7 +375,6 @@ select:focus {
 
 input[type='text'],
 input[type='email'],
-input[type='number'],
 input[type='tel'] {
   width: 225px;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0)));
@@ -391,26 +382,22 @@ input[type='tel'] {
 }
 input[type='text']::-webkit-input-placeholder,
 input[type='email']::-webkit-input-placeholder,
-input[type='number']::-webkit-input-placeholder,
 input[type='tel']::-webkit-input-placeholder {
   color: #b7b7b7 !important;
 }
 input[type='text']:-moz-placeholder,
 input[type='email']:-moz-placeholder,
-input[type='number']:-moz-placeholder,
 input[type='tel']:-moz-placeholder {
   color: #b7b7b7 !important;
   opacity: 1;
 }
 input[type='text']::-moz-placeholder,
 input[type='email']::-moz-placeholder,
-input[type='number']::-moz-placeholder,
 input[type='tel']::-moz-placeholder {
   color: #b7b7b7 !important;
 }
 input[type='text']:-ms-input-placeholder,
 input[type='email']:-ms-input-placeholder,
-input[type='number']:-ms-input-placeholder,
 input[type='tel']:-ms-input-placeholder {
   color: #b7b7b7 !important;
 }
@@ -554,7 +541,9 @@ nav .button.grey {
 /*=====================================================================================================	*/
 a.help,
 .quote-panel-content li,
-input[type='text'], input[type='email'], input[type='number'], input[type='tel'] {
+input[type='text'],
+input[type='email'],
+input[type='tel'] {
   -webkit-transition: background-color .2s linear;
           transition: background-color .2s linear;
 }
@@ -665,8 +654,7 @@ a.help {
   /*=====================================================================================================	*/
   .quote-panel-content select,
   input[type='text'],
-  input[type='email'],
-  input[type='number'] {
+  input[type='email'] {
     width: 100% !important;
     max-width: 100%;
   }
