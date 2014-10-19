@@ -39,12 +39,6 @@ header {
     margin-bottom: 37px;
 }
 
-nav {
-    width: 100%;
-    margin: 30px 0;
-    padding: 0 25px;
-}
-
 footer {
     @extend %clearfix;
     background-color: $footer-colour;
@@ -67,7 +61,7 @@ h1 {
     font-weight: 500;
     margin: 15px auto;
     color: $header-text-colour;
-    width: 960px;
+    max-width: 960px;
 }
 
 h2 {
@@ -96,7 +90,7 @@ a {
 }
 
 // =====================================================================================================	*/
-//	quote-panel	*/
+//	form-panel	*/
 // =====================================================================================================	*/
 #quote {
     @extend %clearfix;
@@ -105,19 +99,28 @@ a {
     border-radius: 6px;
 }
 
-.quote-panel {
+.form-panel {
     @extend %clearfix;
     padding: 0 25px;
 }
 
-.quote-panel-content {
+.fieldset-title {
+    font-family: Raleway;
+    font-size: 26px;
+    line-height: 1.4;
+    font-weight: 300;
+    margin: 1em 0;
+    width: 100%;
+}
+
+.form-panel-content {
     @extend %clearfix;
 }
 
-[class^='message'] + .quote-panel,
-p + .quote-panel-content,
+[class^='message'] + .form-panel,
+p + .form-panel-content,
 [class^='message'] + [class^='message'],
-.quote-panel + [class^='message'] {
+.form-panel + [class^='message'] {
     margin-top: 25px;
 }
 
@@ -129,13 +132,13 @@ p {
     //	Golden Ratio Typography
 }
 
-.quote-panel-content > ul {
-    display: block;
-    float: left;
-    width: 100%;
-}
+// .form-panel-content > ul {
+//     display: block;
+//     float: left;
+//     width: 100%;
+// }
 
-.quote-panel-content > ul > li {
+.form-group {
     display: block;
     float: left;
     width: 100%;
@@ -144,17 +147,17 @@ p {
     border-top: 1px solid #eff1f8;
 }
 
-.quote-panel-content > ul > li[class^='message'] + li,
-.quote-panel-content > ul > li:first-child {
-    border-top: none;
+.form-panel-content > ul > li[class^='message'] + li,
+.form-panel-content > ul > li:first-child {
+    border-top: 0;
 }
 
-.quote-panel p {
+.form-panel p {
     padding-left: 0;
     padding-right: 0;
 }
 
-.quote-panel-content label {
+.form-label {
     display: block;
     float: left;
     width: 45%;
@@ -162,8 +165,14 @@ p {
     padding: 13px 9px 8px 10px;
 }
 
-.quote-panel-content li > div,
-.quote-panel-content li > span {
+.form-panel-content li > div > label {
+    //  marketing questions
+    display: block;
+    padding: 13px 9px 8px 10px;
+}
+
+.form-panel-content li > div, //  marketing questions
+.form-panel-content li > span { 
     display: block;
     float: right;
     width: 55%;
@@ -171,15 +180,7 @@ p {
     padding: 0 57px 0 9px;
 }
 
-.quote-panel-content li > div > label {
-    //	marketing questions
-    float: none;
-    text-align: left;
-    width: 100%;
-}
-
-.quote-panel-content label i,
-.quote-panel-content span > i {
+.form-hint {
     //	SUB TEXT
     display: block;
     clear: both;
@@ -190,15 +191,16 @@ p {
     color: $secondary-text-colour;
 }
 
-.quote-panel-content span > b {
-    //	PREFIX	
+.input-delimiter,
+.unit-prefix,
+.unit-suffix {
     display: inline-block;
     padding-top: 13px;
     margin-right: 5px;
     font-weight: normal;
 }
 
-.quote-panel-content span > p {
+.form-panel-content span > p {
     //	INLINE VALUE	*/
     padding: 5px 0;
     margin: 8px 10px 0 0;
@@ -208,22 +210,21 @@ p {
 //=====================================================================================================	*/
 //	ERRORS	*/
 //=====================================================================================================	*/
-.quote-panel-content li.error {
+.form-group.has-error {
     //	ROW ERROR	*/
     background-color: $error-background-colour;
     border-top: 1px solid transparent;
     color: #ffffff;
     margin: 1px 0;
-}
 
-.quote-panel-content li.error + li {
-    border-top: 1px solid transparent;
-}
+    + .form-group {
+        border-top: 1px solid transparent;
+    }
 
-.quote-panel-content .error > label {
-    font-weight: bold;
+    > label {
+        font-weight: bold;
+    }
 }
-
 //=====================================================================================================	*/
 //	INPUTS	*/
 //*=====================================================================================================	*/
@@ -246,13 +247,14 @@ p {
     text-align: left;
 }
 
-.radio-group label i {
+.radio-group .form-hint {
     width: auto;
     text-align: left;
     color: #464646;
 }
 
-.radio-group .is-selected label, .radio-group .is-selected label i {
+.radio-group .is-selected label, 
+.radio-group .is-selected .form-hint {
     color: #ffffff;
 }
 
@@ -262,9 +264,9 @@ p {
     /*	IE PIXEL SHIFT BUG*/
 }
 
-.radio-group input:focus {
-    box-shadow: 0 0 3px green;
-}
+// .radio-group input:focus {
+//     box-shadow: 0 0 3px green;
+// }
 
 //	END RADIO GROUP	*/
 button::-moz-focus-inner {
@@ -273,10 +275,7 @@ button::-moz-focus-inner {
     margin: 0 !important;
 }
 
-input[type='text'], 
-input[type='email'], 
-input[type='tel'], 
-select, 
+.form-control, 
 button, 
 .button {
     border-radius: 2px;
@@ -289,26 +288,21 @@ button,
     color: inherit;
     font-size: inherit;
     font-family: inherit;
-    //line-height: inherit;	don't do as buttons and inputs react differently	*/
+    //line-height: inherit;	don't do as buttons and inputs react differently
     line-height: 1;
     box-sizing: border-box;
-    //	FF: LIN-HEIGHT BUG */
+    //	FF: LIN-HEIGHT BUG 
     min-height: 37px;
-    // =  line-height + border + padding*/
-    //	IE: LAYOUT BUG */
+    // =  line-height + border + padding
+    //	IE: LAYOUT BUG
     vertical-align: top;
 }
 
-input[type='text']:focus, 
-input[type='email']:focus, 
-input[type='tel']:focus, 
-select:focus {
+.form-control:focus {
     background-color: #f0f3f3;
 }
 
-input[type='text'], 
-input[type='email'],
-input[type='tel'] {
+input.form-control {
     width: 225px;
     // REMOVE IOS INNER SHADOW */
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsla(0, 0%, 100%, 0)), to(hsla(0, 0%, 100%, 0)));
@@ -316,7 +310,7 @@ input[type='tel'] {
     @include placeholder;
 }
 
-select {
+select.form-control {
     min-width: 225px;
     max-width: 225px;
     padding-top: 6px;
@@ -326,8 +320,7 @@ select {
     }
 }
 
-input.pre,
-select.pre {
+.form-control.pre {
     margin-right: 5px;
 }
 
@@ -337,65 +330,65 @@ input[type='checkbox'] {
     padding: 0;
 }
 
-.quote-panel-content span > b.prefix,
-.quote-panel-content span > b.suffix {
+.unit-prefix,
+.unit-suffix {
     margin: 0;
     margin-top: 8px;
     background-color: #f0f3f3;
     border: 1px solid #c3c5cc;
     width: 40px;
-    display: inline-block;
+    // display: inline-block;
     padding: 4px 5px 5px;
     text-align: center !important;
 }
 
-input.prefix {
+.has-prefix {
     width: 185px;
     border-radius: 0 2px 2px 0;
     border-left: 0;
 }
 
-input.suffix {
+.has-suffix {
     width: 185px;
     border-radius: 2px 0 0 2px;
     border-right: 0;
     margin-right: 0;
 }
 
-b.prefix {
+.unit-prefix {
     border-radius: 2px 0 0 2px;
 }
 
-b.suffix {
+.unit-suffix {
     border-radius: 0 2px 2px 0;
     margin-right: 15px !important;
 }
 
 /*	OVERIDES*/
-input[type='text'].search {
+.form-control.search {
     background-image: url('../images/icon-search.png');
     background-repeat: no-repeat;
-    background-position: 0.2em center;
+    background-position: .2em center;
     padding-left: 20px;
 }
 
-input[type='tel'].sort-code {
+.form-control.sort-code {
     width: 35px;
     text-align: center;
 }
 
-input[type='tel'].phone {
+.form-control.phone {
     width: 136px;
 }
 
-input[type='tel'].numericinput {
+.form-control.numericinput {
     width: 48px !important;
 }
 
 /*=====================================================================================================	*/
 /*	HELP	*/
 /*=====================================================================================================	*/
-a.help {
+.help-link {
     vertical-align: top;
     position: absolute;
     top: 8px;
@@ -406,63 +399,33 @@ a.help {
     width: 35px;
     text-align: center;
     font-weight: bold;
-    /*	NEW FLAT DESIGN	*/
     border-radius: 18px;
     text-decoration: none;
     border: 1px solid #c9d0e1;
     background-color: transparent;
-}
 
-a.help:focus,
-a.help:hover {
-    background-color: $link-colour;;
-    border-color: $link-colour;;
-    color: #ffffff;
-}
+    &:focus,
+    &:hover {
+        background-color: $link-colour;;
+        border-color: $link-colour;;
+        color: #ffffff;
+    }
 
-a.help:focus {
-    outline: 1px dotted #668002;
-}
-
-/*=====================================================================================================	*/
-/*	PAGING	*/
-/*=====================================================================================================	*/
-nav {
-    text-align: right;
-}
-
-nav button {
-    display: inline-block;
-    width: 200px;
-    text-align: center;
-    margin: 0;
-}
-
-nav .button.primary {
-    float: right;
-}
-
-nav .button.grey {
-    float: left;
-    width: 100px;
-    width: 125px;
-    min-width: 0;
-    margin-top: 3px;
-    font-weight: normal;
+    &:focus {
+        outline: 1px dotted #668002;
+    }
 }
 
 /*=====================================================================================================	*/
 /*	TRANSITIONS	*/
 /*=====================================================================================================	*/
-a.help,
-.quote-panel-content li,
-input[type='text'],
-input[type='email'],
-input[type='tel'] {
+.help-link,
+.form-panel-content li,
+input.form-control {
     transition: background-color .2s linear;
 }
 
-a.help {
+.help-link {
     transition: background-color .2s linear color .2s linear border-color .2s;
 }
 
@@ -472,6 +435,7 @@ a.help {
 
 @media all and (max-width: $rwd-pappa-bear) {
     header h1,
+    footer h1,
     #quote {
         width: auto;
         margin-left: 20px;
@@ -480,23 +444,19 @@ a.help {
 }
 
 @media all and (max-width: $rwd-momma-bear) {
-    .quote-panel-content li > label {
+    .form-label {
         float: none;
         text-align: left;
         width: auto;
         padding: 0;
     }
 
-    .quote-panel-content li > span {
-        width: 100%;
-        padding-left: 0;
-    }
-
-    .quote-panel-content .ajax-float {
+    .form-panel-content .ajax-float {
         left: 0;
     }
 
-    .quote-panel-content li > div {
+    .form-panel-content li > div,
+    .form-panel-content li > span {
         padding-left: 0;
         width: 100%;
     }
@@ -507,23 +467,23 @@ a.help {
         min-width: 320px;
     }
 
-    .quote-panel {
+    .form-panel {
         padding: 0;
     }
 
-    .quote-panel h3,
-    .quote-panel p,
-    .quote-panel-content > ul > li {
+    .form-panel p,
+    .form-group {
         padding-left: 10px;
         padding-right: 10px;
     }
 
-    .quote-panel-content li > div,
-    .quote-panel-content li > span {
+    .form-panel-content li > div,
+    .form-panel-content li > span {
         padding-right: 0;
     }
 
-    header h1, 
+    header h1,
+    footer h1, 
     #quote {
         margin-left: 10px;
         margin-right: 10px;
@@ -533,32 +493,32 @@ a.help {
         width: 100%;
     }
 
-    .quote-panel h3 {
+    .fieldset-title {
         background-color: $header-colour;
         color: $header-text-colour;
         margin-bottom: .5em;
-        padding: 0.5em 10px;
+        padding: .5em 10px;
     }
 
     /*=====================================================================================================	*/
     /*	RADIO GROUPS	*/
     /*=====================================================================================================	*/
-    .quote-panel-content li > div > label {
+    .form-panel-content li > div > label {
         padding-left: 0;
         padding-right: 0;
     }
 
-    .quote-panel-content .radio-group div.button {
+    .form-panel-content .radio-group div.button {
         /*	BOOL - 50/50 SPLIT	*/
         margin-right: 0;
         width: 48%;
     }
 
-    .quote-panel-content .radio-group div:first-child {
+    .form-panel-content .radio-group div:first-child {
         margin-right: 4%;
     }
 
-    .quote-panel-content .radio-group.not-bool div {
+    .form-panel-content .radio-group.not-bool div {
         /*	NOT BOOL 100% WIDTH	*/
         margin-right: 0;
         clear: both;
@@ -568,76 +528,50 @@ a.help {
     /*	INPUTS	*/
     /*=====================================================================================================	*/
     
-    .quote-panel-content select, 
-    input[type='text'], 
-    input[type='email'] {
+    .form-control {
         width: 100% !important;
         max-width: 100%;
     }
     
-    .quote-panel-content select.min {
+    .form-control.min {
         width: auto !important;
     }
     
-    input.sort-code {
+    .form-control.sort-code {
         width: 35px !important;
     }
     
-    .quote-panel-content span > b.prefix,
-    .quote-panel-content span > b.suffix {
+    .unit-prefix,
+    .unit-suffix {
         width: 15%;
     }
 
-    .quote-panel-content span > b.suffix {
+    .unit-suffix {
         margin-right: 0 !important;
     }
     
-    input.suffix,
-    input.prefix {
+    .has-suffix,
+    .has-prefix {
         width: 85% !important;
         margin-right: 0;
     }
 
-    .quote-panel-content .ajax-float {
+    .form-panel-content .ajax-float {
         width: 100%;
     }
     /*=====================================================================================================	*/
     /*	HELP	*/
     /*=====================================================================================================	*/
-    .radio-group .help {
+    .radio-group .help-link {
         //	FIXES RADIO GROUP TOP MARGIN BUG 
         display: inline-block;
     }
     
-    a.help {
+    .help-link {
         //	FIXES DISPLAY BLOCK 100%
         width: 120px;
         display: block;
         position: static;
-    }
-    /*=====================================================================================================	*/
-    /*	PAGING	*/
-    /*=====================================================================================================	*/
-    nav {
-        position: relative;
-        text-align: left;
-        margin: 25px 0 30px;
-    }
-    
-    nav .button.primary {
-        float: none;
-        width: 100%;
-        display: block;
-    }
-    
-    nav .button.grey {
-        position: absolute;
-        margin-top: 0;
-        top: 81px;
-    }
-
-    nav .button.grey + .button.primary {
-        margin-bottom: 82px;
     }
 }
 
