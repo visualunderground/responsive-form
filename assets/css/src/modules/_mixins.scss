@@ -1,0 +1,37 @@
+%clearfix {
+    zoom: 1;
+    
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        color: $placeholder-colour !important; 
+    }
+
+    &:-moz-placeholder { 
+        color: $placeholder-colour !important;
+        opacity: 1; 
+    }
+    
+    &::-moz-placeholder { 
+        color: $placeholder-colour !important; 
+    }
+    
+    &:-ms-input-placeholder { 
+        color: $placeholder-colour !important; 
+    }
+}
+
+@mixin background-rgba($colour, $opacity: .5) {
+    background: $colour;
+    background-color: rgba($colour, $opacity);
+}

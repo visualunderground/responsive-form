@@ -1,0 +1,42 @@
+nav {
+    overflow: auto;
+    width: 100%;
+    margin: 30px 0;
+    padding: 0 25px;
+
+    button {
+        margin: 0;
+    }
+
+    .button-primary {
+        float: right;
+        width: 200px;
+    }
+
+    .button-not-selected {
+        float: left;
+        width: 125px;
+    }
+}
+
+@media all and (max-width: $rwd-baby-bear) {
+    nav {
+        position: relative;
+        padding: 0 10px;
+
+        .button-primary {
+            float: none;
+            width: 100%;
+            display: block;
+        }
+
+        .button-not-selected {
+            position: absolute;
+            top: 80px;
+        }
+
+        .button-not-selected + .button-primary {
+            margin-bottom: 80px;
+        }
+    }
+}
