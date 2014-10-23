@@ -19,7 +19,7 @@ nav {
     }
 }
 
-@media all and (max-width: $rwd-baby-bear) {
+@include respond-to(handhelds) {
     nav {
         position: relative;
         padding: 0 10px;

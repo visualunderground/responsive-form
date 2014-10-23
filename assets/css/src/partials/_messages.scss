@@ -38,13 +38,14 @@
         font-size: 29px;
     }
 
-    @media all and (max-width: $rwd-baby-bear) {
+    @include respond-to(handhelds) {
         border-left: 0 none !important;
         border-radius: 0 !important;
         border-right: 0 none !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
+
 }
 
 div[class^='message'] {

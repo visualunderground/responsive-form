@@ -1,0 +1,24 @@
+.fieldset-title {
+    font-family: Raleway;
+    font-size: 26px;
+    line-height: 1.4;
+    font-weight: 300;
+    margin: 1em 0;
+    width: 100%;
+
+
+    @include respond-to(handhelds) { 
+        background-color: $header-colour;
+        color: $header-text-colour;
+        margin-bottom: .5em;
+        padding: .5em 10px;
+    }
+
+}
+
+.textual-value {
+    //  INLINE VALUE    */
+    padding: 5px 0;
+    margin: 8px 10px 0 0;
+    display: inline-block;
+}
