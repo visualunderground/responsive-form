@@ -13,6 +13,19 @@
     @extend %clearfix;
     background-color: $footer-colour;
     margin-top: 37px;
+
+
+    ol {
+        max-width: 960px;
+        margin: 0 auto 37px;
+        list-style-position: inside;
+        list-style-type: decimal;
+    }
+    
+    li {
+        color: #ffffff;
+    }
+
 }
 
 // =====================================================================================================	*/
@@ -40,12 +53,6 @@ p + .form-panel-content,
 .form-panel + [class^='message'] {
     margin-top: 25px;
 }
-
-// .form-panel-content > ul {
-//     display: block;
-//     float: left;
-//     width: 100%;
-// }
 
 .form-group {
     @extend %background-transition;
@@ -81,12 +88,6 @@ li[class^='message'] + .form-group,
     width: 55%;
     position: relative;
     padding: 0 55px 0 10px;
-}
-
-.form-answer > label {
-    //  marketing questions
-    display: block;
-    padding: 13px 9px 8px 10px;
 }
 
 .form-hint {
@@ -137,47 +138,6 @@ li[class^='message'] + .form-group,
 //=====================================================================================================	*/
 //	INPUTS	*/
 //*=====================================================================================================	*/
-//	RADIO GROUP	*/
-.radio-group div {
-    float: left;
-    min-width: 105px;
-    padding: 0;
-}
-
-.radio-group label {
-    display: inline;
-    width: 100%;
-    min-width: 80px;
-    margin-right: 0;
-    font-weight: normal;
-    float: right;
-    cursor: pointer;
-    padding: 9px 30px 10px;
-    text-align: left;
-}
-
-.radio-group .form-hint {
-    // width: auto;
-    // text-align: left;
-    color: inherit;
-}
-
-.radio-group .is-selected label {    
-    color: #ffffff;
-}
-
-.radio-group input {
-    margin: 10px 0 0 10px;
-    position: absolute;
-    /*	IE PIXEL SHIFT BUG*/
-}
-
-// .radio-group input:focus {
-//     box-shadow: 0 0 3px green;
-// }
-
-//	END RADIO GROUP	*/
-
 .form-control, 
 button, 
 .button {
@@ -332,31 +292,6 @@ select.form-control {
         width: 100%;
     }
 
-    /*===================================================================================================== */
-    /*  RADIO GROUPS    */
-    /*===================================================================================================== */
-    .form-answer > label {
-        //  marketing questions
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .form-panel-content .radio-group div.button {
-        /*  BOOL - 50/50 SPLIT  */
-        margin-right: 0;
-        width: 48%;
-    }
-
-    .form-panel-content .radio-group div:first-child {
-        margin-right: 4%;
-    }
-
-    .form-panel-content .radio-group.not-bool div {
-        /*  NOT BOOL 100% WIDTH */
-        margin-right: 0;
-        clear: both;
-        width: 100%;
-    }
     /*===================================================================================================== */
     /*  INPUTS  */
     /*===================================================================================================== */

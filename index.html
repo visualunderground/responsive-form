@@ -15,67 +15,6 @@
 	<script src='assets/js/modernizr-dev.js' ></script>
 	<title>Responsive form</title>
 	<script>
-	function styleRadio(oScope){
-		var aEl = oScope.getElementsByTagName('input');
-		for (var i = 0; i < aEl.length; i++) {
-			if ((aEl[i].type == 'radio' || aEl[i].type == 'checkbox') && aEl[i].parentNode.tagName == 'DIV') {
-				aEl[i].parentNode.className = (aEl[i].checked) ? 'button is-selected' : 'button not-selected';
-			}
-		}
-	}
-	function attachInputEvents(){
-		var aEl = document.getElementsByTagName('input');
-		for (var i = 0; i < aEl.length; i++) {
-			if (aEl[i].type == 'radio' || aEl[i].type == 'checkbox') {
-				addEvent(aEl[i], 'click', function(){styleRadio(this.parentNode.parentNode);});
-			}
-		}
-	}
-	//	http://www.dustindiaz.com/rock-solid-addevent
-	function addEvent( obj, type, fn ) {
-		if (obj.addEventListener) {
-			obj.addEventListener( type, fn, false );
-			EventCache.add(obj, type, fn);
-		}
-		else if (obj.attachEvent) {
-			obj["e"+type+fn] = fn;
-			obj[type+fn] = function() { obj["e"+type+fn]( window.event ); }
-			obj.attachEvent( "on"+type, obj[type+fn] );
-			EventCache.add(obj, type, fn);
-		}
-		else {
-			obj["on"+type] = obj["e"+type+fn];
-		}
-	}
-	
-	var EventCache = function(){
-		var listEvents = [];
-		return {
-			listEvents : listEvents,
-			add : function(node, sEventName, fHandler){
-				listEvents.push(arguments);
-			},
-			flush : function(){
-				var i, item;
-				for(i = listEvents.length - 1; i >= 0; i = i - 1){
-					item = listEvents[i];
-					if(item[0].removeEventListener){
-						item[0].removeEventListener(item[1], item[2], item[3]);
-					};
-					if(item[1].substring(0, 2) != "on"){
-						item[1] = "on" + item[1];
-					};
-					if(item[0].detachEvent){
-						item[0].detachEvent(item[1], item[2]);
-					};
-					item[0][item[1]] = null;
-				};
-			}
-		};
-	}();
-	addEvent(window,'unload',EventCache.flush);
-	//	END http://www.dustindiaz.com/rock-solid-addevent
-
 /*=====================================================================================================	
 	HELP FUNCTION
   =====================================================================================================	*/
@@ -138,7 +77,7 @@
 	}
 	</script>
 </head>
-<body onload="styleRadio(document);attachInputEvents();">
+<body>
 	<form action="#" novalidate>
 	<header class="global-header">
 		<h1>Product type</h1>
@@ -163,48 +102,48 @@
 				<ul>
 					<li class="form-group">
 						<label class="form-label">Input</label>
-						<span class="form-answer">
+						<div class="form-answer">
 							<input class="form-control" type="text" placeholder="[type='text']" >
-						</span>
+						</div>
 					</li>
 					<li class="form-group has-error">
 						<label class="form-label">Input</label>
-						<span class="form-answer">
+						<div class="form-answer">
 							<input class="form-control" type="tel" placeholder="[type='tel']" >
 							<div class="error-message">Oops. there was an error</div>
-						</span>
+						</div>
 					</li>
 					<li class="form-group">
 						<label class="form-label">Input</label>
-						<span class="form-answer">
+						<div class="form-answer">
 							<input class="form-control" type="email" placeholder="[type='email']" >
-						</span>
+						</div>
 					</li>
 					<li class="form-group">
 						<label class="form-label">Input</label>
-						<span class="form-answer">
+						<div class="form-answer">
 							<input class="form-control" type="text" placeholder="[type='text']" >
-						</span>
+						</div>
 					</li>
 					<li class="form-group">
 						<label class="form-label">Input &amp; search</label>
-						<span class="form-answer">
+						<div class="form-answer">
 							<!--	!!!! NO WHITESPACE !!!!	-->
 							<input type="text" class="form-control postcode"><button class="button-secondary" title="Search" value="Search">Search</button><a href='#' class='help-link' id='help-6' onclick='return showHelp(this.id);'>?</a><i class="form-hint">Additional information</i>
-						</span>
+						</div>
 					</li>
 					<li class="form-group">
 						<label class="form-label">Delimited input</label>
-						<span class="form-answer">
+						<div class="form-answer">
 							<!--	!!!! NO WHITESPACE !!!!	-->
 							<input type="tel" class="form-control sort-code"><b class="form-control-delimiter">/</b><input type="tel" class="form-control sort-code"><b class="form-control-delimiter">/</b><input type="tel" class="form-control sort-code">
 							<a href='#' class='help-link' id='help-8' onclick='return showHelp(this.id);'>?</a>
-						</span>
+						</div>
 					</li>
 					<!--	NB apply a class of "search" to add affordance	-->
 					<li class="form-group">				
 						<label class="form-label" for="Proposer.id.1_FullTimeOccupation.occDesc">Search:Suggest input</label>				
-						<span class="form-answer">
+						<div class="form-answer">
 							<input type="text" value="" class="form-control search" onBlur="hideFloat();" onKeyDown="preventScroll(event)" onKeyUp="sOccupationG(event,'fullOcc');" autocomplete="off" id="Proposer.id.1_FullTimeOccupation.occDesc" name="Proposer.id.1_FullTimeOccupation.occDesc" ><a href='#' class='help-link' id='help-9' onclick='return showHelp(this.id);'>?</a>
 							<i class="form-hint">Additional information</i>
 							<div id="Proposer.id.1_FullTimeOccupation.occCodeFLOAT" class="ajax-float"></div>
@@ -216,14 +155,14 @@
 							<div id="Proposer.id.1_PartTimeOccupation.occCodeFLOAT" style="display:none;"></div>
 							<input type="hidden" value="" name="Proposer.id.1_FullTimeOccupation.empCode" id="Proposer.id.1_FullTimeOccupation.empCode">
 							<!-- END	-->
-						</span>
+						</div>
 					</li>
 					<li class="form-group">
 						<label class="form-label">Textual value</label>
-						<span class="form-answer">
+						<div class="form-answer">
 							<span class="textual-value">Mr A N Proposer</span>
 							<a href='#' class='help-link' id='help-2' onclick='return showHelp(this.id);'>?</a>
-						</span>
+						</div>
 					</li>
 				</ul>
 			</div>
@@ -234,15 +173,15 @@
 				<ul>
 					<li class="form-group">
 						<label class="form-label">Selection (std. width)<i class="form-hint">Matches text input width</i></label>
-						<span class="form-answer">
+						<div class="form-answer">
 							<select class="form-control"><option selected="" value="">Mobile</option></select><a href='#' class='help-link' id='help-0' onclick='return showHelp(this.id);'>?</a>
-						</span>
+						</div>
 					</li>
 					<li class="form-group">
 						<label class="form-label">Selection (matches. width)<i class="form-hint">A <code>select</code> element with a class of <code>min</code> = data width.</i></label>
-						<span class="form-answer">
+						<div class="form-answer">
 							<select class="form-control min"><option selected="" value="">Mobile</option></select><a href='#' class='help-link' id='help-1' onclick='return showHelp(this.id);'>?</a>
-						</span>
+						</div>
 					</li>
 				</ul>
 			</div>
@@ -261,19 +200,19 @@
 					</li>
 					<li class="form-group">
 						<label class="form-label">Prefixed input <i class="form-hint">Additional information with <a href="#">link</a></i></label>
-						<span class="form-answer">
+						<div class="form-answer">
 							<!--	!!!! NO WHITESPACE !!!!	-->
 							<b class="unit-prefix">&pound;</b><input type="text" class="form-control has-prefix">
 							<a href='#' class='help-link' id='help-3' onclick='return showHelp(this.id);'>?</a>
-						</span>
+						</div>
 					</li>
 					<li class="form-group">
 						<label class="form-label">Suffixed input</label>
-						<span class="form-answer">
+						<div class="form-answer">
 							<!--	!!!! NO WHITESPACE !!!!	-->
 							<input type="text" class="form-control has-suffix"><b class="unit-suffix">mg</b>
 							<a href='#' class='help-link' id='help-4' onclick='return showHelp(this.id);'>?</a>
-						</span>
+						</div>
 					</li>
 				</ul>
 			</div>
@@ -284,18 +223,18 @@
 				<ul>
 					<li class="form-group">
 						<label class="form-label">Date input</label>
-						<span class="form-answer">
+						<div class="form-answer">
 							<!--	!!!! NO WHITESPACE !!!!	-->
 							<select class="form-control min"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="form-control min"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><select class="form-control min"><option value="">Year</option><option value="1984">...</option><option value="1976">1976</option></select>
 							<a href='#' class='help-link' id='help-5' onclick='return showHelp(this.id);'>?</a>
-						</span>
+						</div>
 					</li>
 					<li class="form-group">
 						<label class="form-label">Date input - long year</label>
-						<span class="form-answer">
+						<div class="form-answer">
 							<!--	!!!! NO WHITESPACE !!!!	-->
 							<select class="form-control min"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="form-control min"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><input type='tel' size='4' maxlength='4' placeholder='yyyy' class='form-control numericinput'/>
-						</span>
+						</div>
 					</li>
 				</ul>
 			</div>
@@ -306,12 +245,12 @@
 				<ul>
 					<!--	NB you don't need a label in order to right align inputs	-->
 					<li class="form-group">
-						<span class="form-answer">
+						<div class="form-answer">
 							<button class="button-primary" title="Primary" value="Primary">{.primary}</button>
 							<button class="button-secondary" title="Search trigger" value="Search trigger">{.secondary}</button>
 							<button class="button-not-selected" title="Search trigger" value="Search trigger">{.not-selected}</button>
 							<button class="button-is-selected" title="Search trigger" value="Search trigger">{.is-selected}</button>
-						</span>
+						</div>
 					</li>
 				</ul>
 			</div>
@@ -324,134 +263,31 @@
 					<li class="form-group">
 						<fieldset>
 							<legend class="form-label">touch me</legend>
-							<span class="form-answer">
+							<div class="form-answer">
 								<label for="alpha" class="touch-control">
 									<input id="alpha" name="new" type="radio"><span>Alpha<i class="form-hint">Lots more info</i></span>
 								</label>
 								<label for="beta" class="touch-control">
-									<input id="beta" name="new" type="radio"><span>Alpha</span>
+									<input id="beta" name="new" type="radio"><span>Beta</span>
 								</label>
-							</span>
+							</div>
 						</fieldset>
 					</li>
-				</ul>
-			</div>
-		</fieldset>
-		<fieldset class="form-panel">
-			<legend class="fieldset-title">Radio groups</legend>
-			<div class="form-panel-content">
-				<ul>
 					<li class="form-group">
-						<label class="form-label">Boolean</label>
-						<span class="form-answer radio-group">
-							<div class="button">
-								<input type="radio" value="Y" id="radio-homeowner-y" name="radio-homeowner">
-								<label for="radio-homeowner-y">Affirmative</label>
+						<fieldset>
+							<legend class="form-label">touch me <i class="form-hint">Select all that apply</i></legend>
+							<div class="form-answer">
+								<label for="alpha-c" class="touch-control">
+									<input id="alpha-c" name="new-c" type="checkbox"><span>Alpha</span>
+								</label>
+								<label for="beta-c" class="touch-control">
+									<input id="beta-c" name="new-c" type="checkbox"><span>Beta</span>
+								</label>
 							</div>
-							<div class="button">
-								<input type="radio" value="N" id="radio-homeowner-n" name="radio-homeowner">
-								<label for="radio-homeowner-n">No</label>
-							</div>
-							<a href='#' class='help-link' id='help-10' onclick='return showHelp(this.id);'>?</a>
-						</span>
-						
+						</fieldset>
 					</li>
-					<li class="form-group">
-						<label class="form-label">Multiple<i class="form-hint">if a radio group has &gt; 2 options it needs a class of <code>not-bool</code></i></label>
-						<span class="form-answer radio-group not-bool">
-							<div class="button">
-								<input type="radio" value="Y" id="radio-drivers0" name="radio-drivers">
-								<label for="radio-drivers0">None</label>
-							</div>
-							<div class="button">
-								<input type="radio" value="N" id="radio-drivers1" name="radio-drivers" >
-								<label for="radio-drivers1">1</label>
-							</div>
-							<div class="button">
-								<input type="radio" value="N" id="radio-drivers2" name="radio-drivers" >
-								<label for="radio-drivers2">2</label>
-							</div>
-							<div class="button">
-								<input type="radio" value="N" id="radio-drivers3" name="radio-drivers" >
-								<label for="radio-drivers3">3</label>
-							</div>
-							<div class="button">
-								<input type="radio" value="N" id="radio-drivers4" name="radio-drivers" >
-								<label for="radio-drivers4">4</label>
-							</div>
-							<a href='#' class='help-link' id='help-11' onclick='return showHelp(this.id);'>?</a>
-						</span>
-					</li>
-					<li class="form-group">
-						<label class="form-label">Additional text</label>
-						<span class="form-answer radio-group">
-							<div class="button">
-								<input type="radio" value="Y" id="radio-small-y" name="radio-small">
-								<label for="radio-small-y">Option A<i class="form-hint">Lots more info</i></label>
-							</div>
-							<div class="button">
-								<input type="radio" value="N" id="radio-small-n" name="radio-small" >
-								<label for="radio-small-n">Option B<i class="form-hint">Lots more info</i></label>
-							</div>
-							<a href='#' class='help-link' id='help-13' onclick='return showHelp(this.id);'>?</a>
-						</span>
-					</li>
-				</ul>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">link</a> Quisque sed fringilla ipsum. Suspendisse ut sem augue. Suspendisse sed magna a neque pretium aliquet. Sed justo dolor, bibendum vehicula imperdiet nec. </p>
-			</div>
-		</fieldset>
-		<fieldset class="form-panel">
-			<legend class="fieldset-title">Checkbox groups</legend>
-			<div class="form-panel-content">
-				<ul>
-					<li class="form-group">
-						<label class="form-label">Checkboxes with internal values</label>
-						<span class="form-answer radio-group not-bool">
-							<div class="button">
-								<input type="checkbox" value="Y" id="checkbox-drivers0" name="checkbox-drivers">
-								<label for="checkbox-drivers0">Phone</label>
-							</div>
-							<div class="button">
-								<input type="checkbox" value="N" id="checkbox-drivers1" name="checkbox-drivers" >
-								<label for="checkbox-drivers1">SMS</label>
-							</div>
-							<div class="button">
-								<input type="checkbox" value="N" id="checkbox-drivers2" name="checkbox-drivers" >
-								<label for="checkbox-drivers2">Email</label>
-							</div>
-							<div class="button">
-								<input type="checkbox" value="N" id="checkbox-drivers3" name="checkbox-drivers" >
-								<label for="checkbox-drivers3">Post</label>
-							</div>
-							<a href='#' class='help-link' id='help-16' onclick='return showHelp(this.id);'>?</a>
-						</span>
-					</li>
-					<li class="form-group">
-						<label class="form-label">Checkboxes with external values</label>
-						<div class="form-answer ">
-							<span class="radio-group not-bool">
-								<div class="button not-selected">
-									<input type="checkbox" name="x_Userfields_Userfield.line.MRKPOST.type.C" id="x_Userfields_Userfield.line.MRKPOST.type.C" /><label for="x_Userfields_Userfield.line.MRKPOST.type.C">Tick</label>
-							</div>
-							</span><label for="x_Userfields_Userfield.line.MRKPOST.type.C">If marketing A</label>
-						</div>
-						<div class="form-answer">
-							<span class="radio-group not-bool">
-								<div class="button not-selected">
-									<input type="checkbox" name="x_Userfields_Userfield.line.MRKEMAIL.type.C" id="x_Userfields_Userfield.line.MRKEMAIL.type.C" /><label for="x_Userfields_Userfield.line.MRKEMAIL.type.C">Tick</label>
-							</div>
-							</span><label for="x_Userfields_Userfield.line.MRKEMAIL.type.C">If marketing B If marketing B If marketing B If marketing B</label>
-						</div>
-						<div class="form-answer">
-							<span class="radio-group not-bool">
-								<div class="button not-selected">
-									<input type="checkbox" name="x_Userfields_Userfield.line.MRKTELE.type.C" id="x_Userfields_Userfield.line.MRKTELE.type.C" /><label for="x_Userfields_Userfield.line.MRKTELE.type.C">Tick</label>
-							</div>
-							</span><label for="x_Userfields_Userfield.line.MRKTELE.type.C">If marketing C</label>
-						</div>
-					</li>
-				</ul>
-			</div>
+                </ul>
+            </div>
 		</fieldset>
 		<nav>
 			<button class="button-not-selected" type="submit" value="Back">Back</button>
@@ -474,17 +310,4 @@
 	</footer>
 	</form>
 </body>
-
-<style type="text/css">
-/*	TEMP FOOTER STYLING	*/
-footer ol	{
-	max-width:960px;
-	margin:0 auto 37px;
-	list-style-position: inside;
-    list-style-type: decimal;
-}
-footer li	{
-	color:#ffffff;
-}
-</style>
 </html>

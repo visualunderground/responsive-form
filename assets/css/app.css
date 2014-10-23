@@ -209,6 +209,15 @@ input[type='checkbox'] {
   background-color: #444a62;
   margin-top: 37px;
 }
+.global-footer ol {
+  max-width: 960px;
+  margin: 0 auto 37px;
+  list-style-position: inside;
+  list-style-type: decimal;
+}
+.global-footer li {
+  color: #ffffff;
+}
 
 #quote {
   background-color: #ffffff;
@@ -262,11 +271,6 @@ li[class^='message'] + .form-group,
   padding: 0 55px 0 10px;
 }
 
-.form-answer > label {
-  display: block;
-  padding: 13px 9px 8px 10px;
-}
-
 .form-hint {
   display: block;
   clear: both;
@@ -306,38 +310,6 @@ li[class^='message'] + .form-group,
   font-weight: bold;
 }
 
-.radio-group div {
-  float: left;
-  min-width: 105px;
-  padding: 0;
-}
-
-.radio-group label {
-  display: inline;
-  width: 100%;
-  min-width: 80px;
-  margin-right: 0;
-  font-weight: normal;
-  float: right;
-  cursor: pointer;
-  padding: 9px 30px 10px;
-  text-align: left;
-}
-
-.radio-group .form-hint {
-  color: inherit;
-}
-
-.radio-group .is-selected label {
-  color: #ffffff;
-}
-
-.radio-group input {
-  margin: 10px 0 0 10px;
-  position: absolute;
-  /*	IE PIXEL SHIFT BUG*/
-}
-
 .form-control,
 button,
 .button {
@@ -352,7 +324,8 @@ button,
   font-size: inherit;
   font-family: inherit;
   line-height: 1;
-  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
   min-height: 37px;
   vertical-align: top;
 }
@@ -495,31 +468,6 @@ select.form-control.min {
   }
 
   /*===================================================================================================== */
-  /*  RADIO GROUPS    */
-  /*===================================================================================================== */
-  .form-answer > label {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .form-panel-content .radio-group div.button {
-    /*  BOOL - 50/50 SPLIT  */
-    margin-right: 0;
-    width: 48%;
-  }
-
-  .form-panel-content .radio-group div:first-child {
-    margin-right: 4%;
-  }
-
-  .form-panel-content .radio-group.not-bool div {
-    /*  NOT BOOL 100% WIDTH */
-    margin-right: 0;
-    clear: both;
-    width: 100%;
-  }
-
-  /*===================================================================================================== */
   /*  INPUTS  */
   /*===================================================================================================== */
   .form-control {
@@ -585,12 +533,10 @@ select.form-control.min {
 }
 
 .touch-control {
-  background: none repeat scroll 0 0 #ffffff;
-  border: 1px solid #c3c5cc;
-  border-radius: 2px;
-  box-sizing: border-box;
+  color: #444a62;
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
   display: block;
-  padding: 0 !important;
   min-width: 105px;
   line-height: 1;
   float: left;
@@ -612,10 +558,21 @@ select.form-control.min {
   position: absolute;
 }
 .touch-control span {
+  background-color: #f7f7fa;
+  border: 1px solid #c8c8dd;
+  border-radius: 2px;
   padding: 9px 30px 10px;
   float: right;
   min-width: 80px;
   width: 100%;
+}
+.touch-control input:checked + span {
+  background-color: #74b533;
+  border-color: #4e7922;
+  color: #ffffff;
+}
+.touch-control input:checked + span .form-hint {
+  color: inherit;
 }
 
 .message-error-up:before, .message-error-down:after, .message-info-up:before, .message-info-down:after {
