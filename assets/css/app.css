@@ -209,6 +209,15 @@ input[type='checkbox'] {
   background-color: #444a62;
   margin-top: 37px;
 }
+.global-footer ol {
+  max-width: 960px;
+  margin: 0 auto 37px;
+  list-style-position: inside;
+  list-style-type: decimal;
+}
+.global-footer li {
+  color: #ffffff;
+}
 
 #quote {
   background-color: #ffffff;
