@@ -6,7 +6,6 @@
     margin: 1em 0;
     width: 100%;
 
-
     @include respond-to(handhelds) { 
         background-color: $header-colour;
         color: $header-text-colour;
@@ -17,7 +16,7 @@
 }
 
 .textual-value {
-    //  INLINE VALUE    */
+    //  Inline value
     padding: 5px 0;
     margin: 8px 10px 0 0;
     display: inline-block;
@@ -25,12 +24,9 @@
 
 // Radios and Checkboxes
 .touch-control {
-    background: none repeat scroll 0 0 #ffffff;
-    border: 1px solid #c3c5cc;
-    border-radius: 2px;
+    color: #444a62;
     box-sizing: border-box;
     display: block;
-    padding: 0!important;
     min-width: 105px;
     line-height: 1;
     float: left;
@@ -51,20 +47,25 @@
         margin: 10px 0 0 10px;
         position: absolute;
     }
+
     span {
+        background-color: #f7f7fa;
+        border: 1px solid #c8c8dd;
+        border-radius: 2px;
+
         padding: 9px 30px 10px;
         float: right;
         min-width: 80px;
         width: 100%;
     }
-}
 
-// @media only screen and (max-width: 479px) {
-//     .touch-control {
-//         width: 48%;
-//         margin-right: 0;
-//     }
-//     .touch-control:first-child {
-//         margin-right: 4%;
-//     }
-// }
+    input:checked + span {  // IE 9+ :-?
+        background-color: #74b533;
+        border-color: #4e7922;
+        color: #ffffff;
+
+        .form-hint {
+            color: inherit;
+        }
+    }
+}
