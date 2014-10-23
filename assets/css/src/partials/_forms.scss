@@ -22,3 +22,49 @@
     margin: 8px 10px 0 0;
     display: inline-block;
 }
+
+// Radios and Checkboxes
+.touch-control {
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #c3c5cc;
+    border-radius: 2px;
+    box-sizing: border-box;
+    display: block;
+    padding: 0!important;
+    min-width: 105px;
+    line-height: 1;
+    float: left;
+    position: relative;
+    margin: 8px 15px 6px 0;
+    cursor: pointer;
+
+    @include respond-to(handhelds) { 
+        width: 48%;
+        margin-right: 0;
+
+        &:first-child {
+            margin-right: 4%;
+        }
+    }
+
+    > input {
+        margin: 10px 0 0 10px;
+        position: absolute;
+    }
+    span {
+        padding: 9px 30px 10px;
+        float: right;
+        min-width: 80px;
+        width: 100%;
+    }
+}
+
+// @media only screen and (max-width: 479px) {
+//     .touch-control {
+//         width: 48%;
+//         margin-right: 0;
+//     }
+//     .touch-control:first-child {
+//         margin-right: 4%;
+//     }
+// }
