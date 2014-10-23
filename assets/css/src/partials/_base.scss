@@ -1,0 +1,98 @@
+// Golden Scale for 16px Font (http://www.pearsonified.com/typography/)
+
+// H1       Title:              42px (68px line height)
+// H2       Headlines:          26px (42px line height)
+// H3       Sub-headlines:      20px (32px line height)
+// H4       Sub-Sub-headlines:  16px (26px line height)
+// BODY Primary text:       16px (26px line height)
+// i em Secondary Text:     13px (21px line height)
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    *behavior: url('/assets/js/boxsizing.htc');
+    -webkit-text-size-adjust: 100%;
+}
+
+html {
+    height: auto;
+    max-height: none;
+}
+
+body {
+    height: auto;
+    max-height: none;
+    font: normal normal normal 16px/26px Arial, Helvetica, sans-serif;
+    color: $text-colour;
+    background-color: $body-background-colour;
+}
+
+@include respond-to(handhelds) { 
+    body {
+        min-width: 320px;
+    }
+}
+
+strong {
+    font-weight: bold;
+}
+
+abbr {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+h1 {
+    font-family: Raleway;
+    font-size: 42px;
+    line-height: 1.4;
+    font-weight: 500;
+    margin: 15px auto;
+    color: $header-text-colour;
+    max-width: 960px;
+}
+
+h2 {
+    font-family: Raleway;
+    font-size: 42px;
+    line-height: 1.4;
+    font-weight: 300;
+    margin: .5em 25px;
+}
+
+h3 {
+    font-family: Raleway;
+    font-size: 26px;
+    line-height: 1.4;
+    font-weight: 300;
+    margin: 1em 0;
+}
+
+p {
+    display: block;
+    clear: both;
+    padding: 10px;
+    max-width: 685px;
+    //  Golden Ratio Typography
+}
+
+a {
+    color: $link-colour;
+    text-decoration: underline;
+    
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+button::-moz-focus-inner {
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+    cursor: pointer;
+    padding: 0;
+}

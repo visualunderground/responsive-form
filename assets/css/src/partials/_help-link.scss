@@ -1,0 +1,38 @@
+.help-link {
+    vertical-align: top;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    display: inline-block;
+    min-height: 35px;
+    line-height: 35px;
+    width: 35px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 18px;
+    text-decoration: none;
+    border: 1px solid #c9d0e1;
+    background-color: transparent;
+
+    transition: 
+        background-color    .2s linear 
+        border-color        .2s 
+        color               .2s linear;
+
+    &:focus,
+    &:hover {
+        background-color: $link-colour;;
+        border-color: $link-colour;;
+        color: #ffffff;
+    }
+
+    &:focus {
+        outline: 1px dotted #668002;
+    }
+
+    @include respond-to(handhelds) { 
+        display: block;
+        position: static;
+    }
+
+}

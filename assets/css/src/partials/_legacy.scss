@@ -1,92 +1,18 @@
-// Golden Scale for 16px Font (http://www.pearsonified.com/typography/)
-
-// H1		Title: 				42px (68px line height)
-// H2		Headlines: 			26px (42px line height)
-// H3		Sub-headlines: 		20px (32px line height)
-// H4		Sub-Sub-headlines: 	16px (26px line height)
-// BODY	Primary text: 		16px (26px line height)
-// i em	Secondary Text: 	13px (21px line height)
-* {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    *behavior: url('/assets/js/boxsizing.htc');
-    -webkit-text-size-adjust: 100%;
-}
-
-html {
-    height: auto;
-    max-height: none;
-}
-
-body {
-    height: auto;
-    max-height: none;
-    font: normal normal normal 16px/26px Arial, Helvetica, sans-serif;
-    color: $text-colour;
-    margin: 0;
-    background-color: $body-background-colour;
-}
-
 #quote {
     width: 960px;
     margin: 0 auto;
 }
 
-header {
+.global-header {
     @extend %clearfix;
     background-color: #444a62;
     margin-bottom: 37px;
 }
 
-footer {
+.global-footer {
     @extend %clearfix;
     background-color: $footer-colour;
     margin-top: 37px;
-}
-
-strong {
-    font-weight: bold;
-}
-
-abbr {
-    border-bottom: 1px dotted;
-    cursor: help;
-}
-
-h1 {
-    font-family: Raleway;
-    font-size: 42px;
-    line-height: 1.4;
-    font-weight: 500;
-    margin: 15px auto;
-    color: $header-text-colour;
-    max-width: 960px;
-}
-
-h2 {
-    font-family: Raleway;
-    font-size: 42px;
-    line-height: 1.4;
-    font-weight: 300;
-    margin: .5em 25px;
-}
-
-h3 {
-    font-family: Raleway;
-    font-size: 26px;
-    line-height: 1.4;
-    font-weight: 300;
-    margin: 1em 0;
-}
-
-a {
-    color: $link-colour;
-    text-decoration: underline;
-    
-    &:hover {
-        text-decoration: none;
-    }
 }
 
 // =====================================================================================================	*/
@@ -104,15 +30,6 @@ a {
     padding: 0 25px;
 }
 
-.fieldset-title {
-    font-family: Raleway;
-    font-size: 26px;
-    line-height: 1.4;
-    font-weight: 300;
-    margin: 1em 0;
-    width: 100%;
-}
-
 .form-panel-content {
     @extend %clearfix;
 }
@@ -124,14 +41,6 @@ p + .form-panel-content,
     margin-top: 25px;
 }
 
-p {
-    display: block;
-    clear: both;
-    padding: 10px;
-    max-width: 685px;
-    //	Golden Ratio Typography
-}
-
 // .form-panel-content > ul {
 //     display: block;
 //     float: left;
@@ -139,6 +48,7 @@ p {
 // }
 
 .form-group {
+    @extend %background-transition;
     display: block;
     float: left;
     width: 100%;
@@ -147,8 +57,8 @@ p {
     border-top: 1px solid #eff1f8;
 }
 
-.form-panel-content > ul > li[class^='message'] + li,
-.form-panel-content > ul > li:first-child {
+li[class^='message'] + .form-group,
+.form-group:first-child {
     border-top: 0;
 }
 
@@ -162,22 +72,21 @@ p {
     float: left;
     width: 45%;
     text-align: right;
-    padding: 13px 9px 8px 10px;
+    padding: 13px 10px 8px;
 }
 
-.form-panel-content li > div > label {
-    //  marketing questions
-    display: block;
-    padding: 13px 9px 8px 10px;
-}
-
-.form-panel-content li > div, //  marketing questions
-.form-panel-content li > span { 
+.form-answer {
     display: block;
     float: right;
     width: 55%;
     position: relative;
-    padding: 0 57px 0 9px;
+    padding: 0 55px 0 10px;
+}
+
+.form-answer > label {
+    //  marketing questions
+    display: block;
+    padding: 13px 9px 8px 10px;
 }
 
 .form-hint {
@@ -191,20 +100,20 @@ p {
     color: $secondary-text-colour;
 }
 
-.input-delimiter,
+.form-control-delimiter {
+    display: inline-block;
+    padding-top: 13px;
+    margin-right: 10px;
+    margin-left: -5px;
+    font-weight: normal;
+}
+
 .unit-prefix,
 .unit-suffix {
     display: inline-block;
     padding-top: 13px;
-    margin-right: 5px;
+    margin-right: 15px;
     font-weight: normal;
-}
-
-.form-panel-content span > p {
-    //	INLINE VALUE	*/
-    padding: 5px 0;
-    margin: 8px 10px 0 0;
-    display: inline-block;
 }
 
 //=====================================================================================================	*/
@@ -221,7 +130,7 @@ p {
         border-top: 1px solid transparent;
     }
 
-    > label {
+    .form-label {
         font-weight: bold;
     }
 }
@@ -248,13 +157,12 @@ p {
 }
 
 .radio-group .form-hint {
-    width: auto;
-    text-align: left;
-    color: #464646;
+    // width: auto;
+    // text-align: left;
+    color: inherit;
 }
 
-.radio-group .is-selected label, 
-.radio-group .is-selected .form-hint {
+.radio-group .is-selected label {    
     color: #ffffff;
 }
 
@@ -269,11 +177,6 @@ p {
 // }
 
 //	END RADIO GROUP	*/
-button::-moz-focus-inner {
-    border: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
 
 .form-control, 
 button, 
@@ -303,6 +206,7 @@ button,
 }
 
 input.form-control {
+    @extend %background-transition;
     width: 225px;
     // REMOVE IOS INNER SHADOW */
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsla(0, 0%, 100%, 0)), to(hsla(0, 0%, 100%, 0)));
@@ -318,16 +222,6 @@ select.form-control {
     &.min {
         min-width: 0;
     }
-}
-
-.form-control.pre {
-    margin-right: 5px;
-}
-
-input[type='radio'],
-input[type='checkbox'] {
-    cursor: pointer;
-    padding: 0;
 }
 
 .unit-prefix,
@@ -377,65 +271,16 @@ input[type='checkbox'] {
     text-align: center;
 }
 
-.form-control.phone {
-    width: 136px;
-}
-
 .form-control.numericinput {
     width: 48px !important;
 }
 
 /*=====================================================================================================	*/
-/*	HELP	*/
-/*=====================================================================================================	*/
-.help-link {
-    vertical-align: top;
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    display: inline-block;
-    min-height: 35px;
-    line-height: 35px;
-    width: 35px;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 18px;
-    text-decoration: none;
-    border: 1px solid #c9d0e1;
-    background-color: transparent;
-
-    &:focus,
-    &:hover {
-        background-color: $link-colour;;
-        border-color: $link-colour;;
-        color: #ffffff;
-    }
-
-    &:focus {
-        outline: 1px dotted #668002;
-    }
-}
-
-/*=====================================================================================================	*/
-/*	TRANSITIONS	*/
-/*=====================================================================================================	*/
-.help-link,
-.form-panel-content li,
-input.form-control {
-    transition: background-color .2s linear;
-}
-
-.help-link {
-    transition: background-color .2s linear color .2s linear border-color .2s;
-}
-
-/*=====================================================================================================	*/
 /*	MEDIA QUERIES	*/
 /*=====================================================================================================	*/
-
-@media all and (max-width: $rwd-pappa-bear) {
-    header h1,
-    footer h1,
+@include respond-to(wide-screens) { 
+    .global-header h1,
+    .global-footer h1,
     #quote {
         width: auto;
         margin-left: 20px;
@@ -443,7 +288,7 @@ input.form-control {
     }
 }
 
-@media all and (max-width: $rwd-momma-bear) {
+@include respond-to(medium-screens) {
     .form-label {
         float: none;
         text-align: left;
@@ -451,18 +296,13 @@ input.form-control {
         padding: 0;
     }
 
-    .form-panel-content .ajax-float {
-        left: 0;
-    }
-
-    .form-panel-content li > div,
-    .form-panel-content li > span {
+    .form-answer {
         padding-left: 0;
         width: 100%;
     }
 }
 
-@media all and (max-width: $rwd-baby-bear) {
+@include respond-to(handhelds) {
     body {
         min-width: 320px;
     }
@@ -477,13 +317,12 @@ input.form-control {
         padding-right: 10px;
     }
 
-    .form-panel-content li > div,
-    .form-panel-content li > span {
+    .form-answer {
         padding-right: 0;
     }
 
-    header h1,
-    footer h1, 
+    .global-header h1,
+    .global-footer h1, 
     #quote {
         margin-left: 10px;
         margin-right: 10px;
@@ -493,23 +332,17 @@ input.form-control {
         width: 100%;
     }
 
-    .fieldset-title {
-        background-color: $header-colour;
-        color: $header-text-colour;
-        margin-bottom: .5em;
-        padding: .5em 10px;
-    }
-
-    /*=====================================================================================================	*/
-    /*	RADIO GROUPS	*/
-    /*=====================================================================================================	*/
-    .form-panel-content li > div > label {
+    /*===================================================================================================== */
+    /*  RADIO GROUPS    */
+    /*===================================================================================================== */
+    .form-answer > label {
+        //  marketing questions
         padding-left: 0;
         padding-right: 0;
     }
 
     .form-panel-content .radio-group div.button {
-        /*	BOOL - 50/50 SPLIT	*/
+        /*  BOOL - 50/50 SPLIT  */
         margin-right: 0;
         width: 48%;
     }
@@ -519,14 +352,14 @@ input.form-control {
     }
 
     .form-panel-content .radio-group.not-bool div {
-        /*	NOT BOOL 100% WIDTH	*/
+        /*  NOT BOOL 100% WIDTH */
         margin-right: 0;
         clear: both;
         width: 100%;
     }
-    /*=====================================================================================================	*/
-    /*	INPUTS	*/
-    /*=====================================================================================================	*/
+    /*===================================================================================================== */
+    /*  INPUTS  */
+    /*===================================================================================================== */
     
     .form-control {
         width: 100% !important;
@@ -559,19 +392,11 @@ input.form-control {
     .form-panel-content .ajax-float {
         width: 100%;
     }
-    /*=====================================================================================================	*/
-    /*	HELP	*/
-    /*=====================================================================================================	*/
+    /*===================================================================================================== */
+    /*  HELP    */
+    /*===================================================================================================== */
     .radio-group .help-link {
-        //	FIXES RADIO GROUP TOP MARGIN BUG 
+        //  FIXES RADIO GROUP TOP MARGIN BUG 
         display: inline-block;
     }
-    
-    .help-link {
-        //	FIXES DISPLAY BLOCK 100%
-        width: 120px;
-        display: block;
-        position: static;
-    }
 }
-

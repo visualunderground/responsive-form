@@ -13,11 +13,12 @@
         display: none;
     }
 
-    @media all and (max-width: $rwd-momma-bear){
+    @include respond-to(medium-screens) { 
         max-width: 450px;
         padding: 0;
         margin-left: -5px;
     }
+
 }
 
 .help-bubble-content {
