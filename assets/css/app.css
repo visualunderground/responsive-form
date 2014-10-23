@@ -271,11 +271,6 @@ li[class^='message'] + .form-group,
   padding: 0 55px 0 10px;
 }
 
-.form-answer > label {
-  display: block;
-  padding: 13px 9px 8px 10px;
-}
-
 .form-hint {
   display: block;
   clear: both;
@@ -313,38 +308,6 @@ li[class^='message'] + .form-group,
 }
 .form-group.has-error .form-label {
   font-weight: bold;
-}
-
-.radio-group div {
-  float: left;
-  min-width: 105px;
-  padding: 0;
-}
-
-.radio-group label {
-  display: inline;
-  width: 100%;
-  min-width: 80px;
-  margin-right: 0;
-  font-weight: normal;
-  float: right;
-  cursor: pointer;
-  padding: 9px 30px 10px;
-  text-align: left;
-}
-
-.radio-group .form-hint {
-  color: inherit;
-}
-
-.radio-group .is-selected label {
-  color: #ffffff;
-}
-
-.radio-group input {
-  margin: 10px 0 0 10px;
-  position: absolute;
-  /*	IE PIXEL SHIFT BUG*/
 }
 
 .form-control,
@@ -500,31 +463,6 @@ select.form-control.min {
   }
 
   .button {
-    width: 100%;
-  }
-
-  /*===================================================================================================== */
-  /*  RADIO GROUPS    */
-  /*===================================================================================================== */
-  .form-answer > label {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .form-panel-content .radio-group div.button {
-    /*  BOOL - 50/50 SPLIT  */
-    margin-right: 0;
-    width: 48%;
-  }
-
-  .form-panel-content .radio-group div:first-child {
-    margin-right: 4%;
-  }
-
-  .form-panel-content .radio-group.not-bool div {
-    /*  NOT BOOL 100% WIDTH */
-    margin-right: 0;
-    clear: both;
     width: 100%;
   }
 
