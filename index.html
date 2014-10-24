@@ -64,7 +64,7 @@
 				oDiv.style.top = "48px";
 				oDiv.style.left = "0";
 			}  
-			oDiv.innerHTML = "<div class='help-bubble-content'><h5 class='help-bubble-header'>Test</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. link Quisque sed fringilla ipsum.</p><ul><li>One</li><li>Two</li></ul><p>Suspendisse ut sem augue. Suspendisse sed magna a neque pretium aliquet. Sed justo dolor, bibendum vehicula imperdiet nec. </p><a href='javascript:clearhelp();' class='help-bubble-close-button' title='Close'>x</a></div>";
+			oDiv.innerHTML = "<div class='help-bubble__content'><h5 class='help-bubble__header'>Test</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. link Quisque sed fringilla ipsum.</p><ul><li>One</li><li>Two</li></ul><p>Suspendisse ut sem augue. Suspendisse sed magna a neque pretium aliquet. Sed justo dolor, bibendum vehicula imperdiet nec. </p><a href='javascript:clearhelp();' class='help-bubble__close-link' title='Close'>x</a></div>";
 			$(helpID).parentNode.insertBefore(oDiv, $(helpID).nextSibling);
 		}
 		return false;
@@ -129,7 +129,7 @@
 						<label class="form-label">Input &amp; search</label>
 						<div class="form-answer">
 							<!--	!!!! NO WHITESPACE !!!!	-->
-							<input type="text" class="form-control postcode"><button class="button-secondary" title="Search" value="Search">Search</button><a href='#' class='help-link' id='help-6' onclick='return showHelp(this.id);'>?</a><i class="form-hint">Additional information</i>
+							<input type="text" class="form-control postcode"><button class="button--secondary" title="Search" value="Search">Search</button><a href='#' class='help-link' id='help-6' onclick='return showHelp(this.id);'>?</a><i class="form-hint">Additional information</i>
 						</div>
 					</li>
 					<li class="form-group">
@@ -246,10 +246,10 @@
 					<!--	NB you don't need a label in order to right align inputs	-->
 					<li class="form-group">
 						<div class="form-answer">
-							<button class="button-primary" title="Primary" value="Primary">{.primary}</button>
-							<button class="button-secondary" title="Search trigger" value="Search trigger">{.secondary}</button>
-							<button class="button-not-selected" title="Search trigger" value="Search trigger">{.not-selected}</button>
-							<button class="button-is-selected" title="Search trigger" value="Search trigger">{.is-selected}</button>
+							<button class="button" title="Primary" value="Primary">{.buton}</button>
+							<button class="button--secondary" title="Search trigger" value="Search trigger">{.buton--secondary}</button>
+							<button class="button--muted" title="Search trigger" value="Search trigger">{.buton--muted}</button>
+							<button class="button--tertiary" title="Search trigger" value="Search trigger">{.buton--tertiary}</button>
 						</div>
 					</li>
 				</ul>
@@ -290,8 +290,8 @@
             </div>
 		</fieldset>
 		<nav>
-			<button class="button-not-selected" type="submit" value="Back">Back</button>
-			<button class="button-primary" type="submit" value="Continue">Continue</button>
+			<button class="button--muted" type="submit" value="Back">Back</button>
+			<button class="button" type="submit" value="Continue">Continue</button>
 		</nav>
 	</div>
 	<footer class="global-footer">

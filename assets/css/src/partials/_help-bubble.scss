@@ -21,7 +21,7 @@
 
 }
 
-.help-bubble-content {
+.help-bubble__content {
     border-radius: 4px;
     padding-bottom: 30px;
     @include background-rgba($header-colour, .95);
@@ -41,12 +41,12 @@
     }
 }
 
-.help-bubble-header {
+.help-bubble__header {
     padding: 15px 15px 0;
     font-weight: bold;
 }
 
-.help-bubble-close-button {
+.help-bubble__close-link {
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;

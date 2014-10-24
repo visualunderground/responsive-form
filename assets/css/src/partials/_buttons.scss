@@ -1,22 +1,3 @@
-// .button {
-//     cursor: pointer;
-//     text-decoration: none;
-//     min-width: 125px;
-//     background-repeat: repeat-x;
-//     color: #464646;
-
-//     &:hover,
-//     &:active,
-//     &:focus {
-//         background-color: #000000;
-//     }
-
-//     &:active {
-//         position: relative;
-//         top: 1px;
-//     }
-// }
-
 @mixin button-colour($colour) {
     background-color: $colour;
     border-color: darken($colour, 15%);
@@ -32,11 +13,29 @@
     &:focus {
         background-color: darken($colour, 5%);
     }
+
+    @include respond-to(handhelds) {
+        width: 100%;
+    }
 }
 
 %button {
+
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1;
+    margin-bottom: 6px;
+    margin-right: 15px;
+    margin-top: 8px;
+    min-height: 37px;
+    // =  line-height + border + padding
+    padding: 5px;
+
     cursor: pointer;
-    text-decoration: none;
     min-width: 125px;
 
     &:active {
@@ -45,31 +44,23 @@
     }
 }
 
-.button.large {
-    min-width: 50%;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 1em;
+.button {
+    @extend %button;
+    @include button-colour(#5fcac6);
 }
 
-.button-secondary {
+.button--secondary {
     @extend %button;
     @include button-colour(#3399ff);
 }
 
-.button-primary {
-    @extend %button;
-    @include button-colour(#5fcac6);
-
-}
-
-.button-is-selected {
+.button--tertiary {
     @extend %button;
     @include button-colour(#74b533);
     
 }
 
-.button-not-selected {
+.button--muted {
     @extend %button;
     @include button-colour(#f7f7fa);
 }
