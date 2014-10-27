@@ -62,6 +62,6 @@
 
 .button--muted {
     @extend %button;
-    @include button-colour(#f7f7fa);
+    @include button-colour(#f0f3f3);
 }
 

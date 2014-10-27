@@ -82,69 +82,69 @@
 	<header class="global-header">
 		<h1>Product type</h1>
 	</header>
-	<div id="quote">
+	<div class="content-main" role="main">
 		<h2>Page name</h2>
-		<div class="message-master">
-			<h3>{.message-master}</h3>
+		<div class="message--master">
+			<h3>{.message--master}</h3>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">link</a> Quisque sed fringilla ipsum. Suspendisse ut sem augue. Suspendisse sed magna a neque pretium aliquet. Sed justo dolor, bibendum vehicula imperdiet nec. </p>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pharetra pellentesque Justo quis sodales. Suspendisse dolor magna a fringilla augue. Ut feugiat turpis a faselli.</p>
 		</div>
-		<div class="message-error-up">
-			<p>{.message-error-up}<br />There are errors on this page please take a moment to check your answers.</p>
+		<div class="message--error-up">
+			<p>{.message--error-up}<br />There are errors on this page please take a moment to check your answers.</p>
 		</div>
-		<div class="message-info-down">
-			<p>{.message-info-down}<br />Don't forget to do X before Y.</p>
+		<div class="message--info-down">
+			<p>{.message--info-down}<br />Don't forget to do X before Y.</p>
 		</div>
-		<fieldset class="form-panel">
-			<legend class="fieldset-title">Text entry</legend>
+		<fieldset class="form">
+			<legend class="form__title">Text entry</legend>
 			<p>Bacon ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pharetra pellentesque Justo quis sodales. Suspendisse dolor magna a fringilla augue. Ut feugiat turpis a faselli.</p>
-			<ul class="form-panel-content">
-				<li class="form-group">
-					<label class="form-label">Input</label>
-					<div class="form-answer">
-						<input class="form-control" type="text" placeholder="[type='text']" >
+			<ul class="form-content">
+				<li class="form__group">
+					<label class="form__label">Input</label>
+					<div class="form__answer">
+						<input class="form__control" type="text" placeholder="[type='text']" >
 					</div>
 				</li>
-				<li class="form-group has-error">
-					<label class="form-label">Input</label>
-					<div class="form-answer">
-						<input class="form-control" type="tel" placeholder="[type='tel']" >
+				<li class="form__group--error">
+					<label class="form__label">Input</label>
+					<div class="form__answer">
+						<input class="form__control" type="tel" placeholder="[type='tel']" >
 						<div class="error-message">Oops. there was an error</div>
 					</div>
 				</li>
-				<li class="form-group">
-					<label class="form-label">Input</label>
-					<div class="form-answer">
-						<input class="form-control" type="email" placeholder="[type='email']" >
+				<li class="form__group">
+					<label class="form__label">Input</label>
+					<div class="form__answer">
+						<input class="form__control" type="email" placeholder="[type='email']" >
 					</div>
 				</li>
-				<li class="form-group">
-					<label class="form-label">Input</label>
-					<div class="form-answer">
-						<input class="form-control" type="text" placeholder="[type='text']" >
+				<li class="form__group">
+					<label class="form__label">Input</label>
+					<div class="form__answer">
+						<input class="form__control" type="text" placeholder="[type='text']" >
 					</div>
 				</li>
-				<li class="form-group">
-					<label class="form-label">Input &amp; search</label>
-					<div class="form-answer">
+				<li class="form__group">
+					<label class="form__label">Input &amp; search</label>
+					<div class="form__answer">
 						<!--	!!!! NO WHITESPACE !!!!	-->
-						<input type="text" class="form-control postcode"><button class="button--secondary" title="Search" value="Search">Search</button><a href='#' class='help-link' id='help-6' onclick='return showHelp(this.id);'>?</a><i class="form-hint">Additional information</i>
+						<input type="text" class="form__control postcode"><button class="button--secondary" title="Search" value="Search">Search</button><a href='#' class='help-link' id='help-6' onclick='return showHelp(this.id);'>?</a><i class="form__hint">Additional information</i>
 					</div>
 				</li>
-				<li class="form-group">
-					<label class="form-label">Delimited input</label>
-					<div class="form-answer">
+				<li class="form__group">
+					<label class="form__label">Delimited input</label>
+					<div class="form__answer">
 						<!--	!!!! NO WHITESPACE !!!!	-->
-						<input type="tel" class="form-control sort-code"><b class="form-control-delimiter">/</b><input type="tel" class="form-control sort-code"><b class="form-control-delimiter">/</b><input type="tel" class="form-control sort-code">
+						<input type="tel" class="form__control--sort-code"><b class="form__control-delimiter">/</b><input type="tel" class="form__control--sort-code"><b class="form__control-delimiter">/</b><input type="tel" class="form__control--sort-code">
 						<a href='#' class='help-link' id='help-8' onclick='return showHelp(this.id);'>?</a>
 					</div>
 				</li>
 				<!--	NB apply a class of "search" to add affordance	-->
-				<li class="form-group">				
-					<label class="form-label" for="Proposer.id.1_FullTimeOccupation.occDesc">Search:Suggest input</label>				
-					<div class="form-answer">
-						<input type="text" value="" class="form-control search" onBlur="hideFloat();" onKeyDown="preventScroll(event)" onKeyUp="sOccupationG(event,'fullOcc');" autocomplete="off" id="Proposer.id.1_FullTimeOccupation.occDesc" name="Proposer.id.1_FullTimeOccupation.occDesc" ><a href='#' class='help-link' id='help-9' onclick='return showHelp(this.id);'>?</a>
-						<i class="form-hint">Additional information</i>
+				<li class="form__group">				
+					<label class="form__label" for="Proposer.id.1_FullTimeOccupation.occDesc">Search:Suggest input</label>				
+					<div class="form__answer">
+						<input type="text" value="" class="form__control--search" onBlur="hideFloat();" onKeyDown="preventScroll(event)" onKeyUp="sOccupationG(event,'fullOcc');" autocomplete="off" id="Proposer.id.1_FullTimeOccupation.occDesc" name="Proposer.id.1_FullTimeOccupation.occDesc" ><a href='#' class='help-link' id='help-9' onclick='return showHelp(this.id);'>?</a>
+						<i class="form__hint">Additional information</i>
 						<div id="Proposer.id.1_FullTimeOccupation.occCodeFLOAT" class="ajax-float"></div>
 						<input type="hidden" value="" name="Proposer.id.1_FullTimeOccupation.occCode" id="Proposer.id.1_FullTimeOccupation.occCode">
 						<!-- PURELY  FOR PROTOTYPE PURPOSES	-->
@@ -156,36 +156,36 @@
 						<!-- END	-->
 					</div>
 				</li>
-				<li class="form-group">
-					<label class="form-label">Textual value</label>
-					<div class="form-answer">
+				<li class="form__group">
+					<label class="form__label">Textual value</label>
+					<div class="form__answer">
 						<span class="textual-value">Mr A N Proposer</span>
 						<a href='#' class='help-link' id='help-2' onclick='return showHelp(this.id);'>?</a>
 					</div>
 				</li>
 			</ul>
 		</fieldset>
-		<fieldset class="form-panel">
-			<legend class="fieldset-title">Select menus</legend>
-			<ul class="form-panel-content">
-				<li class="form-group">
-					<label class="form-label">Selection (std. width)<i class="form-hint">Matches text input width</i></label>
-					<div class="form-answer">
-						<select class="form-control"><option selected="" value="">Mobile</option></select><a href='#' class='help-link' id='help-0' onclick='return showHelp(this.id);'>?</a>
+		<fieldset class="form">
+			<legend class="form__title">Select menus</legend>
+			<ul class="form-content">
+				<li class="form__group">
+					<label class="form__label">Selection (std. width)<i class="form__hint">Matches text input width</i></label>
+					<div class="form__answer">
+						<select class="form__control--select"><option selected="" value="">Mobile</option></select><a href='#' class='help-link' id='help-0' onclick='return showHelp(this.id);'>?</a>
 					</div>
 				</li>
-				<li class="form-group">
-					<label class="form-label">Selection (matches. width)<i class="form-hint">A <code>select</code> element with a class of <code>min</code> = data width.</i></label>
-					<div class="form-answer">
-						<select class="form-control min"><option selected="" value="">Mobile</option></select><a href='#' class='help-link' id='help-1' onclick='return showHelp(this.id);'>?</a>
+				<li class="form__group">
+					<label class="form__label">Selection (matches. width)<i class="form__hint">A <code>select</code> element with a class of <code>min</code> = data width.</i></label>
+					<div class="form__answer">
+						<select class="form__control--select--min"><option selected="" value="">Mobile</option></select><a href='#' class='help-link' id='help-1' onclick='return showHelp(this.id);'>?</a>
 					</div>
 				</li>
 			</ul>
 		</fieldset>
-		<fieldset class="form-panel">
-			<legend class="fieldset-title">Integral units</legend>
-			<ul class="form-panel-content">
-				<li class="message-info">
+		<fieldset class="form">
+			<legend class="form__title">Integral units</legend>
+			<ul class="form-content">
+				<li class="message--info">
 					<p>
 						Use <code>has-prefix</code> and <code>has-suffix</code> classes on the <code>input</code> and <code>unit-prefix</code> and <code>unit-suffix</code> on the element containing the unit.
 					</p>
@@ -193,50 +193,50 @@
 						NB. no whitespace between the element and the <code>input</code>
 					</p>
 				</li>
-				<li class="form-group">
-					<label class="form-label">Prefixed input <i class="form-hint">Additional information with <a href="#">link</a></i></label>
-					<div class="form-answer">
+				<li class="form__group">
+					<label class="form__label">Prefixed input <i class="form__hint">Additional information with <a href="#">link</a></i></label>
+					<div class="form__answer">
 						<!--	!!!! NO WHITESPACE !!!!	-->
-						<b class="unit-prefix">&pound;</b><input type="text" class="form-control has-prefix">
+						<b class="unit-prefix">&pound;</b><input type="text" class="form__control has-prefix">
 						<a href='#' class='help-link' id='help-3' onclick='return showHelp(this.id);'>?</a>
 					</div>
 				</li>
-				<li class="form-group">
-					<label class="form-label">Suffixed input</label>
-					<div class="form-answer">
+				<li class="form__group">
+					<label class="form__label">Suffixed input</label>
+					<div class="form__answer">
 						<!--	!!!! NO WHITESPACE !!!!	-->
-						<input type="text" class="form-control has-suffix"><b class="unit-suffix">mg</b>
+						<input type="text" class="form__control has-suffix"><b class="unit-suffix">mg</b>
 						<a href='#' class='help-link' id='help-4' onclick='return showHelp(this.id);'>?</a>
 					</div>
 				</li>
 			</ul>
 		</fieldset>
-		<fieldset class="form-panel">
-			<legend class="fieldset-title">Dates</legend>
-			<ul class="form-panel-content">
-				<li class="form-group">
-					<label class="form-label">Date input</label>
-					<div class="form-answer">
+		<fieldset class="form">
+			<legend class="form__title">Dates</legend>
+			<ul class="form-content">
+				<li class="form__group">
+					<label class="form__label">Date input</label>
+					<div class="form__answer">
 						<!--	!!!! NO WHITESPACE !!!!	-->
-						<select class="form-control min"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="form-control min"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><select class="form-control min"><option value="">Year</option><option value="1984">...</option><option value="1976">1976</option></select>
+						<select class="form__control--select--min"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="form__control--select--min"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><select class="form__control--select--min"><option value="">Year</option><option value="1984">...</option><option value="1976">1976</option></select>
 						<a href='#' class='help-link' id='help-5' onclick='return showHelp(this.id);'>?</a>
 					</div>
 				</li>
-				<li class="form-group">
-					<label class="form-label">Date input - long year</label>
-					<div class="form-answer">
+				<li class="form__group">
+					<label class="form__label">Date input - long year</label>
+					<div class="form__answer">
 						<!--	!!!! NO WHITESPACE !!!!	-->
-						<select class="form-control min"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="form-control min"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><input type='tel' size='4' maxlength='4' placeholder='yyyy' class='form-control numericinput'/>
+						<select class="form__control--select--min"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="form__control--select--min"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><input type='tel' size='4' maxlength='4' placeholder='yyyy' class='form__control--numericinput'/>
 					</div>
 				</li>
 			</ul>
 		</fieldset>
-		<fieldset class="form-panel">
-			<legend class="fieldset-title">Calls to action</legend>
-			<ul class="form-panel-content">
+		<fieldset class="form">
+			<legend class="form__title">Calls to action</legend>
+			<ul class="form-content">
 				<!--	NB you don't need a label in order to right align inputs	-->
-				<li class="form-group">
-					<div class="form-answer">
+				<li class="form__group">
+					<div class="form__answer">
 						<button class="button" title="Primary" value="Primary">{.buton}</button>
 						<button class="button--secondary" title="Search trigger" value="Search trigger">{.buton--secondary}</button>
 						<button class="button--muted" title="Search trigger" value="Search trigger">{.buton--muted}</button>
@@ -246,15 +246,15 @@
 			</ul>
 		</fieldset>
 
-		<fieldset class="form-panel">
-			<legend class="fieldset-title">Radio groups</legend>
-			<ul class="form-panel-content">
-				<li class="form-group">
+		<fieldset class="form">
+			<legend class="form__title">Radio groups</legend>
+			<ul class="form-content">
+				<li class="form__group">
 					<fieldset>
-						<legend class="form-label">touch me</legend>
-						<div class="form-answer">
+						<legend class="form__label">touch me</legend>
+						<div class="form__answer">
 							<label for="alpha" class="touch-control">
-								<input id="alpha" name="new" type="radio"><span>Alpha<i class="form-hint">Lots more info</i></span>
+								<input id="alpha" name="new" type="radio"><span>Alpha<i class="form__hint">Lots more info</i></span>
 							</label>
 							<label for="beta" class="touch-control">
 								<input id="beta" name="new" type="radio"><span>Beta</span>
@@ -262,10 +262,10 @@
 						</div>
 					</fieldset>
 				</li>
-				<li class="form-group">
+				<li class="form__group">
 					<fieldset>
-						<legend class="form-label">touch me <i class="form-hint">Select all that apply</i></legend>
-						<div class="form-answer">
+						<legend class="form__label">touch me <i class="form__hint">Select all that apply</i></legend>
+						<div class="form__answer">
 							<label for="alpha-c" class="touch-control">
 								<input id="alpha-c" name="new-c" type="checkbox"><span>Alpha</span>
 							</label>

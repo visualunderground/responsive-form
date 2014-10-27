@@ -1,4 +1,4 @@
-#quote {
+.content-main {
     width: 960px;
     margin: 0 auto;
 }
@@ -29,32 +29,37 @@
 }
 
 // =====================================================================================================	*/
-//	form-panel	*/
+//	form	*/
 // =====================================================================================================	*/
-#quote {
+.content-main {
     @extend %clearfix;
     background-color: #ffffff;
     border: 1px solid #c9d0e1;
     border-radius: 6px;
 }
 
-.form-panel {
+.form {
     @extend %clearfix;
     padding: 0 25px;
+
+    p {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
-.form-panel-content {
+.form-content {
     @extend %clearfix;
 }
 
-[class^='message'] + .form-panel,
-p + .form-panel-content,
+[class^='message'] + .form,
+p + .form-content,
 [class^='message'] + [class^='message'],
-.form-panel + [class^='message'] {
+.form + [class^='message'] {
     margin-top: 25px;
 }
 
-.form-group {
+.form__group {
     @extend %background-transition;
     display: block;
     float: left;
@@ -64,17 +69,29 @@ p + .form-panel-content,
     border-top: 1px solid #eff1f8;
 }
 
-li[class^='message'] + .form-group,
-.form-group:first-child {
+// Errors
+.form__group--error {
+    @extend .form__group;
+    background-color: $error-background-colour;
+    border-top-color: transparent;
+    color: #ffffff;
+    margin: 1px 0;
+
+    + .form__group {
+        border-top-color: transparent;
+    }
+
+    .form__label {
+        font-weight: bold;
+    }
+}
+
+li[class^='message'] + .form__group,
+.form__group:first-child {
     border-top: 0;
 }
 
-.form-panel p {
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.form-label {
+.form__label {
     display: block;
     float: left;
     width: 45%;
@@ -82,7 +99,7 @@ li[class^='message'] + .form-group,
     padding: 13px 10px 8px;
 }
 
-.form-answer {
+.form__answer {
     display: block;
     float: right;
     width: 55%;
@@ -90,7 +107,7 @@ li[class^='message'] + .form-group,
     padding: 0 55px 0 10px;
 }
 
-.form-hint {
+.form__hint {
     //	SUB TEXT
     display: block;
     clear: both;
@@ -101,7 +118,7 @@ li[class^='message'] + .form-group,
     color: $secondary-text-colour;
 }
 
-.form-control-delimiter {
+.form__control-delimiter {
     display: inline-block;
     padding-top: 13px;
     margin-right: 10px;
@@ -118,27 +135,9 @@ li[class^='message'] + .form-group,
 }
 
 //=====================================================================================================	*/
-//	ERRORS	*/
-//=====================================================================================================	*/
-.form-group.has-error {
-    //	ROW ERROR	*/
-    background-color: $error-background-colour;
-    border-top: 1px solid transparent;
-    color: #ffffff;
-    margin: 1px 0;
-
-    + .form-group {
-        border-top: 1px solid transparent;
-    }
-
-    .form-label {
-        font-weight: bold;
-    }
-}
-//=====================================================================================================	*/
 //	INPUTS	*/
 //*=====================================================================================================	*/
-.form-control {
+%form__control {
     border-radius: 2px;
     border: 1px solid #c3c5cc;
     background: #ffffff;
@@ -157,30 +156,64 @@ li[class^='message'] + .form-group,
     // =  line-height + border + padding
     //	IE: LAYOUT BUG
     vertical-align: top;
+
+    &:focus {
+        background-color: #f0f3f3;
+    }
 }
 
-.form-control:focus {
-    background-color: #f0f3f3;
-}
-
-input.form-control {
+.form__control {
+    @extend %form__control;
     @extend %background-transition;
+
     width: 225px;
-    // REMOVE IOS INNER SHADOW */
+    // REMOVE IOS INNER SHADOW
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsla(0, 0%, 100%, 0)), to(hsla(0, 0%, 100%, 0)));
     background-image: -webkit-linear-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0));
     @include placeholder;
 }
 
-select.form-control {
+//  Modifiers: ---------------------------------- //
+
+.form__control--select {
+    @extend %form__control;
     min-width: 225px;
     max-width: 225px;
     padding-top: 6px;
-    // 1px more than input*/
-    &.min {
-        min-width: 0;
-    }
 }
+
+.form__control--select--min {
+    @extend %form__control;
+    max-width: 225px;
+    min-width: 0;
+    padding-top: 6px;
+}
+
+.form__control--search {
+    @extend %form__control;
+    @extend %background-transition;
+
+    background-image: url('../images/icon-search.png');
+    background-repeat: no-repeat;
+    background-position: .2em center;
+    padding-left: 20px;
+}
+
+.form__control--sort-code {
+    @extend %form__control;
+    @extend %background-transition;
+
+    width: 35px;
+    text-align: center;
+}
+
+.form__control--numericinput {
+    @extend %form__control;
+    @extend %background-transition;
+
+    width: 48px !important;
+}
+
 
 .unit-prefix,
 .unit-suffix {
@@ -192,6 +225,15 @@ select.form-control {
     // display: inline-block;
     padding: 4px 5px 5px;
     text-align: center !important;
+}
+
+.unit-prefix {
+    border-radius: 2px 0 0 2px;
+}
+
+.unit-suffix {
+    border-radius: 0 2px 2px 0;
+    margin-right: 15px !important;
 }
 
 .has-prefix {
@@ -207,39 +249,13 @@ select.form-control {
     margin-right: 0;
 }
 
-.unit-prefix {
-    border-radius: 2px 0 0 2px;
-}
-
-.unit-suffix {
-    border-radius: 0 2px 2px 0;
-    margin-right: 15px !important;
-}
-
-/*	OVERIDES*/
-.form-control.search {
-    background-image: url('../images/icon-search.png');
-    background-repeat: no-repeat;
-    background-position: .2em center;
-    padding-left: 20px;
-}
-
-.form-control.sort-code {
-    width: 35px;
-    text-align: center;
-}
-
-.form-control.numericinput {
-    width: 48px !important;
-}
-
-/*=====================================================================================================	*/
-/*	MEDIA QUERIES	*/
-/*=====================================================================================================	*/
+// ----------------------------------------
+// MQs
+// ----------------------------------------
 @include respond-to(wide-screens) { 
     .global-header h1,
     .global-footer h1,
-    #quote {
+    .content-main {
         width: auto;
         margin-left: 20px;
         margin-right: 20px;
@@ -247,14 +263,14 @@ select.form-control {
 }
 
 @include respond-to(medium-screens) {
-    .form-label {
+    .form__label {
         float: none;
         text-align: left;
         width: auto;
         padding: 0;
     }
 
-    .form-answer {
+    .form__answer {
         padding-left: 0;
         width: 100%;
     }
@@ -265,42 +281,35 @@ select.form-control {
         min-width: 320px;
     }
 
-    .form-panel {
+    .form {
         padding: 0;
     }
 
-    .form-panel p,
-    .form-group {
+    .form p,
+    .form__group {
         padding-left: 10px;
         padding-right: 10px;
     }
 
-    .form-answer {
+    .form__answer {
         padding-right: 0;
     }
 
     .global-header h1,
     .global-footer h1, 
-    #quote {
+    .content-main {
         margin-left: 10px;
         margin-right: 10px;
     }
 
-    /*===================================================================================================== */
-    /*  INPUTS  */
-    /*===================================================================================================== */
-    
-    .form-control {
+    // ----------------------------------------
+    // Inputs
+    // ----------------------------------------
+    .form__control--select,
+    .form__control--search,
+    .form__control {
         width: 100% !important;
         max-width: 100%;
-    }
-    
-    .form-control.min {
-        width: auto !important;
-    }
-    
-    .form-control.sort-code {
-        width: 35px !important;
     }
     
     .unit-prefix,
@@ -318,12 +327,13 @@ select.form-control {
         margin-right: 0;
     }
 
-    .form-panel-content .ajax-float {
+    .form-content .ajax-float {
         width: 100%;
     }
-    /*===================================================================================================== */
-    /*  HELP    */
-    /*===================================================================================================== */
+
+    // ===================================================================================================== */
+    //   HELP    */
+    // ===================================================================================================== */
     .radio-group .help-link {
         //  FIXES RADIO GROUP TOP MARGIN BUG 
         display: inline-block;
