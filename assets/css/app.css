@@ -1,15 +1,15 @@
-.global-header, .global-footer, .content-main, .form, .form-content {
+.global-header, .global-footer, .content-main, .form, .form__content {
   zoom: 1;
 }
-.global-header:before, .global-footer:before, .content-main:before, .form:before, .form-content:before, .global-header:after, .global-footer:after, .content-main:after, .form:after, .form-content:after {
+.global-header:before, .global-footer:before, .content-main:before, .form:before, .form__content:before, .global-header:after, .global-footer:after, .content-main:after, .form:after, .form__content:after {
   content: '';
   display: table;
 }
-.global-header:after, .global-footer:after, .content-main:after, .form:after, .form-content:after {
+.global-header:after, .global-footer:after, .content-main:after, .form:after, .form__content:after {
   clear: both;
 }
 
-.form__group, .form__group--error, .form__control, .form__control--search, .form__control--sort-code, .form__control--numericinput {
+.form__group, .form__group--error, .form__control, .form__control--textarea, .form__control--search, .form__control--xs, .form__control--xxs {
   -webkit-transition: background-color .2s linear;
           transition: background-color .2s linear;
 }
@@ -98,6 +98,12 @@ h1 {
   color: #c6ccea;
   max-width: 960px;
 }
+h1 small {
+  font-size: 65%;
+  font-weight: 300;
+  line-height: 1;
+  display: block;
+}
 
 h2 {
   font-family: Raleway;
@@ -106,6 +112,12 @@ h2 {
   font-weight: 300;
   margin: .5em 25px;
 }
+h2 small {
+  font-size: 65%;
+  font-weight: 300;
+  line-height: 1;
+  display: block;
+}
 
 h3 {
   font-family: Raleway;
@@ -113,6 +125,12 @@ h3 {
   line-height: 1.4;
   font-weight: 300;
   margin: 1em 0;
+}
+h3 small {
+  font-size: 65%;
+  font-weight: 300;
+  line-height: 1;
+  display: block;
 }
 
 p {
@@ -165,12 +183,12 @@ input[type='checkbox'] {
 }
 
 .button {
-  background-color: #5fcac6;
+  background: #5fcac6;
   border-color: #37a6a1;
   color: #ffffff;
 }
 .button:hover, .button:active, .button:focus {
-  background-color: #4cc4bf;
+  background: #4cc4bf;
 }
 @media only screen and (max-width: 479px) {
   .button {
@@ -179,12 +197,12 @@ input[type='checkbox'] {
 }
 
 .button--secondary {
-  background-color: #3399ff;
+  background: #3399ff;
   border-color: #0073e6;
   color: #ffffff;
 }
 .button--secondary:hover, .button--secondary:active, .button--secondary:focus {
-  background-color: #1a8cff;
+  background: #1a8cff;
 }
 @media only screen and (max-width: 479px) {
   .button--secondary {
@@ -193,12 +211,12 @@ input[type='checkbox'] {
 }
 
 .button--tertiary {
-  background-color: #74b533;
+  background: #74b533;
   border-color: #4e7922;
   color: #ffffff;
 }
 .button--tertiary:hover, .button--tertiary:active, .button--tertiary:focus {
-  background-color: #67a12d;
+  background: #67a12d;
 }
 @media only screen and (max-width: 479px) {
   .button--tertiary {
@@ -207,12 +225,12 @@ input[type='checkbox'] {
 }
 
 .button--muted {
-  background-color: #f0f3f3;
+  background: #f0f3f3;
   border-color: #c6d1d1;
   color: #444a62;
 }
 .button--muted:hover, .button--muted:active, .button--muted:focus {
-  background-color: #e2e8e8;
+  background: #e2e8e8;
 }
 @media only screen and (max-width: 479px) {
   .button--muted {
@@ -259,7 +277,7 @@ input[type='checkbox'] {
 }
 
 [class^='message'] + .form,
-p + .form-content,
+p + .form__content,
 [class^='message'] + [class^='message'],
 .form + [class^='message'] {
   margin-top: 25px;
@@ -283,8 +301,11 @@ p + .form-content,
 .form__group--error + .form__group, .form__group--error + .form__group--error {
   border-top-color: transparent;
 }
-.form__group--error .form__label {
+.form__group--error .form__question {
   font-weight: bold;
+}
+.form__group--error [class^='form__control'] {
+  color: #444a62;
 }
 
 li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
@@ -293,7 +314,7 @@ li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
   border-top: 0;
 }
 
-.form__label {
+.form__question {
   display: block;
   float: left;
   width: 45%;
@@ -335,7 +356,7 @@ li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
   font-weight: normal;
 }
 
-.form__control, .form__control--select, .form__control--select--min, .form__control--search, .form__control--sort-code, .form__control--numericinput {
+.form__control, .form__control--textarea, .form__control--select, .form__control--select--min, .form__control--search, .form__control--xs, .form__control--xxs {
   border-radius: 2px;
   border: 1px solid #c3c5cc;
   background: #ffffff;
@@ -352,7 +373,7 @@ li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
   min-height: 37px;
   vertical-align: top;
 }
-.form__control:focus, .form__control--select:focus, .form__control--select--min:focus, .form__control--search:focus, .form__control--sort-code:focus, .form__control--numericinput:focus {
+.form__control:focus, .form__control--textarea:focus, .form__control--select:focus, .form__control--select--min:focus, .form__control--search:focus, .form__control--xs:focus, .form__control--xxs:focus {
   background-color: #f0f3f3;
 }
 
@@ -375,6 +396,13 @@ li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
   color: #b7b7b7 !important;
 }
 
+.form__control--textarea {
+  font-size: inherit;
+  line-height: inherit;
+  width: 325px;
+  resize: vertical;
+}
+
 .form__control--select {
   min-width: 225px;
   max-width: 225px;
@@ -388,19 +416,20 @@ li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
 }
 
 .form__control--search {
+  width: 225px;
   background-image: url("../images/icon-search.png");
   background-repeat: no-repeat;
   background-position: .2em center;
   padding-left: 20px;
 }
 
-.form__control--sort-code {
-  width: 35px;
-  text-align: center;
+.form__control--xs {
+  width: 48px;
 }
 
-.form__control--numericinput {
-  width: 48px !important;
+.form__control--xxs {
+  width: 35px;
+  text-align: center;
 }
 
 .unit-prefix,
@@ -446,7 +475,7 @@ li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
   }
 }
 @media only screen and (max-width: 789px) {
-  .form__label {
+  .form__question {
     float: none;
     text-align: left;
     width: auto;
@@ -485,6 +514,7 @@ li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
     margin-right: 10px;
   }
 
+  .form__control--textarea,
   .form__control--select,
   .form__control--search,
   .form__control {
@@ -505,10 +535,6 @@ li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
   .has-prefix {
     width: 85% !important;
     margin-right: 0;
-  }
-
-  .form-content .ajax-float {
-    width: 100%;
   }
 
   .radio-group .help-link {
@@ -565,7 +591,7 @@ li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
 }
 .touch-control span {
   background-color: #f0f3f3;
-  border: 1px solid #c8c8dd;
+  border: 1px solid #c6d1d1;
   border-radius: 2px;
   padding: 9px 30px 10px;
   float: right;
@@ -714,7 +740,6 @@ div[class^='message'] {
   .help-bubble {
     max-width: 450px;
     padding: 0;
-    margin-left: -5px;
   }
 }
 
@@ -813,7 +838,7 @@ nav .button--muted {
   color: #ffffff;
 }
 .help-link:focus {
-  outline: 1px dotted #668002;
+  outline: 1px dotted #c3c5cc;
 }
 @media only screen and (max-width: 479px) {
   .help-link {

@@ -40,14 +40,16 @@
     background-color: rgba($colour, $opacity);
 }
 
+@mixin border-colour($colour) {
+    border-color: darken($colour, 15%);
+}
+
 @mixin respond-to($media) {
     @if $media == handhelds {
         @media only screen and (max-width: $break-small) { @content; }
-    }
-    @else if $media == medium-screens {
+    } @else if $media == medium-screens {
         @media only screen and (max-width: $break-medium) { @content; }
-    }
-    @else if $media == wide-screens {
+    } @else if $media == wide-screens {
         @media only screen and (max-width: $break-large) { @content; }
     }
 }

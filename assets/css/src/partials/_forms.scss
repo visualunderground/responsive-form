@@ -24,7 +24,7 @@
 
 // Radios and checkboxes
 .touch-control {
-    color: #444a62;
+    color: $text-colour;
     box-sizing: border-box;
     display: block;
     min-width: 105px;
@@ -49,8 +49,8 @@
     }
 
     span {
-        background-color: #f0f3f3;
-        border: 1px solid #c8c8dd;
+        background-color: $muted-colour;
+        border: 1px solid darken($muted-colour, 15%);
         border-radius: 2px;
 
         padding: 9px 30px 10px;
@@ -60,9 +60,9 @@
     }
 
     input:checked + span {  // IE 9+ :-?
-        background-color: #74b533;
-        border-color: #4e7922;
-        color: #ffffff;
+        background-color: $selected-colour;
+        border-color: darken($selected-colour, 15%);
+        color: $white;
 
         .form__hint {
             color: inherit;

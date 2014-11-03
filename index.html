@@ -5,12 +5,12 @@
 <!--[if IE 9 ]>    <html class="ie ie9 no-js" dir="ltr" lang="en-GB"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-ie no-js" dir="ltr" lang="en-GB"><!--<![endif]--><head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link media="all" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway:500,300" id="dm_shop_square_fonts-css" rel="stylesheet">
-	<link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" >
+	<!-- <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" > -->
 	<link rel='stylesheet' href='assets/css/app.css'>
 	<script src='assets/js/modernizr-dev.js' ></script>
 	<title>Responsive form</title>
@@ -31,7 +31,7 @@
 		return elements;
 	}
 	var helpID = "";
-	function showHelp(sTerm, sType){
+	function showHelp(sTerm){
 		if ($(sTerm + '-content')){	//	IF HELP HAS ALREADY BEEN CALLED - SHOW IT
 			if ($(sTerm + '-content').className == "help-bubble"){
 				clearhelp();	//	CLEAR OLD HELP ITEM
@@ -42,10 +42,10 @@
 				//	HELP POSITIONING
 				if(Modernizr.mq('only screen and (max-width: 789px)')) { // NO COLS
 					$(sTerm + '-content').style.top = $(helpID).parentNode.offsetHeight + 5 + "px";
-					$(sTerm + '-content').style.left = "0";
+					// $(sTerm + '-content').style.left = "0";
 				}else{
 					$(sTerm + '-content').style.top = "48px";
-					$(sTerm + '-content').style.left = "0";
+					// $(sTerm + '-content').style.left = "0";
 				}  // true
 				$(helpID + '-content').className = "help-bubble";
 			}
@@ -59,10 +59,10 @@
 			//	HELP POSITIONING		//if (helpPosition=='relative'){oDiv.style.left = $(helpID).offsetLeft + 40 + "px";}	//	REMOVE TO USE CSS ONLY (STATIC) POSITIONING
 			if(Modernizr.mq('only screen and (max-width: 789px)')) { // NO COLS
 				oDiv.style.top = $(helpID).parentNode.offsetHeight + 5 + "px";
-				oDiv.style.left = "0";
+				// oDiv.style.left = "0";
 			}else{
 				oDiv.style.top = "48px";
-				oDiv.style.left = "0";
+				// oDiv.style.left = "0";
 			}  
 			oDiv.innerHTML = "<div class='help-bubble__content'><h5 class='help-bubble__header'>Test</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. link Quisque sed fringilla ipsum.</p><ul><li>One</li><li>Two</li></ul><p>Suspendisse ut sem augue. Suspendisse sed magna a neque pretium aliquet. Sed justo dolor, bibendum vehicula imperdiet nec. </p><a href='javascript:clearhelp();' class='help-bubble__close-link' title='Close'>x</a></div>";
 			$(helpID).parentNode.insertBefore(oDiv, $(helpID).nextSibling);
@@ -80,7 +80,7 @@
 <body>
 	<form action="#" novalidate>
 	<header class="global-header">
-		<h1>Product type</h1>
+		<h1>Product type <small>Secondary text</small></h1>
 	</header>
 	<div class="content-main" role="main">
 		<h2>Page name</h2>
@@ -98,66 +98,63 @@
 		<fieldset class="form">
 			<legend class="form__title">Text entry</legend>
 			<p>Bacon ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pharetra pellentesque Justo quis sodales. Suspendisse dolor magna a fringilla augue. Ut feugiat turpis a faselli.</p>
-			<ul class="form-content">
+			<ul class="form__content">
 				<li class="form__group">
-					<label class="form__label">Input</label>
+					<label class="form__question">Input</label>
 					<div class="form__answer">
 						<input class="form__control" type="text" placeholder="[type='text']" >
 					</div>
 				</li>
 				<li class="form__group--error">
-					<label class="form__label">Input</label>
+					<label class="form__question">Input</label>
 					<div class="form__answer">
 						<input class="form__control" type="tel" placeholder="[type='tel']" >
 						<div class="error-message">Oops. there was an error</div>
 					</div>
 				</li>
 				<li class="form__group">
-					<label class="form__label">Input</label>
+					<label class="form__question">Input</label>
 					<div class="form__answer">
 						<input class="form__control" type="email" placeholder="[type='email']" >
 					</div>
 				</li>
 				<li class="form__group">
-					<label class="form__label">Input</label>
+					<label class="form__question">Input</label>
 					<div class="form__answer">
 						<input class="form__control" type="text" placeholder="[type='text']" >
 					</div>
 				</li>
 				<li class="form__group">
-					<label class="form__label">Input &amp; search</label>
+					<label class="form__question">Textarea</label>
+					<div class="form__answer">
+						<textarea class="form__control--textarea" rows="3" ></textarea>
+					</div>
+				</li>
+				<li class="form__group">
+					<label class="form__question">Input &amp; search</label>
 					<div class="form__answer">
 						<!--	!!!! NO WHITESPACE !!!!	-->
 						<input type="text" class="form__control postcode"><button class="button--secondary" title="Search" value="Search">Search</button><a href='#' class='help-link' id='help-6' onclick='return showHelp(this.id);'>?</a><i class="form__hint">Additional information</i>
 					</div>
 				</li>
 				<li class="form__group">
-					<label class="form__label">Delimited input</label>
+					<label class="form__question">Delimited input</label>
 					<div class="form__answer">
 						<!--	!!!! NO WHITESPACE !!!!	-->
-						<input type="tel" class="form__control--sort-code"><b class="form__control-delimiter">/</b><input type="tel" class="form__control--sort-code"><b class="form__control-delimiter">/</b><input type="tel" class="form__control--sort-code">
+						<input type="tel" class="form__control--xxs"><b class="form__control-delimiter">/</b><input type="tel" class="form__control--xxs"><b class="form__control-delimiter">/</b><input type="tel" class="form__control--xxs">
 						<a href='#' class='help-link' id='help-8' onclick='return showHelp(this.id);'>?</a>
 					</div>
 				</li>
-				<!--	NB apply a class of "search" to add affordance	-->
+				<!--	NB append "--search" to add affordance	-->
 				<li class="form__group">				
-					<label class="form__label" for="Proposer.id.1_FullTimeOccupation.occDesc">Search:Suggest input</label>				
+					<label class="form__question" for="Proposer.id.1_FullTimeOccupation.occDesc">Search:Suggest input</label>				
 					<div class="form__answer">
-						<input type="text" value="" class="form__control--search" onBlur="hideFloat();" onKeyDown="preventScroll(event)" onKeyUp="sOccupationG(event,'fullOcc');" autocomplete="off" id="Proposer.id.1_FullTimeOccupation.occDesc" name="Proposer.id.1_FullTimeOccupation.occDesc" ><a href='#' class='help-link' id='help-9' onclick='return showHelp(this.id);'>?</a>
+						<input type="text" class="form__control--search" autocomplete="off" ><a href='#' class='help-link' id='help-9' onclick='return showHelp(this.id);'>?</a>
 						<i class="form__hint">Additional information</i>
-						<div id="Proposer.id.1_FullTimeOccupation.occCodeFLOAT" class="ajax-float"></div>
-						<input type="hidden" value="" name="Proposer.id.1_FullTimeOccupation.occCode" id="Proposer.id.1_FullTimeOccupation.occCode">
-						<!-- PURELY  FOR PROTOTYPE PURPOSES	-->
-						<input type="hidden"  id="Proposer.id.1_FullTimeOccupation.empDesc" name="Proposer.id.1_FullTimeOccupation.empDesc" >
-						<div id="Proposer.id.1_FullTimeOccupation.empCodeFLOAT" style="display:none;"></div>
-						<div id="Proposer.id.1_PartTimeOccupation.empCodeFLOAT" style="display:none;"></div>
-						<div id="Proposer.id.1_PartTimeOccupation.occCodeFLOAT" style="display:none;"></div>
-						<input type="hidden" value="" name="Proposer.id.1_FullTimeOccupation.empCode" id="Proposer.id.1_FullTimeOccupation.empCode">
-						<!-- END	-->
 					</div>
 				</li>
 				<li class="form__group">
-					<label class="form__label">Textual value</label>
+					<label class="form__question">Textual value</label>
 					<div class="form__answer">
 						<span class="textual-value">Mr A N Proposer</span>
 						<a href='#' class='help-link' id='help-2' onclick='return showHelp(this.id);'>?</a>
@@ -167,15 +164,15 @@
 		</fieldset>
 		<fieldset class="form">
 			<legend class="form__title">Select menus</legend>
-			<ul class="form-content">
+			<ul class="form__content">
 				<li class="form__group">
-					<label class="form__label">Selection (std. width)<i class="form__hint">Matches text input width</i></label>
+					<label class="form__question">Selection (std. width)<i class="form__hint">Matches text input width</i></label>
 					<div class="form__answer">
 						<select class="form__control--select"><option selected="" value="">Mobile</option></select><a href='#' class='help-link' id='help-0' onclick='return showHelp(this.id);'>?</a>
 					</div>
 				</li>
 				<li class="form__group">
-					<label class="form__label">Selection (matches. width)<i class="form__hint">A <code>select</code> element with a class of <code>min</code> = data width.</i></label>
+					<label class="form__question">Selection (matches. width)<i class="form__hint">A <code>select</code> element with a class of <code>min</code> = data width.</i></label>
 					<div class="form__answer">
 						<select class="form__control--select--min"><option selected="" value="">Mobile</option></select><a href='#' class='help-link' id='help-1' onclick='return showHelp(this.id);'>?</a>
 					</div>
@@ -184,7 +181,7 @@
 		</fieldset>
 		<fieldset class="form">
 			<legend class="form__title">Integral units</legend>
-			<ul class="form-content">
+			<ul class="form__content">
 				<li class="message--info">
 					<p>
 						Use <code>has-prefix</code> and <code>has-suffix</code> classes on the <code>input</code> and <code>unit-prefix</code> and <code>unit-suffix</code> on the element containing the unit.
@@ -194,7 +191,7 @@
 					</p>
 				</li>
 				<li class="form__group">
-					<label class="form__label">Prefixed input <i class="form__hint">Additional information with <a href="#">link</a></i></label>
+					<label class="form__question">Prefixed input <i class="form__hint">Additional information with <a href="#">link</a></i></label>
 					<div class="form__answer">
 						<!--	!!!! NO WHITESPACE !!!!	-->
 						<b class="unit-prefix">&pound;</b><input type="text" class="form__control has-prefix">
@@ -202,7 +199,7 @@
 					</div>
 				</li>
 				<li class="form__group">
-					<label class="form__label">Suffixed input</label>
+					<label class="form__question">Suffixed input</label>
 					<div class="form__answer">
 						<!--	!!!! NO WHITESPACE !!!!	-->
 						<input type="text" class="form__control has-suffix"><b class="unit-suffix">mg</b>
@@ -213,9 +210,9 @@
 		</fieldset>
 		<fieldset class="form">
 			<legend class="form__title">Dates</legend>
-			<ul class="form-content">
+			<ul class="form__content">
 				<li class="form__group">
-					<label class="form__label">Date input</label>
+					<label class="form__question">Date input</label>
 					<div class="form__answer">
 						<!--	!!!! NO WHITESPACE !!!!	-->
 						<select class="form__control--select--min"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="form__control--select--min"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><select class="form__control--select--min"><option value="">Year</option><option value="1984">...</option><option value="1976">1976</option></select>
@@ -223,24 +220,24 @@
 					</div>
 				</li>
 				<li class="form__group">
-					<label class="form__label">Date input - long year</label>
+					<label class="form__question">Date input - long year</label>
 					<div class="form__answer">
 						<!--	!!!! NO WHITESPACE !!!!	-->
-						<select class="form__control--select--min"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="form__control--select--min"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><input type='tel' size='4' maxlength='4' placeholder='yyyy' class='form__control--numericinput'/>
+						<select class="form__control--select--min"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="form__control--select--min"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><input type='tel' size='4' maxlength='4' placeholder='yyyy' class='form__control--xs'/>
 					</div>
 				</li>
 			</ul>
 		</fieldset>
 		<fieldset class="form">
 			<legend class="form__title">Calls to action</legend>
-			<ul class="form-content">
+			<ul class="form__content">
 				<!--	NB you don't need a label in order to right align inputs	-->
 				<li class="form__group">
 					<div class="form__answer">
 						<button class="button" title="Primary" value="Primary">{.buton}</button>
 						<button class="button--secondary" title="Search trigger" value="Search trigger">{.buton--secondary}</button>
-						<button class="button--muted" title="Search trigger" value="Search trigger">{.buton--muted}</button>
 						<button class="button--tertiary" title="Search trigger" value="Search trigger">{.buton--tertiary}</button>
+						<button class="button--muted" title="Search trigger" value="Search trigger">{.buton--muted}</button>
 					</div>
 				</li>
 			</ul>
@@ -248,13 +245,13 @@
 
 		<fieldset class="form">
 			<legend class="form__title">Radio groups</legend>
-			<ul class="form-content">
+			<ul class="form__content">
 				<li class="form__group">
 					<fieldset>
-						<legend class="form__label">touch me</legend>
+						<legend class="form__question">touch me</legend>
 						<div class="form__answer">
 							<label for="alpha" class="touch-control">
-								<input id="alpha" name="new" type="radio"><span>Alpha<i class="form__hint">Lots more info</i></span>
+								<input id="alpha" name="new" type="radio"><span>Alpha<i class="form__hint">Additional info</i></span>
 							</label>
 							<label for="beta" class="touch-control">
 								<input id="beta" name="new" type="radio"><span>Beta</span>
@@ -264,7 +261,7 @@
 				</li>
 				<li class="form__group">
 					<fieldset>
-						<legend class="form__label">touch me <i class="form__hint">Select all that apply</i></legend>
+						<legend class="form__question">touch me <i class="form__hint">Select all that apply</i></legend>
 						<div class="form__answer">
 							<label for="alpha-c" class="touch-control">
 								<input id="alpha-c" name="new-c" type="checkbox"><span>Alpha</span>

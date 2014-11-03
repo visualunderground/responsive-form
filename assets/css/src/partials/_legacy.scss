@@ -5,7 +5,7 @@
 
 .global-header {
     @extend %clearfix;
-    background-color: #444a62;
+    background-color: $header-colour;
     margin-bottom: 37px;
 }
 
@@ -23,7 +23,7 @@
     }
     
     li {
-        color: #ffffff;
+        color: $white;
     }
 
 }
@@ -33,8 +33,8 @@
 // =====================================================================================================	*/
 .content-main {
     @extend %clearfix;
-    background-color: #ffffff;
-    border: 1px solid #c9d0e1;
+    background-color: $white;
+    border: 1px solid $pannel-border-colour;
     border-radius: 6px;
 }
 
@@ -48,12 +48,12 @@
     }
 }
 
-.form-content {
+.form__content {
     @extend %clearfix;
 }
 
 [class^='message'] + .form,
-p + .form-content,
+p + .form__content,
 [class^='message'] + [class^='message'],
 .form + [class^='message'] {
     margin-top: 25px;
@@ -66,7 +66,7 @@ p + .form-content,
     width: 100%;
     clear: both;
     padding: 5px;
-    border-top: 1px solid #eff1f8;
+    border-top: 1px solid $white-lilac;
 }
 
 // Errors
@@ -74,15 +74,19 @@ p + .form-content,
     @extend .form__group;
     background-color: $error-background-colour;
     border-top-color: transparent;
-    color: #ffffff;
+    color: $white;
     margin: 1px 0;
 
     + .form__group {
         border-top-color: transparent;
     }
 
-    .form__label {
+    .form__question {
         font-weight: bold;
+    }
+
+    [class^='form__control'] {
+        color: $text-colour;
     }
 }
 
@@ -91,7 +95,7 @@ li[class^='message'] + .form__group,
     border-top: 0;
 }
 
-.form__label {
+.form__question {
     display: block;
     float: left;
     width: 45%;
@@ -139,8 +143,8 @@ li[class^='message'] + .form__group,
 //*=====================================================================================================	*/
 %form__control {
     border-radius: 2px;
-    border: 1px solid #c3c5cc;
-    background: #ffffff;
+    border: 1px solid $border-colour;
+    background: $white;
     padding: 5px;
     margin-right: 15px;
     margin-top: 8px;
@@ -158,7 +162,7 @@ li[class^='message'] + .form__group,
     vertical-align: top;
 
     &:focus {
-        background-color: #f0f3f3;
+        background-color: $muted-colour;
     }
 }
 
@@ -174,6 +178,16 @@ li[class^='message'] + .form__group,
 }
 
 //  Modifiers: ---------------------------------- //
+
+.form__control--textarea {
+    @extend %form__control;
+    @extend %background-transition;
+    
+    font-size: inherit;
+    line-height: inherit;
+    width: 325px;
+    resize: vertical;
+}
 
 .form__control--select {
     @extend %form__control;
@@ -192,14 +206,22 @@ li[class^='message'] + .form__group,
 .form__control--search {
     @extend %form__control;
     @extend %background-transition;
-
+    
+    width: 225px;
     background-image: url('../images/icon-search.png');
     background-repeat: no-repeat;
     background-position: .2em center;
     padding-left: 20px;
 }
 
-.form__control--sort-code {
+.form__control--xs {
+    @extend %form__control;
+    @extend %background-transition;
+
+    width: 48px;
+}
+
+.form__control--xxs {
     @extend %form__control;
     @extend %background-transition;
 
@@ -207,20 +229,12 @@ li[class^='message'] + .form__group,
     text-align: center;
 }
 
-.form__control--numericinput {
-    @extend %form__control;
-    @extend %background-transition;
-
-    width: 48px !important;
-}
-
-
 .unit-prefix,
 .unit-suffix {
     margin: 0;
     margin-top: 8px;
-    background-color: #f0f3f3;
-    border: 1px solid #c3c5cc;
+    background-color: $muted-colour;
+    border: 1px solid $border-colour;
     width: 40px;
     // display: inline-block;
     padding: 4px 5px 5px;
@@ -263,7 +277,7 @@ li[class^='message'] + .form__group,
 }
 
 @include respond-to(medium-screens) {
-    .form__label {
+    .form__question {
         float: none;
         text-align: left;
         width: auto;
@@ -305,6 +319,7 @@ li[class^='message'] + .form__group,
     // ----------------------------------------
     // Inputs
     // ----------------------------------------
+    .form__control--textarea,
     .form__control--select,
     .form__control--search,
     .form__control {
@@ -325,10 +340,6 @@ li[class^='message'] + .form__group,
     .has-prefix {
         width: 85% !important;
         margin-right: 0;
-    }
-
-    .form-content .ajax-float {
-        width: 100%;
     }
 
     // ===================================================================================================== */

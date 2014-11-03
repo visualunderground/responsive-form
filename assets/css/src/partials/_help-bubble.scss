@@ -1,5 +1,5 @@
 .help-bubble {
-    color: #ffffff;
+    color: $white;
     font-size: 14px;
     line-height: 23px;
     width: 100%;
@@ -16,7 +16,6 @@
     @include respond-to(medium-screens) { 
         max-width: 450px;
         padding: 0;
-        margin-left: -5px;
     }
 
 }
@@ -55,6 +54,6 @@
     right: 20px;
 
     &:hover {
-        color: #ffffff;
+        color: $white;
     }
 }

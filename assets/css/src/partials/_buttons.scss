@@ -1,17 +1,19 @@
 @mixin button-colour($colour) {
-    background-color: $colour;
+    background: $colour;
+    //background: linear-gradient(to top, $colour, darken($colour, 2%));
+
     border-color: darken($colour, 15%);
-    
+
     @if lightness($colour) > 75% {
         color: $text-colour;
     }@else {
-        color: #ffffff;
+        color: $white;
     }
 
     &:hover,
     &:active,
     &:focus {
-        background-color: darken($colour, 5%);
+        background: darken($colour, 5%);
     }
 
     @include respond-to(handhelds) {
@@ -46,22 +48,22 @@
 
 .button {
     @extend %button;
-    @include button-colour(#5fcac6);
+    @include button-colour($primary-colour);
 }
 
 .button--secondary {
     @extend %button;
-    @include button-colour(#3399ff);
+    @include button-colour($secondary-colour);
 }
 
 .button--tertiary {
     @extend %button;
-    @include button-colour(#74b533);
+    @include button-colour($selected-colour);
     
 }
 
 .button--muted {
     @extend %button;
-    @include button-colour(#f0f3f3);
+    @include button-colour($muted-colour);
 }
 

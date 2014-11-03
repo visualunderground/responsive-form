@@ -55,7 +55,7 @@ div[class^='message'] {
 .message--master {
     @include message(6px);
 
-    border: 1px solid #e6e8ee;
+    border: 1px solid $athens-gray;
     padding: 10px 0;
 }
 
@@ -64,7 +64,7 @@ div[class^='message'] {
 
     background-color: $error-background-colour;
     border-color: $error-background-colour;
-    color: #ffffff;
+    color: $white;
     font-weight: bold;
 
     &-up {
@@ -87,9 +87,9 @@ div[class^='message'] {
 .message--info {
     @include message;
 
-    background-color: #3399ff;
-    border-color: #3399ff;
-    color: #ffffff;
+    background-color: $info-colour;
+    border-color: $info-colour;
+    color: $white;
     font-weight: bold;
 
     &-up {
