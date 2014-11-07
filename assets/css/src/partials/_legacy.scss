@@ -65,7 +65,7 @@ p + .form__content,
     float: left;
     width: 100%;
     clear: both;
-    padding: 5px;
+    padding: 10px;
     border-top: 1px solid $white-lilac;
 }
 
@@ -100,7 +100,8 @@ li[class^='message'] + .form__group,
     float: left;
     width: 45%;
     text-align: right;
-    padding: 13px 10px 8px;
+    padding: 5px 10px;
+    margin-top: 5px;
 }
 
 .form__answer {
@@ -116,8 +117,8 @@ li[class^='message'] + .form__group,
     .textual-value,
     [class^='button'],
     [class^='form__control'] {
-        margin-top: 8px;
-        margin-bottom: 6px;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 }
 
@@ -126,7 +127,6 @@ li[class^='message'] + .form__group,
     display: block;
     clear: both;
     font-size: 13px;
-    line-height: 21px;
     font-style: normal;
     font-weight: normal;
     color: $secondary-text-colour;
