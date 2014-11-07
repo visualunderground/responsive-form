@@ -110,6 +110,8 @@ li[class^='message'] + .form__group,
     position: relative;
     padding: 0 55px 0 10px;
     
+    .unit-prefix,
+    .unit-suffix,
     .touch-control,
     .textual-value,
     [class^='button'],

@@ -326,6 +326,8 @@ li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
   position: relative;
   padding: 0 55px 0 10px;
 }
+.form__answer .unit-prefix,
+.form__answer .unit-suffix,
 .form__answer .touch-control,
 .form__answer .textual-value,
 .form__answer [class^='button'],
