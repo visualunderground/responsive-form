@@ -171,7 +171,6 @@ input[type='checkbox'] {
   line-height: 1;
   margin-bottom: 6px;
   margin-right: 15px;
-  margin-top: 8px;
   min-height: 37px;
   padding: 5px;
   cursor: pointer;
@@ -329,6 +328,12 @@ li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
   position: relative;
   padding: 0 55px 0 10px;
 }
+.form__answer .touch-control,
+.form__answer .textual-value,
+.form__answer [class^='button'],
+.form__answer [class^='form__control'] {
+  margin-top: 8px;
+}
 
 .form__hint {
   display: block;
@@ -362,7 +367,6 @@ li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
   background: #ffffff;
   padding: 5px;
   margin-right: 15px;
-  margin-top: 8px;
   margin-bottom: 6px;
   color: inherit;
   font-size: inherit;
@@ -560,7 +564,7 @@ li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
 
 .textual-value {
   padding: 5px 0;
-  margin: 8px 10px 0 0;
+  margin-right: 0;
   display: inline-block;
 }
 
@@ -573,7 +577,7 @@ li[class^='message'] + .form__group, li[class^='message'] + .form__group--error,
   line-height: 1;
   float: left;
   position: relative;
-  margin: 8px 15px 6px 0;
+  margin: 0 15px 6px 0;
   cursor: pointer;
 }
 @media only screen and (max-width: 479px) {
