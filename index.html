@@ -82,6 +82,31 @@
 	<header class="global-header">
 		<h1>Product type <small>Secondary text</small></h1>
 	</header>
+
+
+<section class="sub-nav">
+    <div class="sub-nav__content">
+        <div class="sub-nav__actions">
+            <a href="#" class=""><span class="button">Primary action</span></a>
+        </div>
+        <a href="#" class="sub-nav__prompt-link">Browse</a>
+        <ul class="sub-nav__destinations">
+            <li class="sub-nav__item">
+                <a class="sub-nav__item-link" href="#">Section 1</a>
+            </li>
+            <li class="sub-nav__item">
+                <a class="sub-nav__item-link" href="#">Section 1</a>
+            </li>
+            <li class="sub-nav__item">
+                <a class="sub-nav__item-link" href="#">Section 1</a>
+            </li>
+            <li class="sub-nav__item">
+                <a class="sub-nav__item-link" href="#">Section 1</a>
+            </li>
+        </ul>
+    </div>
+</section>
+
 	<div class="content-main" role="main">
 		<h2>Page name</h2>
 		<div class="message--master">
@@ -303,5 +328,20 @@
 		</ol>
 	</footer>
 	</form>
+<script type="text/javascript">
+	window.onscroll = scroll;
+
+	function scroll () {
+		var nav_el = document.querySelectorAll(".global-header")[0];
+
+		if (nav_el.getBoundingClientRect) {
+			if (nav_el.getBoundingClientRect().bottom <=0) {
+				document.getElementsByTagName('body')[0].className = 'fixed-nav';
+			}else{
+				document.getElementsByTagName('body')[0].className = '';
+			}
+		}
+	}
+</script>
 </body>
 </html>

@@ -1,0 +1,56 @@
+.sub-nav {
+    width: 100%;
+    background-color: #fafafa;
+    
+
+    &__content {
+        position: relative;
+        width: 960px;
+        margin: 0 auto;
+    }
+
+    &__actions {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 60px;
+
+        a {
+            line-height: 60px;
+            text-decoration: none;
+        }
+    }
+
+    &__prompt-link {
+        display: none;
+    }
+
+    &__destinations {
+        overflow: hidden;
+    }
+
+    &__item {
+        display: block;
+        float: left;
+        margin-right: 15px;
+        
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &__item-link {
+        text-decoration: none;
+        text-transform: uppercase;
+        line-height: 60px;
+        letter-spacing: 1px;
+        font-size: 14px;
+    }
+
+    .fixed-nav & {
+        position: fixed;
+        top: 0;
+        z-index: 999;
+        opacity: .9;
+    }
+}
