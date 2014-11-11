@@ -84,28 +84,28 @@
 	</header>
 
 
-<section class="sub-nav">
-    <div class="sub-nav__content">
-        <div class="sub-nav__actions">
-            <a href="#" class=""><span class="button">Primary action</span></a>
-        </div>
-        <a href="#" class="sub-nav__prompt-link">Browse</a>
-        <ul class="sub-nav__destinations">
-            <li class="sub-nav__item">
-                <a class="sub-nav__item-link" href="#">Section 1</a>
-            </li>
-            <li class="sub-nav__item">
-                <a class="sub-nav__item-link" href="#">Section 1</a>
-            </li>
-            <li class="sub-nav__item">
-                <a class="sub-nav__item-link" href="#">Section 1</a>
-            </li>
-            <li class="sub-nav__item">
-                <a class="sub-nav__item-link" href="#">Section 1</a>
-            </li>
-        </ul>
-    </div>
-</section>
+	<section class="sub-nav">
+	    <div class="sub-nav__content">
+	        <div class="sub-nav__actions">
+	            <a href="#" class=""><span class="button">Primary action</span></a>
+	        </div>
+	        <a href="#" class="sub-nav__prompt-link">Browse</a>
+	        <ul class="sub-nav__destinations">
+	            <li class="sub-nav__item">
+	                <a class="sub-nav__item-link" href="#">Section 1</a>
+	            </li>
+	            <li class="sub-nav__item">
+	                <a class="sub-nav__item-link" href="#">Section 1</a>
+	            </li>
+	            <li class="sub-nav__item">
+	                <a class="sub-nav__item-link" href="#">Section 1</a>
+	            </li>
+	            <li class="sub-nav__item">
+	                <a class="sub-nav__item-link" href="#">Section 1</a>
+	            </li>
+	        </ul>
+	    </div>
+	</section>
 
 	<div class="content-main" role="main">
 		<h2>Page name</h2>
@@ -329,41 +329,65 @@
 	</footer>
 	</form>
 <script type="text/javascript">
+var app = app || {};
 
-	(function() {
+app.utils = (function Utils(){
+	'use strict';
 
-		var StickyNav = {
+	var addClass = function(el, cssClass){
+	    if( el.className.indexOf( cssClass ) != -1 ) {
+	    	return;
+	    }
+	    el.className += ' ' + cssClass;
+    }
 
-			init: function() {
-				this.waypointEl = document.querySelector(".global-header"); // querySelectorAll >= IE8
-				this.triggerClass = 'sticky-nav';
-				this.bindEvents();
-			},
+    var removeClass = function(el, cssClass){
+    	var cn = el.className;
+	    var rxp = new RegExp( "\\s?\\b"+cssClass+"\\b", "g" );
+	    cn = cn.replace( rxp, '' );
+	    el.className = cn;
+    }
 
-			bindEvents: function() {
+    return {
+    	addClass: addClass,
+    	removeClass: removeClass
+    };
 
-				if (window.addEventListener) {
-					window.addEventListener("scroll", this.checkPosition.bind(this)); // .bind >= IE9
-				} else if (window.attachEvent) {             
-					// object.attachEvent <= IE8
-					window.attachEvent("onscroll", this.checkPosition.bind(this));
-				}
+})();
 
-			},
+app.Sticky = (function() {
+    'use strict';
 
-			checkPosition: function() {
-				if (this.waypointEl.getBoundingClientRect().bottom <=0) {
-					document.documentElement.className = this.triggerClass;
-				}else{
-					document.documentElement.className = '';
-				}
-			}
+	var Sticky = function Sticky(trigger, cssClass) {
+		this.waypoint = trigger;
+		this.triggerClass = cssClass;
+		this.classHolder = document.documentElement;
+		this.BindEvents();
+    };
 
-		};
+    Sticky.prototype.BindEvents = function() {
+    	var self = this;
+		if (window.addEventListener) {
+			window.addEventListener("scroll", function() { self.CheckPosition(); });
+		} else if (window.attachEvent) {             
+			// object.attachEvent <= IE8
+			window.attachEvent("onscroll", function() { self.CheckPosition(); });
+		}
+    }
 
-		StickyNav.init();
+    Sticky.prototype.CheckPosition = function(){
+    	if (this.waypoint.getBoundingClientRect().bottom <=0) {
+			app.utils.addClass(this.classHolder, this.triggerClass);
+		}else{
+			app.utils.removeClass(this.classHolder, this.triggerClass);
+		}
+    }
+    
+    return Sticky;
+})();
 
-	})();
+var stickyNav = new app.Sticky(document.querySelector(".global-header"), 'sticky-nav');
+var stickyMessage = new app.Sticky(document.querySelector(".message--master"), 'sticky-message');
 
 </script>
 </body>
