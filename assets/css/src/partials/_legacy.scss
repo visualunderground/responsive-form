@@ -6,13 +6,13 @@
 .global-header {
     @extend %clearfix;
     background-color: $header-colour;
-    margin-bottom: 37px;
+    margin-bottom: 90px;
 }
 
 .global-footer {
     @extend %clearfix;
     background-color: $footer-colour;
-    margin-top: 37px;
+    margin-top: 30px;
 
 
     ol {
