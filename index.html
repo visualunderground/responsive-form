@@ -329,19 +329,44 @@
 	</footer>
 	</form>
 <script type="text/javascript">
-	window.onscroll = scroll;
 
-	function scroll () {
-		var nav_el = document.querySelectorAll(".global-header")[0];
+	(function() {
 
-		if (nav_el.getBoundingClientRect) {
-			if (nav_el.getBoundingClientRect().bottom <=0) {
-				document.getElementsByTagName('body')[0].className = 'fixed-nav';
-			}else{
-				document.getElementsByTagName('body')[0].className = '';
+		var StickyNav = {
+
+			init: function() {
+				this.waypointEl = document.querySelector(".global-header"); // querySelectorAll >= IE8
+				this.triggerClass = 'sticky-nav';
+				this.bindEvents();
+			},
+
+			bindEvents: function() {
+
+				if (window.addEventListener) {
+					window.addEventListener("scroll", this.checkPosition); // .bind >= IE9
+				} else if (window.attachEvent) {             
+					// object.attachEvent <= IE8
+					window.attachEvent("onscroll", this.checkPosition);
+				}
+
+			},
+
+			checkPosition: function() {
+				var self = this;
+				console.log(self);
+				if (self.waypointEl.getBoundingClientRect().bottom <=0) {
+					document.documentElement.className = self.triggerClass;
+				}else{
+					document.documentElement.className = '';
+				}
 			}
+
 		}
-	}
+
+		StickyNav.init();
+
+	})();
+
 </script>
 </body>
 </html>
