@@ -343,25 +343,23 @@
 			bindEvents: function() {
 
 				if (window.addEventListener) {
-					window.addEventListener("scroll", this.checkPosition); // .bind >= IE9
+					window.addEventListener("scroll", this.checkPosition.bind(this)); // .bind >= IE9
 				} else if (window.attachEvent) {             
 					// object.attachEvent <= IE8
-					window.attachEvent("onscroll", this.checkPosition);
+					window.attachEvent("onscroll", this.checkPosition.bind(this));
 				}
 
 			},
 
 			checkPosition: function() {
-				var self = this;
-				console.log(self);
-				if (self.waypointEl.getBoundingClientRect().bottom <=0) {
-					document.documentElement.className = self.triggerClass;
+				if (this.waypointEl.getBoundingClientRect().bottom <=0) {
+					document.documentElement.className = this.triggerClass;
 				}else{
 					document.documentElement.className = '';
 				}
 			}
 
-		}
+		};
 
 		StickyNav.init();
 
