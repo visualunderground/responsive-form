@@ -196,6 +196,7 @@ li[class^='message'] + .form__group,
     line-height: inherit;
     width: 325px;
     resize: vertical;
+    -webkit-appearance: none;
 }
 
 .form__control--select {
