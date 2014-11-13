@@ -13,6 +13,12 @@
         position: relative;
         width: 960px;
         margin: 0 auto;
+
+        @include respond-to(wide-screens) { 
+            width: auto;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
     }
 
     &__actions {
@@ -29,10 +35,24 @@
 
     &__prompt-link {
         display: none;
+
+        @include respond-to(medium-screens) { 
+            display: inline;
+            text-decoration: none;
+            text-transform: uppercase;
+            line-height: 60px;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
     }
 
     &__destinations {
         overflow: hidden;
+        
+        @include respond-to(medium-screens) { 
+            display: none;
+        }
+
     }
 
     &__item {
@@ -59,4 +79,8 @@
         z-index: 999;
         opacity: .9;
     }
+
+    // @include respond-to(medium-screens) { 
+        
+    // }
 }
