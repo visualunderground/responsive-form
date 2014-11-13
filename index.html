@@ -400,6 +400,23 @@ app.Password = (function() {
 		this.BindEvents();
     };
 
+	var canSetInputAttribute = (function(){
+		var body = document.body
+			, input = document.createElement('input')
+			, result = true;
+		if (! body) {
+			body = document.createElement('body');
+		}
+		input = body.appendChild(input);
+		try {
+			input.setAttribute('type', 'text');
+		} catch (e) {
+			result = false;
+		}
+			body.removeChild(input);
+		return result;
+	}());
+
     Password.prototype.BindEvents = function() {
     	var self = this;
 		if (window.addEventListener) {
