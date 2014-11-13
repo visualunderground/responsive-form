@@ -9,7 +9,7 @@
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link media="all" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway:500,300" id="dm_shop_square_fonts-css" rel="stylesheet">
+	<!-- <link media="all" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway:500,300" id="dm_shop_square_fonts-css" rel="stylesheet"> -->
 	<!-- <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" > -->
 	<link rel='stylesheet' href='assets/css/app.css'>
 	<script src='assets/js/modernizr-dev.js' ></script>
@@ -150,6 +150,12 @@
 					<label class="form__question">Input</label>
 					<div class="form__answer">
 						<input class="form__control" type="email" placeholder="[type='email']" >
+					</div>
+				</li>
+				<li class="form__group">
+					<label class="form__question">Input</label>
+					<div class="form__answer">
+						<input class="form__control" type="password" id="password" placeholder="[type='password']" >
 					</div>
 				</li>
 				<li class="form__group">
@@ -386,8 +392,41 @@ app.Sticky = (function() {
     return Sticky;
 })();
 
+app.Password = (function() {
+    'use strict';
+
+	var Password = function Password(trigger) {
+		this.passwordEl = trigger;
+		this.BindEvents();
+    };
+
+    Password.prototype.BindEvents = function() {
+    	var self = this;
+		if (window.addEventListener) {
+			this.passwordEl.addEventListener("focus", function() { self.ShowPassword(); });
+			this.passwordEl.addEventListener("blur", function() { self.HidePassword(); });
+		} else if (window.attachEvent) {             
+			// object.attachEvent <= IE8
+			this.passwordEl.attachEvent("onfocus", function() { self.ShowPassword(); });
+			this.passwordEl.attachEvent("onblur", function() { self.HidePassword(); });
+		}
+    }
+
+  	Password.prototype.ShowPassword = function(){
+		this.passwordEl.type = 'text';
+    }
+
+    Password.prototype.HidePassword = function(){
+		this.passwordEl.type = 'password';
+    }
+    
+    return Password;
+})();
+
 var stickyNav = new app.Sticky(document.querySelector(".global-header"), 'sticky-nav');
 var stickyMessage = new app.Sticky(document.querySelector(".message--master"), 'sticky-message');
+var usablePassword = new app.Password(document.querySelector("#password"));
+
 
 </script>
 </body>
