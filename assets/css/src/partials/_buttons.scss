@@ -2,7 +2,10 @@
     background: $colour;
     //background: linear-gradient(to top, $colour, darken($colour, 2%));
 
-    border-color: darken($colour, 15%);
+    // border-width: 1px;
+    // border-style: solid;
+    // border-radius: 2px;
+    // border-color: darken($colour, 15%);
 
     @if lightness($colour) > 75% {
         color: $text-colour;
@@ -22,16 +25,12 @@
 }
 
 %button {
-
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 2px;
     box-sizing: border-box;
     font-family: inherit;
     font-size: inherit;
     line-height: 1;
     margin-right: 15px;
-    min-height: 37px;
+    min-height: 39px;
     // =  line-height + border + padding
     padding: 5px;
 
