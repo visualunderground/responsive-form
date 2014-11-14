@@ -6,6 +6,7 @@
     // border-style: solid;
     // border-radius: 2px;
     // border-color: darken($colour, 15%);
+    border: 0;
 
     @if lightness($colour) > 75% {
         color: $text-colour;
