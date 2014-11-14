@@ -75,9 +75,18 @@
 
     .sticky-nav & {
         position: fixed;
-        top: 0;
         z-index: 999;
         opacity: .9;
+    }
+
+    .sticky-nav.no-touch & {
+        top: 0;
+    }
+
+    .sticky-nav.touch & {
+        top: inherit;
+        bottom: 0;
+        margin-bottom: 0;
     }
 
     // @include respond-to(medium-screens) { 
