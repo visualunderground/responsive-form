@@ -196,7 +196,6 @@ li[class^='message'] + .form__group,
     line-height: inherit;
     width: 325px;
     resize: vertical;
-    -webkit-appearance: none;
 }
 
 .form__control--select {
@@ -204,6 +203,16 @@ li[class^='message'] + .form__group,
     min-width: 225px;
     max-width: 225px;
     padding-top: 6px;
+
+    background-image: url('https://divoqsdr0fzyc.cloudfront.net/assets/drop.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 30px;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    //-moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
 }
 
 .form__control--select--min {
@@ -211,6 +220,26 @@ li[class^='message'] + .form__group,
     max-width: 225px;
     min-width: 0;
     padding-top: 6px;
+
+    background-image: url('https://divoqsdr0fzyc.cloudfront.net/assets/drop.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 30px;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    //-moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+}
+
+// DAMN YOU FIREFOX! 
+// & your broken -moz-appearance: none;
+@-moz-document url-prefix() { 
+    .form__control--select,
+    .form__control--select--min {
+        padding-right: 6px;
+        background-image: none;
+    }
 }
 
 .form__control--search {
