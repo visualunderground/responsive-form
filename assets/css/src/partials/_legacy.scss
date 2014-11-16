@@ -157,7 +157,6 @@ li[class^='message'] + .form__group,
     background: $white;
     padding: 5px;
     margin-right: 15px;
-    //margin-top: 8px;
     color: inherit;
     font-size: inherit;
     font-family: inherit;
@@ -169,6 +168,11 @@ li[class^='message'] + .form__group,
     // =  line-height + border + padding
     //	IE: LAYOUT BUG
     vertical-align: top;
+
+    // IE8 min-height bug (-padding & border)
+    .ie8 & {
+        min-height: 25px;
+    }
 
     &:focus {
         background-color: $muted-colour;
