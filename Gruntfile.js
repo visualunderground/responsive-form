@@ -8,15 +8,15 @@ module.exports = function(grunt) {
                 browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'ie 8', 'ie 9']
             },
             single_file: {
-                src: 'assets/css/app.css',
-                dest: 'assets/css/app.css'
+                src: 'dist/assets/css/app.css',
+                dest: 'dist/assets/css/app.css'
             },
             diff: {
                 options: {
                     diff: true
                 },
-                src: 'assets/css/app.css',
-                dest: 'assets/css/file.css'
+                src: 'dist/assets/css/app.css',
+                dest: 'dist/assets/css/file.css'
             },
         },
 
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
                     sourcemap: 'none'
                 },
                 files: {
-                    'assets/css/app.css': 'assets/css/src/app.scss'
+                    'dist/assets/css/app.css': 'app/scss/app.scss'
                 }
             },
             dist: {
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
                     sourcemap: 'none'
                 },
                 files: {
-                    'assets/css/app.css': 'assets/css/src/app.scss'
+                    'dist/assets/css/app.css': 'app/scss/app.scss'
                 }
             }
         },
