@@ -43,29 +43,53 @@ abbr {
 }
 
 h1 {
-    font-family: Raleway;
+    font-family: Raleway, Arial, Helvetica, sans-serif;
     font-size: 42px;
     line-height: 1.4;
     font-weight: 500;
     margin: 15px auto;
     color: $header-text-colour;
     max-width: 960px;
+
+    small {
+        font-size: 65%;
+        font-weight: 300;
+        line-height: 1;
+        //color: lighten($header-text-colour, 10%);
+        display: block;
+    }
 }
 
 h2 {
-    font-family: Raleway;
+    font-family: Raleway, Arial, Helvetica, sans-serif;
     font-size: 42px;
     line-height: 1.4;
     font-weight: 300;
     margin: .5em 25px;
+
+    small {
+        font-size: 65%;
+        font-weight: 300;
+        line-height: 1;
+        //color: lighten($text-colour, 10%);
+        display: block;
+    }
 }
 
 h3 {
-    font-family: Raleway;
+    font-family: Raleway, Arial, Helvetica, sans-serif;
     font-size: 26px;
     line-height: 1.4;
     font-weight: 300;
     margin: 1em 0;
+
+    small {
+        font-size: 65%;
+        font-weight: 300;
+        line-height: 1;
+        //color: lighten($text-colour, 10%);
+        display: block;
+    }
 }
 
 p {
@@ -96,3 +120,9 @@ input[type='checkbox'] {
     cursor: pointer;
     padding: 0;
 }
+
+textarea,
+input[type='tel'] {
+    -webkit-appearance: none;
+}
+

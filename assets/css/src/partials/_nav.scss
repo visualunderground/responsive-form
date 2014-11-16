@@ -8,12 +8,12 @@ nav {
         margin: 0;
     }
 
-    .button-primary {
+    .button {
         float: right;
         width: 200px;
     }
 
-    .button-not-selected {
+    .button--muted {
         float: left;
         width: 125px;
     }
@@ -24,18 +24,18 @@ nav {
         position: relative;
         padding: 0 10px;
 
-        .button-primary {
+        .button {
             float: none;
             width: 100%;
             display: block;
         }
 
-        .button-not-selected {
+        .button--muted {
             position: absolute;
             top: 80px;
         }
 
-        .button-not-selected + .button-primary {
+        .button--muted + .button {
             margin-bottom: 80px;
         }
     }

@@ -1,18 +1,18 @@
-#quote {
+.content-main {
     width: 960px;
     margin: 0 auto;
 }
 
 .global-header {
     @extend %clearfix;
-    background-color: #444a62;
-    margin-bottom: 37px;
+    background-color: $header-colour;
+    margin-bottom: 90px;
 }
 
 .global-footer {
     @extend %clearfix;
     background-color: $footer-colour;
-    margin-top: 37px;
+    margin-top: 30px;
 
 
     ol {
@@ -23,87 +23,118 @@
     }
     
     li {
-        color: #ffffff;
+        color: $white;
     }
 
 }
 
 // =====================================================================================================	*/
-//	form-panel	*/
+//	form	*/
 // =====================================================================================================	*/
-#quote {
+.content-main {
     @extend %clearfix;
-    background-color: #ffffff;
-    border: 1px solid #c9d0e1;
+    background-color: $white;
+    border: 1px solid $pannel-border-colour;
     border-radius: 6px;
 }
 
-.form-panel {
+.form {
     @extend %clearfix;
     padding: 0 25px;
+
+    p {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
-.form-panel-content {
+.form__content {
     @extend %clearfix;
 }
 
-[class^='message'] + .form-panel,
-p + .form-panel-content,
+[class^='message'] + .form,
+p + .form__content,
 [class^='message'] + [class^='message'],
-.form-panel + [class^='message'] {
+.form + [class^='message'] {
     margin-top: 25px;
 }
 
-.form-group {
+.form__group {
     @extend %background-transition;
     display: block;
     float: left;
     width: 100%;
     clear: both;
-    padding: 5px;
-    border-top: 1px solid #eff1f8;
+    padding: 10px;
+    border-top: 1px solid $white-lilac;
 }
 
-li[class^='message'] + .form-group,
-.form-group:first-child {
+// Errors
+.form__group--error {
+    @extend .form__group;
+    background-color: $error-background-colour;
+    border-top-color: transparent;
+    color: $white;
+    margin: 1px 0;
+
+    + .form__group {
+        border-top-color: transparent;
+    }
+
+    .form__question {
+        font-weight: bold;
+    }
+
+    [class^='form__control'] {
+        color: $text-colour;
+    }
+}
+
+li[class^='message'] + .form__group,
+.form__group:first-child {
     border-top: 0;
 }
 
-.form-panel p {
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.form-label {
+.form__question {
     display: block;
     float: left;
     width: 45%;
     text-align: right;
-    padding: 13px 10px 8px;
+    padding: 5px 10px;
+    margin-top: 5px;
 }
 
-.form-answer {
+.form__answer {
     display: block;
     float: right;
     width: 55%;
     position: relative;
     padding: 0 55px 0 10px;
+    
+    .unit-prefix,
+    .unit-suffix,
+    .touch-control,
+    .textual-value,
+    [class^='button'],
+    [class^='form__control'] {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
 }
 
-.form-hint {
+.form__hint {
     //	SUB TEXT
     display: block;
     clear: both;
     font-size: 13px;
-    line-height: 21px;
     font-style: normal;
     font-weight: normal;
     color: $secondary-text-colour;
 }
 
-.form-control-delimiter {
+.form__control-delimiter {
     display: inline-block;
-    padding-top: 13px;
+    padding-top: 5px;
     margin-right: 10px;
     margin-left: -5px;
     font-weight: normal;
@@ -118,36 +149,14 @@ li[class^='message'] + .form-group,
 }
 
 //=====================================================================================================	*/
-//	ERRORS	*/
-//=====================================================================================================	*/
-.form-group.has-error {
-    //	ROW ERROR	*/
-    background-color: $error-background-colour;
-    border-top: 1px solid transparent;
-    color: #ffffff;
-    margin: 1px 0;
-
-    + .form-group {
-        border-top: 1px solid transparent;
-    }
-
-    .form-label {
-        font-weight: bold;
-    }
-}
-//=====================================================================================================	*/
 //	INPUTS	*/
 //*=====================================================================================================	*/
-.form-control, 
-button, 
-.button {
+%form__control {
     border-radius: 2px;
-    border: 1px solid #c3c5cc;
-    background: #ffffff;
+    border: 1px solid $border-colour;
+    background: $white;
     padding: 5px;
     margin-right: 15px;
-    margin-top: 8px;
-    margin-bottom: 6px;
     color: inherit;
     font-size: inherit;
     font-family: inherit;
@@ -159,41 +168,129 @@ button,
     // =  line-height + border + padding
     //	IE: LAYOUT BUG
     vertical-align: top;
+
+    // IE8 min-height bug (-padding & border)
+    .ie8 & {
+        min-height: 25px;
+    }
+
+    &:focus {
+        background-color: $muted-colour;
+    }
 }
 
-.form-control:focus {
-    background-color: #f0f3f3;
-}
-
-input.form-control {
+.form__control {
+    @extend %form__control;
     @extend %background-transition;
+
     width: 225px;
-    // REMOVE IOS INNER SHADOW */
+    // REMOVE IOS INNER SHADOW
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsla(0, 0%, 100%, 0)), to(hsla(0, 0%, 100%, 0)));
     background-image: -webkit-linear-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0));
     @include placeholder;
 }
 
-select.form-control {
+//  Modifiers: ---------------------------------- //
+
+.form__control--textarea {
+    @extend %form__control;
+    @extend %background-transition;
+    
+    font-size: inherit;
+    line-height: inherit;
+    width: 325px;
+    resize: vertical;
+}
+
+.form__control--select {
+    @extend %form__control;
     min-width: 225px;
     max-width: 225px;
     padding-top: 6px;
-    // 1px more than input*/
-    &.min {
-        min-width: 0;
+
+    background-image: url('https://divoqsdr0fzyc.cloudfront.net/assets/drop.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 30px;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    //-moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+}
+
+.form__control--select--min {
+    @extend %form__control;
+    max-width: 225px;
+    min-width: 0;
+    padding-top: 6px;
+
+    background-image: url('https://divoqsdr0fzyc.cloudfront.net/assets/drop.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 30px;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    //-moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+}
+
+// DAMN YOU FIREFOX! 
+// & your broken -moz-appearance: none;
+@-moz-document url-prefix() { 
+    .form__control--select,
+    .form__control--select--min {
+        padding-right: 6px;
+        background-image: none;
     }
+}
+
+.form__control--search {
+    @extend %form__control;
+    @extend %background-transition;
+    
+    width: 225px;
+    background-image: url('../images/icon-search.png');
+    background-repeat: no-repeat;
+    background-position: .2em center;
+    padding-left: 20px;
+}
+
+.form__control--xs {
+    @extend %form__control;
+    @extend %background-transition;
+
+    width: 48px;
+}
+
+.form__control--xxs {
+    @extend %form__control;
+    @extend %background-transition;
+
+    width: 35px;
+    text-align: center;
 }
 
 .unit-prefix,
 .unit-suffix {
     margin: 0;
     margin-top: 8px;
-    background-color: #f0f3f3;
-    border: 1px solid #c3c5cc;
+    background-color: $muted-colour;
+    border: 1px solid $border-colour;
     width: 40px;
     // display: inline-block;
     padding: 4px 5px 5px;
     text-align: center !important;
+}
+
+.unit-prefix {
+    border-radius: 2px 0 0 2px;
+}
+
+.unit-suffix {
+    border-radius: 0 2px 2px 0;
+    margin-right: 15px !important;
 }
 
 .has-prefix {
@@ -209,39 +306,13 @@ select.form-control {
     margin-right: 0;
 }
 
-.unit-prefix {
-    border-radius: 2px 0 0 2px;
-}
-
-.unit-suffix {
-    border-radius: 0 2px 2px 0;
-    margin-right: 15px !important;
-}
-
-/*	OVERIDES*/
-.form-control.search {
-    background-image: url('../images/icon-search.png');
-    background-repeat: no-repeat;
-    background-position: .2em center;
-    padding-left: 20px;
-}
-
-.form-control.sort-code {
-    width: 35px;
-    text-align: center;
-}
-
-.form-control.numericinput {
-    width: 48px !important;
-}
-
-/*=====================================================================================================	*/
-/*	MEDIA QUERIES	*/
-/*=====================================================================================================	*/
+// ----------------------------------------
+// MQs
+// ----------------------------------------
 @include respond-to(wide-screens) { 
     .global-header h1,
     .global-footer h1,
-    #quote {
+    .content-main {
         width: auto;
         margin-left: 20px;
         margin-right: 20px;
@@ -249,14 +320,14 @@ select.form-control {
 }
 
 @include respond-to(medium-screens) {
-    .form-label {
+    .form__question {
         float: none;
         text-align: left;
         width: auto;
         padding: 0;
     }
 
-    .form-answer {
+    .form__answer {
         padding-left: 0;
         width: 100%;
     }
@@ -267,46 +338,36 @@ select.form-control {
         min-width: 320px;
     }
 
-    .form-panel {
+    .form {
         padding: 0;
     }
 
-    .form-panel p,
-    .form-group {
+    .form p,
+    .form__group {
         padding-left: 10px;
         padding-right: 10px;
     }
 
-    .form-answer {
+    .form__answer {
         padding-right: 0;
     }
 
     .global-header h1,
     .global-footer h1, 
-    #quote {
+    .content-main {
         margin-left: 10px;
         margin-right: 10px;
     }
 
-    .button {
-        width: 100%;
-    }
-
-    /*===================================================================================================== */
-    /*  INPUTS  */
-    /*===================================================================================================== */
-    
-    .form-control {
+    // ----------------------------------------
+    // Inputs
+    // ----------------------------------------
+    .form__control--textarea,
+    .form__control--select,
+    .form__control--search,
+    .form__control {
         width: 100% !important;
         max-width: 100%;
-    }
-    
-    .form-control.min {
-        width: auto !important;
-    }
-    
-    .form-control.sort-code {
-        width: 35px !important;
     }
     
     .unit-prefix,
@@ -324,12 +385,9 @@ select.form-control {
         margin-right: 0;
     }
 
-    .form-panel-content .ajax-float {
-        width: 100%;
-    }
-    /*===================================================================================================== */
-    /*  HELP    */
-    /*===================================================================================================== */
+    // ===================================================================================================== */
+    //   HELP    */
+    // ===================================================================================================== */
     .radio-group .help-link {
         //  FIXES RADIO GROUP TOP MARGIN BUG 
         display: inline-block;

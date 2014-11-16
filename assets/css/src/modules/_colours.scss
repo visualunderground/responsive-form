@@ -1,29 +1,26 @@
-// ffffff
-// 000000
+// http://chir.ag/projects/name-that-color/
+
 // Colors
 $river-bed: #444a62;
 $periwinkle-gray: #c6ccea;
 $sunglo: #e17776; // Error field and message
-
-
-
-
-
-
+$white: #ffffff;
+$porcelain: #f0f3f3;
+$white-lilac: #eff1f8; // li border
+$athens-gray: #e6e8ee; // msg master border colour
 $border-colour: #c3c5cc; //inputs
 $pannel-border-colour: #c9d0e1; // Quote and help
-
-
-// 668002 // a.help:focus
-// eff2eb // ajax float bgnd
-// aaaaaa // .form-panel-content .ajax-float {border}
-
-// cccccc // ajax float border only
-// eff1f8 // li border
-// f0f3f3 // Focus and pre/suffix
-
-
+// ------------------------------
+// Buttons
+// ------------------------------
+$primary-colour: #5fcac6;
+$secondary-colour: #3399ff; // also info-colour
+$selected-colour: #74b533; // also tertiary colour
+$muted-colour: $porcelain;
+// ------------------------------
 // Semantic colour names
+// ------------------------------
+$info-colour: #3399ff;
 $link-colour: #438bca;
 $text-colour: $river-bed;
 $secondary-text-colour: #6e768f;

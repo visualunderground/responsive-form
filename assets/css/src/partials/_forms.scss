@@ -1,4 +1,4 @@
-.fieldset-title {
+.form__title {
     font-family: Raleway;
     font-size: 26px;
     line-height: 1.4;
@@ -18,20 +18,20 @@
 .textual-value {
     //  Inline value
     padding: 5px 0;
-    margin: 8px 10px 0 0;
+    margin-right: 15px;
     display: inline-block;
 }
 
-// Radios and Checkboxes
+// Radios and checkboxes
 .touch-control {
-    color: #444a62;
+    color: $text-colour;
     box-sizing: border-box;
     display: block;
     min-width: 105px;
     line-height: 1;
     float: left;
     position: relative;
-    margin: 8px 15px 6px 0;
+    margin-right: 15px;
     cursor: pointer;
 
     @include respond-to(handhelds) { 
@@ -49,8 +49,8 @@
     }
 
     span {
-        background-color: #f7f7fa;
-        border: 1px solid #c8c8dd;
+        background-color: $muted-colour;
+        border: 1px solid darken($muted-colour, 15%);
         border-radius: 2px;
 
         padding: 9px 30px 10px;
@@ -60,11 +60,11 @@
     }
 
     input:checked + span {  // IE 9+ :-?
-        background-color: #74b533;
-        border-color: #4e7922;
-        color: #ffffff;
+        background-color: $selected-colour;
+        border-color: darken($selected-colour, 15%);
+        color: $white;
 
-        .form-hint {
+        .form__hint {
             color: inherit;
         }
     }
