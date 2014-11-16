@@ -5,12 +5,14 @@
 <!--[if IE 9 ]>    <html class="ie ie9 no-js" dir="ltr" lang="en-GB"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-ie no-js" dir="ltr" lang="en-GB"><!--<![endif]--><head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
 	<link media="all" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway:500,300" id="dm_shop_square_fonts-css" rel="stylesheet">
-	<link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" >
+	<!-- <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" > -->
 	<link rel='stylesheet' href='assets/css/app.css'>
 	<script src='assets/js/modernizr-dev.js' ></script>
 	<title>Responsive form</title>
@@ -31,7 +33,7 @@
 		return elements;
 	}
 	var helpID = "";
-	function showHelp(sTerm, sType){
+	function showHelp(sTerm){
 		if ($(sTerm + '-content')){	//	IF HELP HAS ALREADY BEEN CALLED - SHOW IT
 			if ($(sTerm + '-content').className == "help-bubble"){
 				clearhelp();	//	CLEAR OLD HELP ITEM
@@ -42,10 +44,10 @@
 				//	HELP POSITIONING
 				if(Modernizr.mq('only screen and (max-width: 789px)')) { // NO COLS
 					$(sTerm + '-content').style.top = $(helpID).parentNode.offsetHeight + 5 + "px";
-					$(sTerm + '-content').style.left = "0";
+					// $(sTerm + '-content').style.left = "0";
 				}else{
 					$(sTerm + '-content').style.top = "48px";
-					$(sTerm + '-content').style.left = "0";
+					// $(sTerm + '-content').style.left = "0";
 				}  // true
 				$(helpID + '-content').className = "help-bubble";
 			}
@@ -59,12 +61,12 @@
 			//	HELP POSITIONING		//if (helpPosition=='relative'){oDiv.style.left = $(helpID).offsetLeft + 40 + "px";}	//	REMOVE TO USE CSS ONLY (STATIC) POSITIONING
 			if(Modernizr.mq('only screen and (max-width: 789px)')) { // NO COLS
 				oDiv.style.top = $(helpID).parentNode.offsetHeight + 5 + "px";
-				oDiv.style.left = "0";
+				// oDiv.style.left = "0";
 			}else{
 				oDiv.style.top = "48px";
-				oDiv.style.left = "0";
+				// oDiv.style.left = "0";
 			}  
-			oDiv.innerHTML = "<div class='help-bubble-content'><h5 class='help-bubble-header'>Test</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. link Quisque sed fringilla ipsum.</p><ul><li>One</li><li>Two</li></ul><p>Suspendisse ut sem augue. Suspendisse sed magna a neque pretium aliquet. Sed justo dolor, bibendum vehicula imperdiet nec. </p><a href='javascript:clearhelp();' class='help-bubble-close-button' title='Close'>x</a></div>";
+			oDiv.innerHTML = "<div class='help-bubble__content'><h5 class='help-bubble__header'>Test</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. link Quisque sed fringilla ipsum.</p><ul><li>One</li><li>Two</li></ul><p>Suspendisse ut sem augue. Suspendisse sed magna a neque pretium aliquet. Sed justo dolor, bibendum vehicula imperdiet nec. </p><a href='javascript:clearhelp();' class='help-bubble__close-link' title='Close'>x</a></div>";
 			$(helpID).parentNode.insertBefore(oDiv, $(helpID).nextSibling);
 		}
 		return false;
@@ -80,218 +82,243 @@
 <body>
 	<form action="#" novalidate>
 	<header class="global-header">
-		<h1>Product type</h1>
+		<h1>Product type <small>Secondary text</small></h1>
 	</header>
-	<div id="quote">
+
+
+	<section class="sub-nav">
+	    <div class="sub-nav__content">
+	        <div class="sub-nav__actions">
+	            <a href="#" class=""><span class="button">Primary action</span></a>
+	        </div>
+	        <a href="#" class="sub-nav__prompt-link">Browse</a>
+	        <ul class="sub-nav__destinations">
+	            <li class="sub-nav__item">
+	                <a class="sub-nav__item-link" href="#">Section 1</a>
+	            </li>
+	            <li class="sub-nav__item">
+	                <a class="sub-nav__item-link" href="#">Section 1</a>
+	            </li>
+	            <li class="sub-nav__item">
+	                <a class="sub-nav__item-link" href="#">Section 1</a>
+	            </li>
+	            <li class="sub-nav__item">
+	                <a class="sub-nav__item-link" href="#">Section 1</a>
+	            </li>
+	        </ul>
+	    </div>
+	</section>
+
+	<div class="content-main" role="main">
 		<h2>Page name</h2>
-		<div class="message-master">
-			<h3>{.message-master}</h3>
+		<div class="message--master">
+			<h3>{.message--master}</h3>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">link</a> Quisque sed fringilla ipsum. Suspendisse ut sem augue. Suspendisse sed magna a neque pretium aliquet. Sed justo dolor, bibendum vehicula imperdiet nec. </p>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pharetra pellentesque Justo quis sodales. Suspendisse dolor magna a fringilla augue. Ut feugiat turpis a faselli.</p>
 		</div>
-		<div class="message-error-up">
-			<p>{.message-error-up}<br />There are errors on this page please take a moment to check your answers.</p>
+		<div class="message--error-up">
+			<p>{.message--error-up}<br />There are errors on this page please take a moment to check your answers.</p>
 		</div>
-		<div class="message-info-down">
-			<p>{.message-info-down}<br />Don't forget to do X before Y.</p>
+		<div class="message--info-down">
+			<p>{.message--info-down}<br />Don't forget to do X before Y.</p>
 		</div>
-		<fieldset class="form-panel">
-			<legend class="fieldset-title">Text entry</legend>
+		
+		<div>
+			<a href="#" class="block-link">
+				<span class="block-link__title">Block-link</span>
+				<span class="block-link__sub-title">Whooa, meta stuff</span>
+				<span class="block-link__image"></span>
+			</a>
+		</div>
+
+		<fieldset class="form">
+			<legend class="form__title">Text entry</legend>
 			<p>Bacon ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pharetra pellentesque Justo quis sodales. Suspendisse dolor magna a fringilla augue. Ut feugiat turpis a faselli.</p>
-			<div class="form-panel-content">
-				<ul>
-					<li class="form-group">
-						<label class="form-label">Input</label>
-						<div class="form-answer">
-							<input class="form-control" type="text" placeholder="[type='text']" >
-						</div>
-					</li>
-					<li class="form-group has-error">
-						<label class="form-label">Input</label>
-						<div class="form-answer">
-							<input class="form-control" type="tel" placeholder="[type='tel']" >
-							<div class="error-message">Oops. there was an error</div>
-						</div>
-					</li>
-					<li class="form-group">
-						<label class="form-label">Input</label>
-						<div class="form-answer">
-							<input class="form-control" type="email" placeholder="[type='email']" >
-						</div>
-					</li>
-					<li class="form-group">
-						<label class="form-label">Input</label>
-						<div class="form-answer">
-							<input class="form-control" type="text" placeholder="[type='text']" >
-						</div>
-					</li>
-					<li class="form-group">
-						<label class="form-label">Input &amp; search</label>
-						<div class="form-answer">
-							<!--	!!!! NO WHITESPACE !!!!	-->
-							<input type="text" class="form-control postcode"><button class="button-secondary" title="Search" value="Search">Search</button><a href='#' class='help-link' id='help-6' onclick='return showHelp(this.id);'>?</a><i class="form-hint">Additional information</i>
-						</div>
-					</li>
-					<li class="form-group">
-						<label class="form-label">Delimited input</label>
-						<div class="form-answer">
-							<!--	!!!! NO WHITESPACE !!!!	-->
-							<input type="tel" class="form-control sort-code"><b class="form-control-delimiter">/</b><input type="tel" class="form-control sort-code"><b class="form-control-delimiter">/</b><input type="tel" class="form-control sort-code">
-							<a href='#' class='help-link' id='help-8' onclick='return showHelp(this.id);'>?</a>
-						</div>
-					</li>
-					<!--	NB apply a class of "search" to add affordance	-->
-					<li class="form-group">				
-						<label class="form-label" for="Proposer.id.1_FullTimeOccupation.occDesc">Search:Suggest input</label>				
-						<div class="form-answer">
-							<input type="text" value="" class="form-control search" onBlur="hideFloat();" onKeyDown="preventScroll(event)" onKeyUp="sOccupationG(event,'fullOcc');" autocomplete="off" id="Proposer.id.1_FullTimeOccupation.occDesc" name="Proposer.id.1_FullTimeOccupation.occDesc" ><a href='#' class='help-link' id='help-9' onclick='return showHelp(this.id);'>?</a>
-							<i class="form-hint">Additional information</i>
-							<div id="Proposer.id.1_FullTimeOccupation.occCodeFLOAT" class="ajax-float"></div>
-							<input type="hidden" value="" name="Proposer.id.1_FullTimeOccupation.occCode" id="Proposer.id.1_FullTimeOccupation.occCode">
-							<!-- PURELY  FOR PROTOTYPE PURPOSES	-->
-							<input type="hidden"  id="Proposer.id.1_FullTimeOccupation.empDesc" name="Proposer.id.1_FullTimeOccupation.empDesc" >
-							<div id="Proposer.id.1_FullTimeOccupation.empCodeFLOAT" style="display:none;"></div>
-							<div id="Proposer.id.1_PartTimeOccupation.empCodeFLOAT" style="display:none;"></div>
-							<div id="Proposer.id.1_PartTimeOccupation.occCodeFLOAT" style="display:none;"></div>
-							<input type="hidden" value="" name="Proposer.id.1_FullTimeOccupation.empCode" id="Proposer.id.1_FullTimeOccupation.empCode">
-							<!-- END	-->
-						</div>
-					</li>
-					<li class="form-group">
-						<label class="form-label">Textual value</label>
-						<div class="form-answer">
-							<span class="textual-value">Mr A N Proposer</span>
-							<a href='#' class='help-link' id='help-2' onclick='return showHelp(this.id);'>?</a>
-						</div>
-					</li>
-				</ul>
-			</div>
+			<ul class="form__content">
+				<li class="form__group">
+					<label class="form__question">Input</label>
+					<div class="form__answer">
+						<input class="form__control" type="text" placeholder="[type='text']" >
+					</div>
+				</li>
+				<li class="form__group--error">
+					<label class="form__question">Input</label>
+					<div class="form__answer">
+						<input class="form__control" type="tel" placeholder="[type='tel']" >
+						<div class="error-message">Oops. there was an error</div>
+					</div>
+				</li>
+				<li class="form__group">
+					<label class="form__question">Input</label>
+					<div class="form__answer">
+						<input class="form__control" type="email" placeholder="[type='email']" >
+					</div>
+				</li>
+				<li class="form__group">
+					<label class="form__question">Input</label>
+					<div class="form__answer">
+						<input class="form__control" type="password" id="password" placeholder="[type='password']" >
+					</div>
+				</li>
+				<li class="form__group">
+					<label class="form__question">Input</label>
+					<div class="form__answer">
+						<input class="form__control" type="text" placeholder="[type='text']" >
+					</div>
+				</li>
+				<li class="form__group">
+					<label class="form__question">Textarea</label>
+					<div class="form__answer">
+						<textarea class="form__control--textarea" rows="3" ></textarea>
+					</div>
+				</li>
+				<li class="form__group">
+					<label class="form__question">Input &amp; search</label>
+					<div class="form__answer">
+						<!--	!!!! NO WHITESPACE !!!!	-->
+						<input type="text" class="form__control postcode"><button class="button--secondary" title="Search" value="Search">Search</button><a href='#' class='help-link' id='help-6' onclick='return showHelp(this.id);'>?</a><i class="form__hint">Additional information</i>
+					</div>
+				</li>
+				<li class="form__group">
+					<label class="form__question">Delimited input</label>
+					<div class="form__answer">
+						<!--	!!!! NO WHITESPACE !!!!	-->
+						<input type="tel" class="form__control--xxs"><b class="form__control-delimiter">/</b><input type="tel" class="form__control--xxs"><b class="form__control-delimiter">/</b><input type="tel" class="form__control--xxs">
+						<a href='#' class='help-link' id='help-8' onclick='return showHelp(this.id);'>?</a>
+					</div>
+				</li>
+				<!--	NB append "--search" to add affordance	-->
+				<li class="form__group">				
+					<label class="form__question" for="Proposer.id.1_FullTimeOccupation.occDesc">Search:Suggest input</label>				
+					<div class="form__answer">
+						<input type="text" class="form__control--search" autocomplete="off" ><a href='#' class='help-link' id='help-9' onclick='return showHelp(this.id);'>?</a>
+						<i class="form__hint">Additional information</i>
+					</div>
+				</li>
+				<li class="form__group">
+					<label class="form__question">Textual value</label>
+					<div class="form__answer">
+						<span class="textual-value">Mr A N Proposer</span>
+						<a href='#' class='help-link' id='help-2' onclick='return showHelp(this.id);'>?</a>
+					</div>
+				</li>
+			</ul>
 		</fieldset>
-		<fieldset class="form-panel">
-			<legend class="fieldset-title">Select menus</legend>
-			<div class="form-panel-content">
-				<ul>
-					<li class="form-group">
-						<label class="form-label">Selection (std. width)<i class="form-hint">Matches text input width</i></label>
-						<div class="form-answer">
-							<select class="form-control"><option selected="" value="">Mobile</option></select><a href='#' class='help-link' id='help-0' onclick='return showHelp(this.id);'>?</a>
-						</div>
-					</li>
-					<li class="form-group">
-						<label class="form-label">Selection (matches. width)<i class="form-hint">A <code>select</code> element with a class of <code>min</code> = data width.</i></label>
-						<div class="form-answer">
-							<select class="form-control min"><option selected="" value="">Mobile</option></select><a href='#' class='help-link' id='help-1' onclick='return showHelp(this.id);'>?</a>
-						</div>
-					</li>
-				</ul>
-			</div>
+		<fieldset class="form">
+			<legend class="form__title">Select menus</legend>
+			<ul class="form__content">
+				<li class="form__group">
+					<label class="form__question">Selection (std. width)<i class="form__hint">Matches text input width</i></label>
+					<div class="form__answer">
+						<select class="form__control--select"><option selected="" value="">Mobile</option></select><a href='#' class='help-link' id='help-0' onclick='return showHelp(this.id);'>?</a>
+					</div>
+				</li>
+				<li class="form__group">
+					<label class="form__question">Selection (matches. width)<i class="form__hint">A <code>select</code> element with a class of <code>min</code> = data width.</i></label>
+					<div class="form__answer">
+						<select class="form__control--select--min"><option selected="" value="">Mobile</option></select><a href='#' class='help-link' id='help-1' onclick='return showHelp(this.id);'>?</a>
+					</div>
+				</li>
+			</ul>
 		</fieldset>
-		<fieldset class="form-panel">
-			<legend class="fieldset-title">Integral units</legend>
-			<div class="form-panel-content">
-				<ul>
-					<li class="message-info">
-						<p>
-							Use <code>has-prefix</code> and <code>has-suffix</code> classes on the <code>input</code> and <code>unit-prefix</code> and <code>unit-suffix</code> on the element containing the unit.
-						</p>
-						<p>
-							NB. no whitespace between the element and the <code>input</code>
-						</p>
-					</li>
-					<li class="form-group">
-						<label class="form-label">Prefixed input <i class="form-hint">Additional information with <a href="#">link</a></i></label>
-						<div class="form-answer">
-							<!--	!!!! NO WHITESPACE !!!!	-->
-							<b class="unit-prefix">&pound;</b><input type="text" class="form-control has-prefix">
-							<a href='#' class='help-link' id='help-3' onclick='return showHelp(this.id);'>?</a>
-						</div>
-					</li>
-					<li class="form-group">
-						<label class="form-label">Suffixed input</label>
-						<div class="form-answer">
-							<!--	!!!! NO WHITESPACE !!!!	-->
-							<input type="text" class="form-control has-suffix"><b class="unit-suffix">mg</b>
-							<a href='#' class='help-link' id='help-4' onclick='return showHelp(this.id);'>?</a>
-						</div>
-					</li>
-				</ul>
-			</div>
+		<fieldset class="form">
+			<legend class="form__title">Integral units</legend>
+			<ul class="form__content">
+				<li class="message--info">
+					<p>
+						Use <code>has-prefix</code> and <code>has-suffix</code> classes on the <code>input</code> and <code>unit-prefix</code> and <code>unit-suffix</code> on the element containing the unit.
+					</p>
+					<p>
+						NB. no whitespace between the element and the <code>input</code>
+					</p>
+				</li>
+				<li class="form__group">
+					<label class="form__question">Prefixed input <i class="form__hint">Additional information with <a href="#">link</a></i></label>
+					<div class="form__answer">
+						<!--	!!!! NO WHITESPACE !!!!	-->
+						<b class="unit-prefix">&pound;</b><input type="text" class="form__control has-prefix">
+						<a href='#' class='help-link' id='help-3' onclick='return showHelp(this.id);'>?</a>
+					</div>
+				</li>
+				<li class="form__group">
+					<label class="form__question">Suffixed input</label>
+					<div class="form__answer">
+						<!--	!!!! NO WHITESPACE !!!!	-->
+						<input type="text" class="form__control has-suffix"><b class="unit-suffix">mg</b>
+						<a href='#' class='help-link' id='help-4' onclick='return showHelp(this.id);'>?</a>
+					</div>
+				</li>
+			</ul>
 		</fieldset>
-		<fieldset class="form-panel">
-			<legend class="fieldset-title">Dates</legend>
-			<div class="form-panel-content">
-				<ul>
-					<li class="form-group">
-						<label class="form-label">Date input</label>
-						<div class="form-answer">
-							<!--	!!!! NO WHITESPACE !!!!	-->
-							<select class="form-control min"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="form-control min"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><select class="form-control min"><option value="">Year</option><option value="1984">...</option><option value="1976">1976</option></select>
-							<a href='#' class='help-link' id='help-5' onclick='return showHelp(this.id);'>?</a>
-						</div>
-					</li>
-					<li class="form-group">
-						<label class="form-label">Date input - long year</label>
-						<div class="form-answer">
-							<!--	!!!! NO WHITESPACE !!!!	-->
-							<select class="form-control min"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="form-control min"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><input type='tel' size='4' maxlength='4' placeholder='yyyy' class='form-control numericinput'/>
-						</div>
-					</li>
-				</ul>
-			</div>
+		<fieldset class="form">
+			<legend class="form__title">Dates</legend>
+			<ul class="form__content">
+				<li class="form__group">
+					<label class="form__question">Date input</label>
+					<div class="form__answer">
+						<!--	!!!! NO WHITESPACE !!!!	-->
+						<select class="form__control--select--min"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="form__control--select--min"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><select class="form__control--select--min"><option value="">Year</option><option value="1984">...</option><option value="1976">1976</option></select>
+						<a href='#' class='help-link' id='help-5' onclick='return showHelp(this.id);'>?</a>
+					</div>
+				</li>
+				<li class="form__group">
+					<label class="form__question">Date input - long year</label>
+					<div class="form__answer">
+						<!--	!!!! NO WHITESPACE !!!!	-->
+						<select class="form__control--select--min"><option value="">Day</option><option value="01">01</option><option value="02">...</option><option value="31">31</option></select><select class="form__control--select--min"><option value="">Month</option><option value="01">January</option><option value="02">...</option><option value="12">December</option></select><input type='tel' size='4' maxlength='4' placeholder='yyyy' class='form__control--xs'/>
+					</div>
+				</li>
+			</ul>
 		</fieldset>
-		<fieldset class="form-panel">
-			<legend class="fieldset-title">Calls to action</legend>
-			<div class="form-panel-content">
-				<ul>
-					<!--	NB you don't need a label in order to right align inputs	-->
-					<li class="form-group">
-						<div class="form-answer">
-							<button class="button-primary" title="Primary" value="Primary">{.primary}</button>
-							<button class="button-secondary" title="Search trigger" value="Search trigger">{.secondary}</button>
-							<button class="button-not-selected" title="Search trigger" value="Search trigger">{.not-selected}</button>
-							<button class="button-is-selected" title="Search trigger" value="Search trigger">{.is-selected}</button>
-						</div>
-					</li>
-				</ul>
-			</div>
+		<fieldset class="form">
+			<legend class="form__title">Calls to action</legend>
+			<ul class="form__content">
+				<!--	NB you don't need a label in order to right align inputs	-->
+				<li class="form__group">
+					<div class="form__answer">
+						<button class="button" title="Primary" value="Primary">{.buton}</button>
+						<button class="button--secondary" title="Search trigger" value="Search trigger">{.buton--secondary}</button>
+						<button class="button--tertiary" title="Search trigger" value="Search trigger">{.buton--tertiary}</button>
+						<button class="button--muted" title="Search trigger" value="Search trigger">{.buton--muted}</button>
+					</div>
+				</li>
+			</ul>
 		</fieldset>
 
-		<fieldset class="form-panel">
-			<legend class="fieldset-title">Radio groups</legend>
-			<div class="form-panel-content">
-				<ul>
-					<li class="form-group">
-						<fieldset>
-							<legend class="form-label">touch me</legend>
-							<div class="form-answer">
-								<label for="alpha" class="touch-control">
-									<input id="alpha" name="new" type="radio"><span>Alpha<i class="form-hint">Lots more info</i></span>
-								</label>
-								<label for="beta" class="touch-control">
-									<input id="beta" name="new" type="radio"><span>Beta</span>
-								</label>
-							</div>
-						</fieldset>
-					</li>
-					<li class="form-group">
-						<fieldset>
-							<legend class="form-label">touch me <i class="form-hint">Select all that apply</i></legend>
-							<div class="form-answer">
-								<label for="alpha-c" class="touch-control">
-									<input id="alpha-c" name="new-c" type="checkbox"><span>Alpha</span>
-								</label>
-								<label for="beta-c" class="touch-control">
-									<input id="beta-c" name="new-c" type="checkbox"><span>Beta</span>
-								</label>
-							</div>
-						</fieldset>
-					</li>
-                </ul>
-            </div>
+		<fieldset class="form">
+			<legend class="form__title">Radio groups</legend>
+			<ul class="form__content">
+				<li class="form__group">
+					<fieldset>
+						<legend class="form__question">touch me</legend>
+						<div class="form__answer">
+							<label for="alpha" class="touch-control">
+								<input id="alpha" name="new" type="radio"><span>Alpha<i class="form__hint">Additional info</i></span>
+							</label>
+							<label for="beta" class="touch-control">
+								<input id="beta" name="new" type="radio"><span>Beta</span>
+							</label>
+						</div>
+					</fieldset>
+				</li>
+				<li class="form__group">
+					<fieldset>
+						<legend class="form__question">touch me <i class="form__hint">Select all that apply</i></legend>
+						<div class="form__answer">
+							<label for="alpha-c" class="touch-control">
+								<input id="alpha-c" name="new-c" type="checkbox"><span>Alpha</span>
+							</label>
+							<label for="beta-c" class="touch-control">
+								<input id="beta-c" name="new-c" type="checkbox"><span>Beta</span>
+							</label>
+						</div>
+					</fieldset>
+				</li>
+            </ul>
 		</fieldset>
 		<nav>
-			<button class="button-not-selected" type="submit" value="Back">Back</button>
-			<button class="button-primary" type="submit" value="Continue">Continue</button>
+			<button class="button--muted" type="submit" value="Back">Back</button>
+			<button class="button" type="submit" value="Continue">Continue</button>
 		</nav>
 	</div>
 	<footer class="global-footer">
@@ -309,5 +336,117 @@
 		</ol>
 	</footer>
 	</form>
+<script type="text/javascript">
+var app = app || {};
+
+app.utils = (function Utils(){
+	'use strict';
+
+	var addClass = function(el, cssClass){
+	    if( el.className.indexOf( cssClass ) != -1 ) {
+	    	return;
+	    }
+	    el.className += ' ' + cssClass;
+    }
+
+    var removeClass = function(el, cssClass){
+    	var cn = el.className;
+	    var rxp = new RegExp( "\\s?\\b"+cssClass+"\\b", "g" );
+	    cn = cn.replace( rxp, '' );
+	    el.className = cn;
+    }
+
+    return {
+    	addClass: addClass,
+    	removeClass: removeClass
+    };
+
+})();
+
+app.Sticky = (function() {
+    'use strict';
+
+	var Sticky = function Sticky(trigger, cssClass) {
+		this.waypoint = trigger;
+		this.triggerClass = cssClass;
+		this.classHolder = document.documentElement;
+		this.BindEvents();
+    };
+
+    Sticky.prototype.BindEvents = function() {
+    	var self = this;
+		if (window.addEventListener) {
+			window.addEventListener("scroll", function() { self.CheckPosition(); });
+		} else if (window.attachEvent) {             
+			// object.attachEvent <= IE8
+			window.attachEvent("onscroll", function() { self.CheckPosition(); });
+		}
+    }
+
+    Sticky.prototype.CheckPosition = function(){
+    	if (this.waypoint.getBoundingClientRect().bottom <=0) {
+			app.utils.addClass(this.classHolder, this.triggerClass);
+		}else{
+			app.utils.removeClass(this.classHolder, this.triggerClass);
+		}
+    }
+    
+    return Sticky;
+})();
+
+app.Password = (function() {
+    'use strict';
+
+	var Password = function Password(trigger) {
+		this.passwordEl = trigger;
+		this.BindEvents();
+    };
+
+	var canSetInputAttribute = (function(){
+		var body = document.body
+			, input = document.createElement('input')
+			, result = true;
+		if (! body) {
+			body = document.createElement('body');
+		}
+		input = body.appendChild(input);
+		try {
+			input.setAttribute('type', 'text');
+		} catch (e) {
+			result = false;
+		}
+			body.removeChild(input);
+		return result;
+	}());
+
+    Password.prototype.BindEvents = function() {
+    	var self = this;
+		if (window.addEventListener) {
+			this.passwordEl.addEventListener("focus", function() { self.ShowPassword(); });
+			this.passwordEl.addEventListener("blur", function() { self.HidePassword(); });
+		} else if (window.attachEvent) {             
+			// object.attachEvent <= IE8
+			this.passwordEl.attachEvent("onfocus", function() { self.ShowPassword(); });
+			this.passwordEl.attachEvent("onblur", function() { self.HidePassword(); });
+		}
+    }
+
+  	Password.prototype.ShowPassword = function(){
+		this.passwordEl.type = 'text';
+    }
+
+    Password.prototype.HidePassword = function(){
+		this.passwordEl.type = 'password';
+    }
+    
+    return Password;
+})();
+
+var stickyNav = new app.Sticky(document.querySelector(".global-header"), 'sticky-nav');
+var stickyMessage = new app.Sticky(document.querySelector(".message--master"), 'sticky-message');
+var usablePassword = new app.Password(document.querySelector("#password"));
+
+
+</script>
 </body>
 </html>

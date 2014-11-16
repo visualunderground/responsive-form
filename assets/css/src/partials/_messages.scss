@@ -52,59 +52,59 @@ div[class^='message'] {
     margin: 0 25px;
 }
 
-.message-master {
+.message--master {
     @include message(6px);
 
-    border: 1px solid #e6e8ee;
+    border: 1px solid $athens-gray;
     padding: 10px 0;
 }
 
-.message-error {
+.message--error {
     @include message;
 
     background-color: $error-background-colour;
     border-color: $error-background-colour;
-    color: #ffffff;
+    color: $white;
     font-weight: bold;
+
+    &-up {
+        @extend .message--error;
+        
+        &:before {
+            @include message-point('up');
+        }
+    }
+
+    &-down {
+        @extend .message--error;
+        
+        &:after {
+            @include message-point('down');
+        }
+    }
 }
 
-.message-info {
+.message--info {
     @include message;
 
-    background-color: #3399ff;
-    border-color: #3399ff;
-    color: #ffffff;
+    background-color: $info-colour;
+    border-color: $info-colour;
+    color: $white;
     font-weight: bold;
-}
 
-.message-error-up {
-    @extend .message-error;
-    
-    &:before {
-        @include message-point('up');
+    &-up {
+        @extend .message--info;
+         
+        &:before {
+            @include message-point('up');
+        }
     }
-}
 
-.message-error-down {
-    @extend .message-error;
-    
-    &:after {
-        @include message-point('down');
-    }
-}
-
-.message-info-up {
-    @extend .message-info;
-     
-    &:before {
-        @include message-point('up');
-    }
-}
-
-.message-info-down {
-    @extend .message-info;
-    
-    &:after {
-        @include message-point('down');
+    &-down {
+        @extend .message--info;
+        
+        &:after {
+            @include message-point('down');
+        }
     }
 }

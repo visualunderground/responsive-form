@@ -11,7 +11,7 @@
     font-weight: bold;
     border-radius: 18px;
     text-decoration: none;
-    border: 1px solid #c9d0e1;
+    border: 1px solid $pannel-border-colour;
     background-color: transparent;
 
     transition: 
@@ -23,11 +23,11 @@
     &:hover {
         background-color: $link-colour;;
         border-color: $link-colour;;
-        color: #ffffff;
+        color: $white;
     }
 
     &:focus {
-        outline: 1px dotted #668002;
+        outline: 1px dotted $border-colour;
     }
 
     @include respond-to(handhelds) { 

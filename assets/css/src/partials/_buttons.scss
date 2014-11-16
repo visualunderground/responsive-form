@@ -1,42 +1,41 @@
-// .button {
-//     cursor: pointer;
-//     text-decoration: none;
-//     min-width: 125px;
-//     background-repeat: repeat-x;
-//     color: #464646;
-
-//     &:hover,
-//     &:active,
-//     &:focus {
-//         background-color: #000000;
-//     }
-
-//     &:active {
-//         position: relative;
-//         top: 1px;
-//     }
-// }
-
 @mixin button-colour($colour) {
-    background-color: $colour;
-    border-color: darken($colour, 15%);
-    
+    background: $colour;
+    //background: linear-gradient(to top, $colour, darken($colour, 2%));
+
+    // border-width: 1px;
+    // border-style: solid;
+    // border-radius: 2px;
+    // border-color: darken($colour, 15%);
+    border: 0;
+
     @if lightness($colour) > 75% {
         color: $text-colour;
     }@else {
-        color: #ffffff;
+        color: $white;
     }
 
     &:hover,
     &:active,
     &:focus {
-        background-color: darken($colour, 5%);
+        background: darken($colour, 5%);
+    }
+
+    @include respond-to(handhelds) {
+        width: 100%;
     }
 }
 
 %button {
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1;
+    margin-right: 15px;
+    min-height: 39px;
+    // =  line-height + border + padding
+    padding: 5px;
+
     cursor: pointer;
-    text-decoration: none;
     min-width: 125px;
 
     &:active {
@@ -45,32 +44,24 @@
     }
 }
 
-.button.large {
-    min-width: 50%;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 1em;
+.button {
+    @extend %button;
+    @include button-colour($primary-colour);
 }
 
-.button-secondary {
+.button--secondary {
     @extend %button;
-    @include button-colour(#3399ff);
+    @include button-colour($secondary-colour);
 }
 
-.button-primary {
+.button--tertiary {
     @extend %button;
-    @include button-colour(#5fcac6);
-
-}
-
-.button-is-selected {
-    @extend %button;
-    @include button-colour(#74b533);
+    @include button-colour($selected-colour);
     
 }
 
-.button-not-selected {
+.button--muted {
     @extend %button;
-    @include button-colour(#f7f7fa);
+    @include button-colour($muted-colour);
 }
 

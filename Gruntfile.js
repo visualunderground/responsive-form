@@ -5,6 +5,7 @@ module.exports = function(grunt) {
         autoprefixer: {
             options: {
                 // Task-specific options go here.
+                browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'ie 8', 'ie 9']
             },
             single_file: {
                 src: 'assets/css/app.css',
@@ -53,5 +54,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-autoprefixer');
 
     grunt.registerTask('prefix', ['autoprefixer']);
-    grunt.registerTask('default', ['sass:dev', 'autoprefixer:single_file']);
+    grunt.registerTask('default', ['sass:dist', 'autoprefixer:single_file']);
 }
