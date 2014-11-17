@@ -1,0 +1,144 @@
+$slides: 5;
+$item-duration: 5;
+$total-duration: $slides * $item-duration;
+$fps: 100 / $total-duration;
+
+@for $i from 1 through $slides {
+    .feature-ticker--new__item:nth-child(#{$i}){
+        animation: cycle#{$i} #{$total-duration}s linear infinite;
+    }
+
+    @keyframes tempcycle#{$i}{
+        @for $y from 0 through 100 / $fps {
+            #{$y * $fps}% {color:red;}
+        }
+    }
+}
+
+@keyframes cycle1 {
+   0%  { top: 0px; } /* When you start the slide, the first image is already visible */
+   4%  { top: 0px; } /* Original Position */
+   16% { top: 0px; opacity:1; z-index:0; } /* From 4% to 16 % = for 3 seconds the image is visible */
+   20% { top: 30px; opacity: 0; z-index: 0; } /* From 16% to 20% = for 1 second exit image */
+   21% { top: -30px; opacity: 0; z-index: -1; } /* Return to Original Position */
+   92% { top: -30px; opacity: 0; z-index: 0; }
+   96% { top: -30px; opacity: 0; } /* From 96% to 100% = for 1 second enter image*/
+   100%{ top: 0px; opacity: 1; }
+}
+
+@keyframes cycle2 {
+   0%  { top: -30px; opacity: 0; } /* Original Position */
+   16% { top: -30px; opacity: 0; }/* Starts moving after 16% to this position */
+   20% { top: 0px; opacity: 1; }
+   24% { top: 0px; opacity: 1; }  /* From 20% to 24% = for 1 second enter image*/
+   36% { top: 0px; opacity: 1; z-index: 0; }   /* From 24% to 36 % = for 3 seconds the image is visible */
+   40% { top: 30px; opacity: 0; z-index: 0; } /* From 36% to 40% = for 1 second exit image */
+   41% { top: -30px; opacity: 0; z-index: -1; }   /* Return to Original Position */
+   100%{ top: -30px; opacity: 0; z-index: -1; }
+}
+
+@keyframes cycle3 {
+   0%  { top: -30px; opacity: 0; }
+   36% { top: -30px; opacity: 0; }
+   40% { top: 0px; opacity: 1; }
+   44% { top: 0px; opacity: 1; }
+   56% { top: 0px; opacity: 1; }
+   60% { top: 30px; opacity: 0; z-index: 0; }
+   61% { top: -30px; opacity: 0; z-index: -1; }
+   100%{ top: -30px; opacity: 0; z-index: -1; }
+}
+
+@keyframes cycle4 {
+   0%  { top: -30px; opacity: 0; }
+   56% { top: -30px; opacity: 0; }
+   60% { top: 0px; opacity: 1; }
+   64% { top: 0px; opacity: 1; }
+   76% { top: 0px; opacity: 1; z-index: 0; }
+   80% { top: 30px; opacity: 0; z-index: 0; }
+   81% { top: -30px; opacity: 0; z-index: -1; }
+   100%{ top: -30px; opacity: 0; z-index: -1; }
+}
+@keyframes cycle5 {
+   0%  { top: -30px; opacity: 0; }
+   76% { top: -30px; opacity: 0; }
+   80% { top: 0px; opacity: 1; }
+   84% { top: 0px; opacity: 1; }
+   96% { top: 0px; opacity: 1; z-index: 0; }
+   100%{ top: 30px; opacity: 0; z-index: 0; }
+}
+
+
+.feature-ticker--new {
+    width: 350px;
+    height: 30px;
+    margin: 25px;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0 10px;
+    -webkit-user-select: none;
+    background-color: $text-colour;
+    
+    &__list {
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+
+    &__item {
+        list-style: none;
+        color: #ffffff;
+        line-height: 30px;
+        
+        position: absolute;
+        top: -30px;
+
+        -webkit-font-smoothing: antialiased;
+        -webkit-user-select: none;
+    }
+
+}
+
+// END END END END END //
+// END END END END END //
+// END END END END END //
+// END END END END END //
+
+@keyframes anim-ticker {
+    0% { margin-top: 0;}
+    25% { margin-top: -30px;}
+    50% { margin-top: -60px;}
+    75% { margin-top: -90px;}
+    100% { margin-top: 0;}
+}
+
+.feature-ticker {
+    width: 350px;
+    height: 30px;
+    margin: 25px;
+    display: inline-block;
+    overflow: hidden;
+    padding: 3px 10px;
+    -webkit-user-select: none;
+    background-color: $text-colour;
+    
+    &__list {
+        margin: 0;
+        padding: 0;
+        float: left;
+        animation: anim-ticker 10s cubic-bezier(1, 0, .5, 0) infinite;
+        -webkit-user-select: none;
+
+        &:hover {
+            animation-play-state: paused; 
+        }
+    }
+
+    &__item {
+        list-style: none;
+        color: #ffffff;
+        line-height: 30px; 
+        -webkit-font-smoothing: antialiased;
+        -webkit-user-select: none;
+    }
+
+}
