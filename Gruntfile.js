@@ -24,7 +24,6 @@ module.exports = function(grunt) {
             dev: {
                 options: {
                     style: 'expanded',    // nested, compact, compressed, expanded
-                    require: 'susy',
                     sourcemap: 'none'
                 },
                 files: {
@@ -34,7 +33,6 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     style: 'compressed',    // nested, compact, compressed, expanded
-                    require: 'susy',
                     sourcemap: 'none'
                 },
                 files: {
