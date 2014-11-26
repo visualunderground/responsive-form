@@ -1,0 +1,86 @@
+$susy: (
+  columns: 12,
+  // gutters: 1/4,
+  // math: fluid,
+  // output: float,
+  // gutter-position: inside-static,
+  // column-width: 8.33333333333%,
+);
+
+.content {
+    max-width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+    .row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    .half {
+        float: left;
+        width: 50%;
+        padding-right: 10px;
+        padding-left: 10px;
+        background-color: green;
+    }
+
+    .quart {
+        float: left;
+        width: 25%;
+        padding-right: 10px;
+        padding-left: 10px;
+        background-color: green;
+    }
+}
+
+
+
+// .container {
+//     @include container(960px);
+//     background-color: #cccccc;
+
+//     @include respond-to(wide-screens) { 
+//         width: auto;
+//         margin-left: 20px;
+//         margin-right: 20px;
+//     }
+
+//     @include respond-to(handhelds) {
+//         margin-left: 10px;
+//         margin-right: 10px;
+//     }
+// }
+
+// // .half {
+// //     @include span(6);
+// //     background-color: red;
+
+// //     &:last-child {
+// //         background-color: blue;
+// //         @include last;
+// //     }
+
+// //     @include respond-to(small-screens) { 
+// //         @include span(12);
+// //     }
+// // }
+
+// .third {
+//     @include span(4); 
+//     background-color: #66aa00;
+
+//     &:last-child {
+//         background-color: blue;
+//         @include last;
+//     }
+// }
+
+// .quarter {
+//     @include span(3); 
+//     background-color: #66aa00;
+
+//     &:last-child {
+//         background-color: blue;
+//         @include last;
+//     }
+// }
