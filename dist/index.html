@@ -14,7 +14,7 @@
 	<link media="all" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway:500,300" id="dm_shop_square_fonts-css" rel="stylesheet">
 	<!-- <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" > -->
 	<link rel='stylesheet' href='assets/css/app.css'>
-	<script src='assets/js/modernizr-dev.js' ></script>
+	<script src='assets/js/application.min.js' ></script>
 	<title>Responsive form</title>
 	<script>
 /*=====================================================================================================	
@@ -109,14 +109,11 @@
 	            <li class="sub-nav__item">
 	                <a class="sub-nav__item-link" href="#radios">Radios</a>
 	            </li>
-				
-				
-	            
 	        </ul>
 	    </div>
 	</section>
 
-    <div class="l">
+<!--     <div class="l">
         <div class="l__1-2"><h4>1/2: Download free</h4>foo</div>
         <div class="l__1-2"><h4>1/2: Download free</h4><input type="text" class="form__control"></div>
 
@@ -166,7 +163,7 @@
             Lorem ipsum dolor sit amet, adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim.
         </div>
-    </div>
+    </div> -->
 	
 	<div class="content-main" role="main">
 		<h2>Page name</h2>
@@ -409,115 +406,9 @@
 	</footer>
 	</form>
 <script type="text/javascript">
-var app = app || {};
 
-app.utils = (function Utils(){
-	'use strict';
-
-	var addClass = function(el, cssClass){
-	    if( el.className.indexOf( cssClass ) != -1 ) {
-	    	return;
-	    }
-	    el.className += ' ' + cssClass;
-    }
-
-    var removeClass = function(el, cssClass){
-    	var cn = el.className;
-	    var rxp = new RegExp( "\\s?\\b"+cssClass+"\\b", "g" );
-	    cn = cn.replace( rxp, '' );
-	    el.className = cn;
-    }
-
-    return {
-    	addClass: addClass,
-    	removeClass: removeClass
-    };
-
-})();
-
-app.Sticky = (function() {
-    'use strict';
-
-	var Sticky = function Sticky(trigger, cssClass) {
-		this.waypoint = trigger;
-		this.triggerClass = cssClass;
-		this.classHolder = document.documentElement;
-		this.BindEvents();
-    };
-
-    Sticky.prototype.BindEvents = function() {
-    	var self = this;
-		if (window.addEventListener) {
-			window.addEventListener("scroll", function() { self.CheckPosition(); });
-		} else if (window.attachEvent) {             
-			// object.attachEvent <= IE8
-			window.attachEvent("onscroll", function() { self.CheckPosition(); });
-		}
-    }
-
-    Sticky.prototype.CheckPosition = function(){
-    	if (this.waypoint.getBoundingClientRect().bottom <=0) {
-			app.utils.addClass(this.classHolder, this.triggerClass);
-		}else{
-			app.utils.removeClass(this.classHolder, this.triggerClass);
-		}
-    }
-    
-    return Sticky;
-})();
-
-app.Password = (function() {
-    'use strict';
-
-	var Password = function Password(trigger) {
-		this.passwordEl = trigger;
-		this.BindEvents();
-    };
-
-	var canSetInputAttribute = (function(){
-		var body = document.body
-			, input = document.createElement('input')
-			, result = true;
-		if (! body) {
-			body = document.createElement('body');
-		}
-		input = body.appendChild(input);
-		try {
-			input.setAttribute('type', 'text');
-		} catch (e) {
-			result = false;
-		}
-			body.removeChild(input);
-		return result;
-	}());
-
-    Password.prototype.BindEvents = function() {
-    	var self = this;
-		if (window.addEventListener) {
-			this.passwordEl.addEventListener("focus", function() { self.ShowPassword(); });
-			this.passwordEl.addEventListener("blur", function() { self.HidePassword(); });
-		} else if (window.attachEvent) {             
-			// object.attachEvent <= IE8
-			this.passwordEl.attachEvent("onfocus", function() { self.ShowPassword(); });
-			this.passwordEl.attachEvent("onblur", function() { self.HidePassword(); });
-		}
-    }
-
-  	Password.prototype.ShowPassword = function(){
-		this.passwordEl.type = 'text';
-    }
-
-    Password.prototype.HidePassword = function(){
-		this.passwordEl.type = 'password';
-    }
-    
-    return Password;
-})();
-
-var stickyNav = new app.Sticky(document.querySelector(".global-header"), 'sticky-nav');
-var stickyMessage = new app.Sticky(document.querySelector(".message--master"), 'sticky-message');
-var usablePassword = new app.Password(document.querySelector("#password"));
-
+	var stickyNav = new application.Sticky(document.querySelector(".global-header"), 'sticky-nav');
+	var usablePassword = new application.Password(document.querySelector("#password"));
 
 </script>
 </body>

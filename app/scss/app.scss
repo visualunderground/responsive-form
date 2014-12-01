@@ -3,7 +3,13 @@
 @import 'modules/_colours';
 @import 'modules/_layout';
 
+// No CSS Rendered above this line
+.god-mode { 
+    content: 'IDDQD';
+}
+
 @import 'vendor/_meyer-reset';
+
 @import 'partials/_base';
 @import 'partials/_buttons';
 @import 'partials/_legacy';

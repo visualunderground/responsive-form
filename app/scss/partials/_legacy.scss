@@ -1,16 +1,21 @@
 .content-main {
     width: 960px;
     margin: 0 auto;
+
+    @include clearfix;
+    background-color: $white;
+    border: 1px solid $pannel-border-colour;
+    border-radius: 6px;
 }
 
 .global-header {
-    @extend %clearfix;
+    @include clearfix;
     background-color: $header-colour;
     margin-bottom: 90px;
 }
 
 .global-footer {
-    @extend %clearfix;
+    @include clearfix;
     background-color: $footer-colour;
     margin-top: 30px;
 
@@ -31,15 +36,9 @@
 // =====================================================================================================	*/
 //	form	*/
 // =====================================================================================================	*/
-.content-main {
-    @extend %clearfix;
-    background-color: $white;
-    border: 1px solid $pannel-border-colour;
-    border-radius: 6px;
-}
 
 .form {
-    @extend %clearfix;
+    @include clearfix;
     padding: 0 25px;
 
     p {
@@ -49,7 +48,7 @@
 }
 
 .form__content {
-    @extend %clearfix;
+    @include clearfix;
 }
 
 [class^='message'] + .form,
@@ -60,7 +59,7 @@ p + .form__content,
 }
 
 .form__group {
-    @extend %background-transition;
+    @include background-transition;
     display: block;
     float: left;
     width: 100%;
@@ -140,13 +139,13 @@ li[class^='message'] + .form__group,
     font-weight: normal;
 }
 
-.unit-prefix,
-.unit-suffix {
-    display: inline-block;
-    padding-top: 13px;
-    margin-right: 15px;
-    font-weight: normal;
-}
+// .unit-prefix,
+// .unit-suffix {
+//     display: inline-block;
+//     padding-top: 13px;
+//     margin-right: 15px;
+//     font-weight: normal;
+// }
 
 //=====================================================================================================	*/
 //	INPUTS	*/
@@ -162,7 +161,6 @@ li[class^='message'] + .form__group,
     font-family: inherit;
     //line-height: inherit;	don't do as buttons and inputs react differently
     line-height: 1;
-    box-sizing: border-box;
     //	FF: LIN-HEIGHT BUG 
     min-height: 37px;
     // =  line-height + border + padding
@@ -181,7 +179,7 @@ li[class^='message'] + .form__group,
 
 .form__control {
     @extend %form__control;
-    @extend %background-transition;
+    @include background-transition;
 
     width: 225px;
     // REMOVE IOS INNER SHADOW
@@ -194,7 +192,7 @@ li[class^='message'] + .form__group,
 
 .form__control--textarea {
     @extend %form__control;
-    @extend %background-transition;
+    @include background-transition;
     
     font-size: inherit;
     line-height: inherit;
@@ -248,7 +246,7 @@ li[class^='message'] + .form__group,
 
 .form__control--search {
     @extend %form__control;
-    @extend %background-transition;
+    @include background-transition;
     
     width: 225px;
     background-image: url('../images/icon-search.png');
@@ -259,14 +257,14 @@ li[class^='message'] + .form__group,
 
 .form__control--xs {
     @extend %form__control;
-    @extend %background-transition;
+    @include background-transition;
 
     width: 48px;
 }
 
 .form__control--xxs {
     @extend %form__control;
-    @extend %background-transition;
+    @include background-transition;
 
     width: 35px;
     text-align: center;
@@ -274,6 +272,11 @@ li[class^='message'] + .form__group,
 
 .unit-prefix,
 .unit-suffix {
+    display: inline-block;
+    padding-top: 13px;
+    margin-right: 15px;
+    font-weight: normal;
+
     margin: 0;
     margin-top: 8px;
     background-color: $muted-colour;
