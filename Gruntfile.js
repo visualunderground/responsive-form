@@ -99,9 +99,12 @@ module.exports = function(grunt) {
                     removeComments: true,
                     collapseWhitespace: true
                 },
-                files: {
-                    'dist/index.min.html': 'dist/index.html',     // 'destination': 'source'
-                }
+                files: [{                                  // Dictionary of files
+                    expand: true,
+                    cwd: 'src/',                             // Project root
+                    src: '**/*.html',                        // Source
+                    dest: 'dist/'                            // Destination
+                }]
             }
         },
 
