@@ -67,8 +67,7 @@ module.exports = function(grunt) {
                 src: [
                     'app/js/application.js',
                     'app/js/application/utils.js',
-                    'app/js/application/*',
-                    'app/js/vendor/*'
+                    'app/js/application/*'
                 ],
                 dest: 'dist/assets/js/application.js',
             }
@@ -168,10 +167,9 @@ module.exports = function(grunt) {
 
         }
 
-
-
-
     });
+
+    grunt.loadNpmTasks("grunt-modernizr");
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
@@ -181,7 +179,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-ftp-deploy');
     grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-scss-lint');
-    grunt.loadNpmTasks("grunt-modernizr");
     
 
     grunt.registerTask('build:css', ['scsslint', 'sass:dist', 'autoprefixer:dist']);
