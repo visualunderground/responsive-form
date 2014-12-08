@@ -13,6 +13,8 @@ AddType x-font/ttf .ttf
 AddType x-font/eot .eot
 AddType x-font/woff .woff
 AddType image/x-icon .ico
+# compress ico files
+AddOutputFilterByType DEFLATE image/x-icon
 
 # ----------------------------------------------------------------------
 # | ETags                                                              |
