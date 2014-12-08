@@ -202,11 +202,10 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build:css', ['scsslint', 'sass:dist', 'autoprefixer:dist']);
     grunt.registerTask('build:js', ['concat', 'uglify']);
-    grunt.registerTask('build', ['build:css', 'build:js', 'htmlmin', 'ftp']);
+    grunt.registerTask('build', ['build:css', 'build:js', 'htmlmin', 'imagemin', 'ftp']);
 
     grunt.registerTask('default', ['sass:dist', 'autoprefixer:dist']);
 
     grunt.registerTask('ftp', ['ftp-deploy']);
 
-    grunt
 }
