@@ -1,6 +1,6 @@
 # Default application configuration that all configurations inherit from.
 # Documentation: https://github.com/causes/scss-lint/blob/master/lib/scss_lint/linter/README.md
-exclude: 'app/scss/vendor/*'
+exclude: 'src/scss/vendor/*'
 
 linters:
   BorderZero:

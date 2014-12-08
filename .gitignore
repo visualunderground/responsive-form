@@ -3,4 +3,4 @@ node_modules/
 *.css.map
 .sublime-grunt.cache
 .ftppass
-app/assets/images/
+src/assets/images/

@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 
         scsslint: {
             allFiles: [
-                'app/scss/**/*.scss',
+                'src/scss/**/*.scss',
             ]
         },
 
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
                     sourcemap: 'none'
                 },
                 files: {
-                    'dist/assets/css/app.css': 'app/scss/app.scss'
+                    'dist/assets/css/app.css': 'src/scss/app.scss'
                 }
             },
             
@@ -45,19 +45,19 @@ module.exports = function(grunt) {
                     sourcemap: 'none'
                 },
                 files: {
-                    'dist/assets/css/app.css': 'app/scss/app.scss'
+                    'dist/assets/css/app.css': 'src/scss/app.scss'
                 }
              }
         },
 
         watch: {
             css: {
-                files: 'app/**/*.scss',
+                files: 'src/**/*.scss',
                 tasks: ['build:css']
             },
 
             js: {
-                files: 'app/**/*.js',
+                files: 'src/**/*.js',
                 tasks: ['build:js']
             }
         },
@@ -65,9 +65,9 @@ module.exports = function(grunt) {
         concat: {
             dist: {
                 src: [
-                    'app/js/application.js',
-                    'app/js/application/utils.js',
-                    'app/js/application/*'
+                    'src/js/application.js',
+                    'src/js/application/utils.js',
+                    'src/js/application/*'
                 ],
                 dest: 'dist/assets/js/application.js',
             }
@@ -113,7 +113,7 @@ module.exports = function(grunt) {
             build: {
                 files: [{
                     expand: true,                       // Enable dynamic expansion
-                    cwd: 'app/',                        // Src matches are relative to this path
+                    cwd: 'src/',                        // Src matches are relative to this path
                     src: ['**/*.{png,jpg,jpeg,gif}'],   // Actual patterns to match
                     dest: 'dist/'                       // Destination path prefix
                 }]
@@ -128,7 +128,7 @@ module.exports = function(grunt) {
                 "devFile" : "remote",
 
                 // Path to save out the built file.
-                "outputFile" : "app/js/application/modernizr-custom.js",
+                "outputFile" : "src/js/application/modernizr-custom.js",
 
                 // Based on default settings on http://modernizr.com/download/
                 "extra" : {
@@ -166,7 +166,7 @@ module.exports = function(grunt) {
                 // except files that are in node_modules/.
                 // You can override this by defining a "files" array below.
                 "files" : {
-                    "src": ['app/**/*.scss', 'app/**/*.js', '!**/modernizr-custom.js']
+                    "src": ['src/**/*.scss', 'src/**/*.js', '!**/modernizr-custom.js']
                 },
 
                 // This handler will be passed an array of all the test names passed to the Modernizr API, and will run after the API call has returned
