@@ -29,13 +29,11 @@
 			return script;
 		}
 		
-
 		var callback = function callback(){
 			var stickyNav = new application.Sticky(document.querySelector(".global-header"), 'sticky-nav');
 			var usablePassword = new application.Password(document.querySelector("#password"));
 		}
 
-		// load a file with loadJS
 		loadJS( "assets/js/application.min.js", callback );
 
 	</script>
