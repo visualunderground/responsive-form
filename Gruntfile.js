@@ -65,9 +65,9 @@ module.exports = function(grunt) {
         concat: {
             dist: {
                 src: [
-                    'src/js/application.js',
-                    'src/js/application/utils.js',
-                    'src/js/application/*'
+                    'src/assets/js/application.js',
+                    'src/assets/js/application/utils.js',
+                    'src/assets/js/application/*'
                 ],
                 dest: 'dist/assets/js/application.js',
             }
@@ -131,7 +131,7 @@ module.exports = function(grunt) {
                 "devFile" : "remote",
 
                 // Path to save out the built file.
-                "outputFile" : "src/js/application/modernizr-custom.js",
+                "outputFile" : "src/assets/js/application/modernizr-custom.js",
 
                 // Based on default settings on http://modernizr.com/download/
                 "extra" : {
