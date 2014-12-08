@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 
         scsslint: {
             allFiles: [
-                'src/scss/**/*.scss',
+                'src/**/*.scss',
             ]
         },
 
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
                     sourcemap: 'none'
                 },
                 files: {
-                    'dist/assets/css/app.css': 'src/scss/app.scss'
+                    'dist/assets/css/app.css': 'src/assets/scss/app.scss'
                 }
             },
             
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
                     sourcemap: 'none'
                 },
                 files: {
-                    'dist/assets/css/app.css': 'src/scss/app.scss'
+                    'dist/assets/css/app.css': 'src/assets/scss/app.scss'
                 }
              }
         },
