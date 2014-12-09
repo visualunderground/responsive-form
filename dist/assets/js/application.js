@@ -171,6 +171,7 @@ application.Sticky = (function(application) {
         this.triggerClass = cssClass;
         this.classHolder = document.documentElement;
         this.BindEvents();
+        this.state = null;
     };
 
     Sticky.prototype.BindEvents = function() {
@@ -185,9 +186,17 @@ application.Sticky = (function(application) {
 
     Sticky.prototype.CheckPosition = function(){
         if (this.waypoint.getBoundingClientRect().bottom <=0) {
-            application.utils.addClass(this.classHolder, this.triggerClass);
+            if (this.state != this.triggerClass){
+                this.state = this.triggerClass;
+                application.utils.addClass(this.classHolder, this.triggerClass);
+                console.log('adding class');
+            }
         }else{
-            application.utils.removeClass(this.classHolder, this.triggerClass);
+            if (this.state != null){
+                this.state = null;
+                application.utils.removeClass(this.classHolder, this.triggerClass);
+                console.log('removing class');
+            }
         }
     }
     
