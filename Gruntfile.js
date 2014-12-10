@@ -1,4 +1,7 @@
 module.exports = function(grunt) {
+    
+    require('time-grunt')(grunt);
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
@@ -201,7 +204,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-scss-lint');
     
     grunt.registerTask('build:css',     ['scsslint', 'sass:dist', 'autoprefixer:dist']);
-    grunt.registerTask('build:js',      ['modernizr','newer:concat:dist', 'newer:uglify:dist']);
+    grunt.registerTask('build:js',      ['modernizr','concat:dist', 'uglify:dist']);
     grunt.registerTask('build:html',    ['newer:htmlmin:dist']);
     grunt.registerTask('build:img',     ['newer:imagemin:dist']);
 
