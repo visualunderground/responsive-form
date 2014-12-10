@@ -11,7 +11,7 @@ application = (function() {
 
     return {
         version: version
-    }
+    };
 }());
 
 /*
@@ -24,18 +24,18 @@ application.utils = (function(application){
     'use strict';
 
     var addClass = function(el, cssClass){
-        if( el.className.indexOf( cssClass ) != -1 ) {
+        if( el.className.indexOf( cssClass ) !== -1 ) {
             return;
         }
         el.className += ' ' + cssClass;
-    }
+    };
 
     var removeClass = function(el, cssClass){
         var cn = el.className;
         var rxp = new RegExp( "\\s?\\b"+cssClass+"\\b", "g" );
         cn = cn.replace( rxp, '' );
         el.className = cn;
-    }
+    };
 
     return {
         addClass: addClass,
@@ -48,13 +48,15 @@ application.utils = (function(application){
 HELP FUNCTION
 ===================================================================================================== */
 function $() {
-    var elements = new Array();
+    var elements = [];
     for (var i = 0; i < arguments.length; i++) {
         var element = arguments[i];
-        if (typeof element == 'string')
+        if (typeof element === 'string') {
             element = document.getElementById(element);
-        if (arguments.length == 1)
+        }
+        if (arguments.length === 1){
             return element;
+        }
         elements.push(element);
     }
     return elements;
@@ -62,7 +64,7 @@ function $() {
 var helpID = "";
 function showHelp(sTerm){
     if ($(sTerm + '-content')){ //  IF HELP HAS ALREADY BEEN CALLED - SHOW IT
-        if ($(sTerm + '-content').className == "help-bubble"){
+        if ($(sTerm + '-content').className === "help-bubble"){
             clearhelp();    //  CLEAR OLD HELP ITEM
             return false;
         }else{
@@ -118,9 +120,9 @@ application.Password = (function(application) {
     };
 
     var canSetInputAttribute = (function(){
-        var body = document.body
-            , input = document.createElement('input')
-            , result = true;
+        var body = document.body;
+        var input = document.createElement('input');
+        var result = true;
         if (! body) {
             body = document.createElement('body');
         }
@@ -144,15 +146,15 @@ application.Password = (function(application) {
             this.passwordEl.attachEvent("onfocus", function() { self.ShowPassword(); });
             this.passwordEl.attachEvent("onblur", function() { self.HidePassword(); });
         }
-    }
+    };
 
     Password.prototype.ShowPassword = function(){
         this.passwordEl.type = 'text';
-    }
+    };
 
     Password.prototype.HidePassword = function(){
         this.passwordEl.type = 'password';
-    }
+    };
     
     return Password;
 })(application);
@@ -182,11 +184,11 @@ application.Sticky = (function(application) {
             // object.attachEvent <= IE8
             window.attachEvent("onscroll", function() { self.CheckPosition(); });
         }
-    }
+    };
 
     Sticky.prototype.CheckPosition = function(){
         if (this.waypoint.getBoundingClientRect().bottom <=0) {
-            if (this.state != this.triggerClass){
+            if (this.state !== this.triggerClass){
                 this.state = this.triggerClass;
                 application.utils.addClass(this.classHolder, this.triggerClass);
             }
@@ -196,7 +198,7 @@ application.Sticky = (function(application) {
                 application.utils.removeClass(this.classHolder, this.triggerClass);
             }
         }
-    }
+    };
     
     return Sticky;
 })(application);

@@ -23,11 +23,11 @@ application.Sticky = (function(application) {
             // object.attachEvent <= IE8
             window.attachEvent("onscroll", function() { self.CheckPosition(); });
         }
-    }
+    };
 
     Sticky.prototype.CheckPosition = function(){
         if (this.waypoint.getBoundingClientRect().bottom <=0) {
-            if (this.state != this.triggerClass){
+            if (this.state !== this.triggerClass){
                 this.state = this.triggerClass;
                 application.utils.addClass(this.classHolder, this.triggerClass);
             }
@@ -37,7 +37,7 @@ application.Sticky = (function(application) {
                 application.utils.removeClass(this.classHolder, this.triggerClass);
             }
         }
-    }
+    };
     
     return Sticky;
 })(application);

@@ -186,6 +186,19 @@ module.exports = function(grunt) {
                 // "customTests" : []
             }
 
+        },
+
+        jshint: {
+            options: {
+                curly: true,
+                eqeqeq: true,
+                eqnull: true,
+                browser: true,
+                globals: {
+                    jQuery: true
+                },
+            },
+            all: ['Gruntfile.js', 'src/**/*.js', 'src/**/*.min.js', '!**/modernizr-custom.js']
         }
 
     });
@@ -194,6 +207,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify'); 
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -214,4 +228,4 @@ module.exports = function(grunt) {
     
     grunt.registerTask('default',       ['sass:dist', 'autoprefixer:dist']);
 
-}
+};

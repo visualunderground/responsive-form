@@ -7,9 +7,9 @@ application.Password = (function(application) {
     };
 
     var canSetInputAttribute = (function(){
-        var body = document.body
-            , input = document.createElement('input')
-            , result = true;
+        var body = document.body;
+        var input = document.createElement('input');
+        var result = true;
         if (! body) {
             body = document.createElement('body');
         }
@@ -33,15 +33,15 @@ application.Password = (function(application) {
             this.passwordEl.attachEvent("onfocus", function() { self.ShowPassword(); });
             this.passwordEl.attachEvent("onblur", function() { self.HidePassword(); });
         }
-    }
+    };
 
     Password.prototype.ShowPassword = function(){
         this.passwordEl.type = 'text';
-    }
+    };
 
     Password.prototype.HidePassword = function(){
         this.passwordEl.type = 'password';
-    }
+    };
     
     return Password;
 })(application);

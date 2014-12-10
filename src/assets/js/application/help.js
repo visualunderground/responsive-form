@@ -2,13 +2,15 @@
 HELP FUNCTION
 ===================================================================================================== */
 function $() {
-    var elements = new Array();
+    var elements = [];
     for (var i = 0; i < arguments.length; i++) {
         var element = arguments[i];
-        if (typeof element == 'string')
+        if (typeof element === 'string') {
             element = document.getElementById(element);
-        if (arguments.length == 1)
+        }
+        if (arguments.length === 1){
             return element;
+        }
         elements.push(element);
     }
     return elements;
@@ -16,7 +18,7 @@ function $() {
 var helpID = "";
 function showHelp(sTerm){
     if ($(sTerm + '-content')){ //  IF HELP HAS ALREADY BEEN CALLED - SHOW IT
-        if ($(sTerm + '-content').className == "help-bubble"){
+        if ($(sTerm + '-content').className === "help-bubble"){
             clearhelp();    //  CLEAR OLD HELP ITEM
             return false;
         }else{

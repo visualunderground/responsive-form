@@ -11,5 +11,5 @@ application = (function() {
 
     return {
         version: version
-    }
+    };
 }());
