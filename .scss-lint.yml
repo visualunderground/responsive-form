@@ -1,7 +1,6 @@
 # Default application configuration that all configurations inherit from.
 # Documentation: https://github.com/causes/scss-lint/blob/master/lib/scss_lint/linter/README.md
-exclude: 'mot-static/vendor/dvsa/*'
-exclude: 'mot-static/src/scss/*/_typography.scss'
+exclude: 'src/assets/scss/vendor/*'
 
 linters:
   BorderZero:
@@ -77,7 +76,7 @@ linters:
 
   PropertySpelling:
     enabled: true
-    extra_properties: []
+    extra_properties: ['*behavior']
 
   SelectorDepth:
     enabled: true

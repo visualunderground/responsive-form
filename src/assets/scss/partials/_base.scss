@@ -10,7 +10,6 @@
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    *behavior: url('/assets/js/boxsizing.htc');
     -webkit-text-size-adjust: 100%;
 }
 
@@ -90,6 +89,12 @@ h3 {
         //color: lighten($text-colour, 10%);
         display: block;
     }
+}
+
+h4 {
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 600;
 }
 
 p {

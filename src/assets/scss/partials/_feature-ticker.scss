@@ -1,0 +1,130 @@
+$slides: 5;
+$item-duration: 5;
+$total-duration: $slides * $item-duration;
+$fps: 100 / $total-duration;
+
+@for $i from 1 through $slides {
+    .feature-ticker__item:nth-child(#{$i}) {
+        animation: cycle#{$i} #{$total-duration}s cubic-bezier(1, 0, .5, 0) infinite;
+    }
+
+    // @keyframes tempcycle#{$i}{
+    //     @for $y from 0 through 100 / $fps {
+    //         #{$y * $fps}% {
+    //           color:red;
+
+    //         }
+    //     }
+    // }
+}
+
+@keyframes cycle1 {
+    0% { top: 0; opacity: 1; } // When you start the slide, the first image is already visible 
+    4% { top: 0; opacity: 1; } // Original Position 
+    8% { top: 0; opacity: 1; } // Original Position 
+    12% { top: 0; opacity: 1; } // Original Position 
+    14% { top: 0; opacity: 1; } // Original Position 
+    16% { top: 0; opacity: 1;} // From 4% to 16 % = for 3 seconds the image is visible 
+    20% { top: 30px; opacity: 0; } // From 16% to 20% = for 1 second exit image 
+    21% { top: -30px; opacity: 0; } // Return to Original Position 
+    // ...
+    96% { top: -30px; opacity: 0; } // From 96% to 100% = for 1 second enter image*/
+    100% { top: 0; opacity: 1; }
+}
+
+@keyframes cycle2 {
+    0% { top: -30px; opacity: 0; } // Original Position 
+    // ...
+    16% { top: -30px; opacity: 0; }// Starts moving after 16% to this position 
+    20% { top: 0; opacity: 1; }
+
+    24% { top: 0; opacity: 1; }  // From 20% to 24% = for 1 second enter image*/
+    28% { top: 0; opacity: 1; }  // From 20% to 24% = for 1 second enter image*/
+    32% { top: 0; opacity: 1; }  // From 20% to 24% = for 1 second enter image*/
+
+    36% { top: 0; opacity: 1; }   // From 24% to 36 % = for 3 seconds the image is visible 
+    40% { top: 30px; opacity: 0; } // From 36% to 40% = for 1 second exit image 
+
+    41% { top: -30px; opacity: 0; }   // Return to Original Position 
+    // ...
+    //100%{ top: -30px; opacity: 0; }
+}
+
+@keyframes cycle3 {
+    0% { top: -30px; opacity: 0; }
+    // ...
+    36% { top: -30px; opacity: 0; }
+
+    40% { top: 0; opacity: 1; }
+    44% { top: 0; opacity: 1; }
+    48% { top: 0; opacity: 1; }
+    52% { top: 0; opacity: 1; }
+    56% { top: 0; opacity: 1; }
+
+    60% { top: 30px; opacity: 0; }
+    61% { top: -30px; opacity: 0; }
+    // ...
+    //100%{ top: -30px; opacity: 0; }
+}
+
+@keyframes cycle4 {
+    0% { top: -30px; opacity: 0; }
+    //..
+    56% { top: -30px; opacity: 0; }
+
+    60% { top: 0; opacity: 1; }
+    64% { top: 0; opacity: 1; }
+    68% { top: 0; opacity: 1; }
+    72% { top: 0; opacity: 1; }
+    76% { top: 0; opacity: 1; }
+
+    80% { top: 30px; opacity: 0; }
+    81% { top: -30px; opacity: 0; }
+    // ...
+    //100%{ top: -30px; opacity: 0; }
+}
+@keyframes cycle5 {
+    0% { top: -30px; opacity: 0; }
+    76% { top: -30px; opacity: 0; }
+    80% { top: 0; opacity: 1; }
+    84% { top: 0; opacity: 1; }
+    88% { top: 0; opacity: 1; }
+    92% { top: 0; opacity: 1; }
+    96% { top: 0; opacity: 1; }
+    100% { top: 30px; opacity: 0; }
+}
+
+
+.feature-ticker {
+    width: 244px;
+    height: 100px;
+    margin: 25px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 14px;
+    overflow: hidden;
+    -webkit-user-select: none;
+    
+    &__list {
+        position: relative;
+    }
+
+    &__item {
+        list-style: none;
+        line-height: 30px;
+        text-transform: uppercase;
+        
+        position: absolute;
+        top: -30px;
+
+        -webkit-font-smoothing: antialiased;
+        -webkit-user-select: none;
+    }
+
+    &__link {
+        position: relative;
+        top: 30px;
+        text-decoration: none;
+    }
+
+}

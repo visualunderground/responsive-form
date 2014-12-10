@@ -1,0 +1,63 @@
+$gutter-width: 15px;
+
+@mixin grid-row {
+    @include clearfix;
+    
+    max-width: $break-large - (2 * $gutter-width);
+    margin-right: auto;
+    margin-left: auto;
+
+    @include respond-to(wide-screens) {
+        width: 100%;
+        margin-left: $gutter-width;
+        margin-right: $gutter-width;
+    }
+
+    @include respond-to(handhelds) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@mixin grid-column($width) {
+    float: left;
+    padding-right: $gutter-width;
+    padding-left: $gutter-width;
+    width: percentage($width);
+
+    @if percentage($width) < 30% {
+        @include respond-to(medium-screens) {
+            width: 50%;
+        }
+
+        @include respond-to(handhelds) {
+            width: 100%;
+        }
+    } @else {
+        @include respond-to(medium-screens) {
+            width: 100%;
+        }
+    }
+}
+
+// Example:
+//
+// .l {
+//     @include grid-row;
+
+//     &__1-4 {
+//         @include grid-column(1/4);
+//     }
+
+//     &__1-2 {
+//         @include grid-column(1/2);
+//     }
+
+//     &__1-3 {
+//         @include grid-column(1/3);
+//     }
+
+//     &__2-3 {
+//         @include grid-column(2/3);
+//     }
+// }

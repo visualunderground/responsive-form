@@ -33,10 +33,10 @@ nav {
         .button--muted {
             position: absolute;
             top: 80px;
-        }
 
-        .button--muted + .button {
-            margin-bottom: 80px;
+            + button {
+                margin-bottom: 80px;
+            }
         }
     }
 }

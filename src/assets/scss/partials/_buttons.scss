@@ -1,13 +1,11 @@
 @mixin button-colour($colour) {
     background: $colour;
-    //background: linear-gradient(to top, $colour, darken($colour, 2%));
 
     // border-width: 1px;
     // border-style: solid;
     // border-radius: 2px;
     // border-color: darken($colour, 15%);
-    border: 0;
-
+    
     @if lightness($colour) > 75% {
         color: $text-colour;
     }@else {
@@ -19,28 +17,28 @@
     &:focus {
         background: darken($colour, 5%);
     }
-
-    @include respond-to(handhelds) {
-        width: 100%;
-    }
 }
 
 %button {
-    box-sizing: border-box;
     font-family: inherit;
     font-size: inherit;
     line-height: 1;
     margin-right: 15px;
     min-height: 39px;
     // =  line-height + border + padding
+    border: 0;
     padding: 5px;
-
+    
     cursor: pointer;
     min-width: 125px;
 
     &:active {
         position: relative;
         top: 1px;
+    }
+
+    @include respond-to(handhelds) {
+        width: 100%;
     }
 }
 

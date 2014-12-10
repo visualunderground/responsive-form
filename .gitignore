@@ -1,4 +1,11 @@
+.sublime-grunt.cache
+.ftppass
+
 .sass-cache/
 node_modules/
+
+dist/assets/images/
+dist/assets/js/
+dist/assets/css/
+
 *.css.map
-.sublime-grunt.cache
