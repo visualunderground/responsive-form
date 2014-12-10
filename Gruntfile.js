@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 
         scsslint: {
             allFiles: [
-                'src/**/*.scss',
+                'src/**/*.scss'
             ]
         },
 
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
         },
 
         uglify: {
-            build: {
+            dist: {
                 src: 'dist/assets/js/application.js',
                 dest: 'dist/assets/js/application.min.js'
             }
@@ -113,7 +113,7 @@ module.exports = function(grunt) {
             options: {
                 optimizationLevel: 3
             },
-            build: {
+            dist: {
                 files: [{
                     expand: true,                       // Enable dynamic expansion
                     cwd: 'src/',                        // Src matches are relative to this path
@@ -187,7 +187,6 @@ module.exports = function(grunt) {
 
     });
 
-    grunt.loadNpmTasks("grunt-modernizr");
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
@@ -196,16 +195,20 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify'); 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-ftp-deploy');
+    grunt.loadNpmTasks('grunt-modernizr');
+    grunt.loadNpmTasks('grunt-newer');
     grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-scss-lint');
     
+    grunt.registerTask('build:css',     ['scsslint', 'sass:dist', 'autoprefixer:dist']);
+    grunt.registerTask('build:js',      ['modernizr','newer:concat:dist', 'newer:uglify:dist']);
+    grunt.registerTask('build:html',    ['newer:htmlmin:dist']);
+    grunt.registerTask('build:img',     ['newer:imagemin:dist']);
 
-    grunt.registerTask('build:css', ['scsslint', 'sass:dist', 'autoprefixer:dist']);
-    grunt.registerTask('build:js', ['concat', 'uglify']);
-    grunt.registerTask('build', ['build:css', 'build:js', 'htmlmin', 'imagemin', 'ftp']);
-
-    grunt.registerTask('default', ['sass:dist', 'autoprefixer:dist']);
-
-    grunt.registerTask('ftp', ['ftp-deploy']);
+    grunt.registerTask('build',         ['build:css', 'build:js', 'build:html', 'build:img']);
+    
+    grunt.registerTask('deploy',        ['ftp-deploy']);
+    
+    grunt.registerTask('default',       ['sass:dist', 'autoprefixer:dist']);
 
 }
