@@ -193,7 +193,7 @@ application.Sticky = (function(application) {
                 application.utils.addClass(this.classHolder, this.triggerClass);
             }
         }else{
-            if (this.state != null){
+            if (this.state !== null){
                 this.state = null;
                 application.utils.removeClass(this.classHolder, this.triggerClass);
             }
