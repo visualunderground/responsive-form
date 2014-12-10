@@ -198,7 +198,7 @@ module.exports = function(grunt) {
                     jQuery: true
                 },
             },
-            all: ['Gruntfile.js', 'src/**/*.js', 'src/**/*.min.js', '!**/modernizr-custom.js']
+            all: ['Gruntfile.js', 'src/**/*.js', '!**/modernizr-custom.js']
         }
 
     });
@@ -218,7 +218,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-scss-lint');
     
     grunt.registerTask('build:css',     ['scsslint', 'sass:dist', 'autoprefixer:dist']);
-    grunt.registerTask('build:js',      ['modernizr','concat:dist', 'uglify:dist']);
+    grunt.registerTask('build:js',      ['jshint', 'modernizr','concat:dist', 'uglify:dist']);
     grunt.registerTask('build:html',    ['newer:htmlmin:dist']);
     grunt.registerTask('build:img',     ['newer:imagemin:dist']);
 
