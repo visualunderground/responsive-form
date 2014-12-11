@@ -62,6 +62,16 @@ module.exports = function(grunt) {
             js: {
                 files: 'src/**/*.js',
                 tasks: ['build:js']
+            },
+
+            html: {
+                files: ['src/**/*.html', 'src/**/*.htm'],
+                tasks: ['build:html']
+            },
+
+            img: {
+                files: ['src/**/images/*.*'],
+                tasks: ['build:img']
             }
         },
 
