@@ -21,7 +21,19 @@ application.utils = (function(application){
         el.className = cn;
     };
 
+    var getDistanceFromTopOfDocument = function(el){
+        var location = 0;
+        if (el.offsetParent) {
+            do {
+                location += el.offsetTop;
+                el = el.offsetParent;
+            } while (el);
+        }
+        return location >= 0 ? location : 0;
+    };
+
     return {
+        getDistanceFromTopOfDocument: getDistanceFromTopOfDocument,
         addClass: addClass,
         removeClass: removeClass
     };
