@@ -7,5 +7,7 @@ node_modules/
 dist/assets/images/
 dist/assets/js/
 dist/assets/css/
+dist/**/*.html
+dist/**/*.htm
 
 *.css.map
