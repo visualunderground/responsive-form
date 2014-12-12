@@ -11,13 +11,13 @@
 
     &__content {
         position: relative;
-        width: 960px;
+        width: $break-large - (2 * $gutter-page);
         margin: 0 auto;
 
         @include respond-to(wide-screens) { 
             width: auto;
-            margin-left: 20px;
-            margin-right: 20px;
+            margin-left: $gutter-page;
+            margin-right: $gutter-page;
         }
     }
 
@@ -73,17 +73,17 @@
         font-size: 14px;
     }
 
-    .sticky-nav & {
+    .sticky & {
         position: fixed;
         z-index: 999;
         opacity: .9;
     }
 
-    .sticky-nav.no-touch & {
+    .sticky.no-touch & {
         top: 0;
     }
 
-    .sticky-nav.touch & {
+    .sticky.touch & {
         top: inherit;
         bottom: 0;
         margin-bottom: 0;
