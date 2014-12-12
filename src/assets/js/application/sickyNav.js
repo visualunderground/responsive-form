@@ -31,7 +31,6 @@ application.Sticky = (function(application) {
     };
 
     Sticky.prototype.checkPosition = function(){
-        console.log('fire' + window.scrollY + ':' + this.origin);
         if (window.scrollY > this.origin) {
             if (this.state === false){
                 this.stick();
