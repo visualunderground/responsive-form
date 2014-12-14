@@ -1,3 +1,5 @@
+// todo: http://toddmotto.com/psswrd-the-show-hide-password-javascript-plugin/ ??
+
 application.Password = (function(application) {
     'use strict';
 
