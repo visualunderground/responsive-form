@@ -204,12 +204,9 @@ module.exports = function(grunt) {
                 eqeqeq: true,
                 eqnull: true,
                 browser: true,
-                globals: {
-                    jQuery: true
-                },
             },
             all: ['Gruntfile.js', 'src/**/*.js', '!**/modernizr-custom.js']
-        }
+        },
 
     });
 
@@ -227,12 +224,17 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-scss-lint');
     
-    grunt.registerTask('build:css',     ['scsslint', 'sass:dist', 'autoprefixer:dist']);
-    grunt.registerTask('build:js',      ['jshint', 'modernizr','concat:dist', 'uglify:dist']);
+    grunt.registerTask('build:css',     ['sass:dist', 'autoprefixer:dist']);
+    grunt.registerTask('build:css:all', ['scsslint', 'sass:dist', 'autoprefixer:dist']);
+
+    grunt.registerTask('build:js',      ['concat:dist', 'uglify:dist']);
+    grunt.registerTask('build:js:all',  ['jshint', 'modernizr','concat:dist', 'uglify:dist']);
+
     grunt.registerTask('build:html',    ['newer:htmlmin:dist']);
     grunt.registerTask('build:img',     ['newer:imagemin:dist']);
 
     grunt.registerTask('build',         ['build:css', 'build:js', 'build:html', 'build:img']);
+    grunt.registerTask('build:uber',    ['build:css:all', 'build:js:all', 'build:html', 'build:img']);
     
     grunt.registerTask('deploy',        ['ftp-deploy']);
     
