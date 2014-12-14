@@ -8,14 +8,13 @@ $gutter-width: 15px;
     margin-left: auto;
 
     @include respond-to(wide-screens) {
-        width: 100%;
         margin-left: $gutter-width;
         margin-right: $gutter-width;
     }
 
     @include respond-to(handhelds) {
-        margin-left: 0;
-        margin-right: 0;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }
 
@@ -31,11 +30,11 @@ $gutter-width: 15px;
         }
 
         @include respond-to(handhelds) {
-            width: 100%;
+            width: auto;
         }
     } @else {
         @include respond-to(medium-screens) {
-            width: 100%;
+            width: auto;
         }
     }
 }

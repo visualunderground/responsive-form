@@ -1,0 +1,86 @@
+.global-footer-links {
+    @include grid-row();
+    
+    .menu-toggle,
+    .menu-toggle--open,
+    .menu-toggle--closed {
+        @include grid-column(1/3);
+
+        @include respond-to(medium-screens) { 
+            max-width: 320px;
+            margin: 0 auto 10px;
+            float: none;
+            padding: 10px;
+            background-color: #3a3c42;
+            border-radius: 4px;
+        }
+    }
+}
+
+.menu-toggle {
+    &__header {
+        font-size: 14px;
+        text-transform: uppercase;
+        line-height: 1;
+        margin: 0;
+        font-size: 14px;
+        color: #aab1b7;
+        position: relative;
+    }
+
+    &__menu {
+        font-size: 14px;
+        overflow: hidden;
+        max-height: 130px;
+        transition: max-height .3s ease-in-out;
+
+        > :first-child {
+            padding-top: 15px;
+        }
+    }
+
+    &__menu-link {
+        text-decoration: none;
+        color: #989ea6;
+
+        &:focus,
+        &:hover {
+            color: #bcc0c5;
+        }
+    }
+
+    @include respond-to(medium-screens) { 
+        
+        &__js-link {
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: pointer;
+            position: absolute;
+
+            &:after {
+                content: '';
+                display: block;
+                position: absolute; 
+                right: 0;
+                top: 50%;
+                margin-top: -4px;
+                height: 8px;
+                width: 11px;
+                background-image: url('/assets/images/drop-both.png');
+                background-repeat: no-repeat;
+                background-position: bottom center;
+                transition: transform .3s ease-in-out;
+            }
+        }
+
+        .menu-toggle--open &__js-link:after {
+            transform: rotate(-180deg);
+        }
+
+        .menu-toggle--closed &__menu {
+            max-height: 0;
+        }
+    }
+
+}

@@ -30,9 +30,16 @@
 		}
 		
 		var callback = function callback(){
-			var stickyNav = new application.Sticky(document.querySelector(".global-header"), 'sticky-nav');
-			var usablePassword = new application.Password(document.querySelector("#password"));
-		}
+			
+
+			var s = new application.Sticky(document.querySelector('.sub-nav'));
+			var p = new application.Password(document.querySelector("#password"));
+
+			var m1 = new application.menuToggle(document.querySelector("#menu1p"));
+			var m2 = new application.menuToggle(document.querySelector("#menu2p"));
+			var m3 = new application.menuToggle(document.querySelector("#menu3p"));
+
+		};
 
 		loadJS( "assets/js/application.min.js", callback );
 
@@ -350,18 +357,34 @@
 		</nav>
 	</div>
 	<footer class="global-footer">
-		<h1>To Do:</h1>
-		<ol>
-			<li>Native vs Custom form controls (icon font)</li>
-			<li>Help icon (styling, position and transition)</li>
-			<li>Button feed-<i>back</i></li>
-			<li>Button feed-<i>forward</i></li>
-			<li>Wayfaring</li>
-			<li>Combine "Input &amp; search" elements</li>
-			<li>Combine radio-group elements (bool = horizontal !bool = vertical)</li>
-			<li>Duplicate radio-group to checkbox-group</li>
-			<li>Ajax results</li>
-		</ol>
+		<div class="global-footer-links">
+			<div class="menu-toggle" id="menu1p">
+				<h1 class="menu-toggle__header" id="menu1h" data-role='header'>About us</h1>
+				<ul class="menu-toggle__menu">
+					<li><a href='#' class='menu-toggle__menu-link'>About us</a></li>
+					<li><a href='#' class='menu-toggle__menu-link'>Features</a></li>
+					<li><a href='#' class='menu-toggle__menu-link'>Pricing</a></li>
+					<li><a href='#' class='menu-toggle__menu-link'>Case studies</a></li>
+				</ul>
+			</div>
+			<div class="menu-toggle" id="menu2p">
+				<h1 class="menu-toggle__header" id="menu2h" data-role='header'>Contact &amp; info</h1>
+				<ul class="menu-toggle__menu">
+					<li><a href='#' class='menu-toggle__menu-link'>Blog</a></li>
+					<li><a href='#' class='menu-toggle__menu-link'>Media</a></li>
+					<li><a href='#' class='menu-toggle__menu-link'>Careers</a></li>
+					<li><a href='#' class='menu-toggle__menu-link'>Contact us</a></li>
+				</ul>
+			</div>
+			<div class="menu-toggle" id="menu3p">
+				<h1 class="menu-toggle__header" id="menu3h" data-role='header'>Support</h1>
+				<ul class="menu-toggle__menu">
+					<li><a href='#' class='menu-toggle__menu-link'>Videos guides</a></li>
+					<li><a href='#' class='menu-toggle__menu-link'>Training events</a></li>
+					<li><a href='#' class='menu-toggle__menu-link'>Support</a></li>
+				</ul>
+			</div>
+		</div>
 	</footer>
 	</form>
 </body>

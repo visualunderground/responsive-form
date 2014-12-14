@@ -32,7 +32,12 @@ application.utils = (function(application){
         return location >= 0 ? location : 0;
     };
 
+    var getHeight = function (el) {
+        return Math.max( el.scrollHeight, el.offsetHeight, el.clientHeight );
+    };
+
     return {
+        getHeight : getHeight,
         getDistanceFromTopOfDocument: getDistanceFromTopOfDocument,
         addClass: addClass,
         removeClass: removeClass

@@ -1,5 +1,10 @@
-//break points
-
+// Break points
 $break-small: 479px;
 $break-medium: 789px;
-$break-large: 1000px;
+$break-large: 1200px;
+
+// Space betweem content and browser chrome
+$gutter-page: 20px;
+
+// Space beween columns
+$gutter-col: 15px;
