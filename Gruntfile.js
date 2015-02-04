@@ -200,10 +200,20 @@ module.exports = function(grunt) {
 
         jshint: {
             options: {
+                sub: true,
+                noarg: true,
+                undef: true,
+                node: true,
+                immed: true,
                 curly: true,
                 eqeqeq: true,
                 eqnull: true,
                 browser: true,
+                trailing: true,
+                globals: {
+                    "application": true,
+                    "Modernizr": true
+                }
             },
             all: ['Gruntfile.js', 'src/**/*.js', '!**/modernizr-custom.js']
         },
